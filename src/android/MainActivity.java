@@ -143,10 +143,14 @@ public class MainActivity extends AppCompatActivity {
        String sessionID = intent.getStringExtra("sessionID");
        String userName = intent.getStringExtra("userName");
 
-       _app = SptIMSDKApp.getInstance();
-       _sdk = _app.getSptIMSDK(getApplicationContext());
+       _sdk = ((SptIMSDKApp)getApplication()).getSptIMSDK(getApplicationContext());
        _callObserver = new TestConnectSptCallObserver();
-     _sdk.addCallObserver(_callObserver);
+      _sdk.addCallObserver(_callObserver);
+
+    //   _app = SptIMSDKApp.getInstance();
+//       _sdk = _app.getSptIMSDK(getApplicationContext());
+//       _callObserver = new TestConnectSptCallObserver();
+    // _sdk.addCallObserver(_callObserver);
 
        Bundle args = getIntent().getExtras();
        if(args != null)
