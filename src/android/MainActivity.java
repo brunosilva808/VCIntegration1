@@ -1,4 +1,4 @@
-package com.stanleyidesis.cordova.plugin;
+package com.askblue.cordova.plugin;
 
 import android.os.Bundle;
 import org.apache.cordova.*;

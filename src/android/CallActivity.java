@@ -1,4 +1,4 @@
-package com.stanleyidesis.cordova.plugin;
+package com.askblue.cordova.plugin;
 
 import android.os.Bundle;
 import org.apache.cordova.*;
@@ -27,7 +27,7 @@ import com.clearone.sptimpublicsdk.SptCallID;
 import com.clearone.sptimpublicsdk.SptCallParticipantID;
 import com.clearone.sptimpublicsdk.SptIMSDKApp;
 
-import com.askblye.cordova.plugin.TestConnectMeetingApplication;
+import com.askblue.cordova.plugin.TestConnectMeetingApplication;
 
 import static com.clearone.sptimpublicsdk.SptCallParticipantID.SPT_LOCAL_CALLPARTICIPANT_ID;
 
