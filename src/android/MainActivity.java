@@ -190,7 +190,7 @@ public class MainActivity extends AppCompatActivity {
                 Log.v("user: ", user);
 
                 processLaunchFromToken(_tokenSequenceID);
-                
+
                 if(server.length() > 0 && sessionId.length() > 0 && user.length()>0)
                 {
 
@@ -250,5 +250,22 @@ public class MainActivity extends AppCompatActivity {
                     REQUEST_CODE_ASK_PERMISSIONS);
 
 
+    }
+
+    class MainActivitySptIMObserver extends SptIMObserver
+    {
+        @Override
+        public void onDisconnected()
+        {
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run()
+                {
+                    //Intent restartIntent = new Intent(MainActivity.this, LoginActivity.class);
+                    //startActivity(restartIntent);
+                    finish();
+                }
+            });
+        }
     }
 }
