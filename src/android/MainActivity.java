@@ -42,9 +42,9 @@ public class MainActivity extends AppCompatActivity {
 
     //MainActivitySptIMObserver _sptIMObserver;
     TestConnectSptCallObserver _callObserver;
-    ViewPager _viewPager;
-    MainPagerAdapter _pageAdapter;
-    TabLayout _tabLayout;
+  //  ViewPager _viewPager;
+  //  MainPagerAdapter _pageAdapter;
+  //  TabLayout _tabLayout;
     SptSchMeetingSequenceID _tokenSequenceID;
     ISptIMSDK _sdk;
     SptCallID _callID;
