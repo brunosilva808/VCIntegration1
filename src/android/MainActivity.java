@@ -6,6 +6,7 @@ import android.util.Log;
 
 import android.Manifest;
 import android.content.Intent;
+import android.support.annotation.Nullable;
 import android.content.pm.PackageManager;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
@@ -15,6 +16,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.content.res.Resources;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import com.clearone.sptimpublicsdk.ISptCallData;
 import com.clearone.sptimpublicsdk.ISptIMSDK;
@@ -23,11 +26,28 @@ import com.clearone.sptimpublicsdk.SptCallID;
 import com.clearone.sptimpublicsdk.SptJoinCall;
 import com.clearone.sptimpublicsdk.SptIMSDKApp;
 
+import com.clearone.sptimpublicsdk.ISptIMContact;
+import com.clearone.sptimpublicsdk.ISptSchMeeting;
+import com.clearone.sptimpublicsdk.ISptSchMeetingSequence;
+import com.clearone.sptimpublicsdk.SptIMContactID;
+import com.clearone.sptimpublicsdk.SptSchJoinMeeting;
+import com.clearone.sptimpublicsdk.SptSchMeetingSequenceID;
+
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
     private static int REQUEST_CODE_ASK_PERMISSIONS = 1;
+    public static String EXTRA_JOIN_TO_MEETING = "EXTRA_JOIN_TO_MEETING";
+
+    MainActivitySptIMObserver _sptIMObserver;
+    TestConnectSptCallObserver _callObserver;
+    ViewPager _viewPager;
+    MainPagerAdapter _pageAdapter;
+    TabLayout _tabLayout;
+    SptSchMeetingSequenceID _tokenSequenceID;
+    ISptIMSDK _sdk;
+    SptCallID _callID;
 
     EditText _serverView;
     EditText _sessionIdView;
@@ -37,8 +57,8 @@ public class MainActivity extends AppCompatActivity {
     SptIMSDKApp _app;
     //TestConnectMeetingApplication _app;
 
-    ISptIMSDK _sdk;
-    TestConnectSptCallObserver _callObserver;
+    //ISptIMSDK _sdk;
+    //TestConnectSptCallObserver _callObserver;
 
     class TestConnectSptCallObserver extends SptCallObserver
     {
@@ -67,6 +87,23 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    private void processLaunchFromToken(SptSchMeetingSequenceID sequenceID)
+    {
+        if(sequenceID != null && sequenceID.intValue() != SptSchMeetingSequenceID.SPT_INVALID_MEETING_SEQUENCE_ID)
+        {
+            ISptSchMeetingSequence seq = _sdk.getSchMeetingSequenceByID(sequenceID);
+            if(seq != null)
+            {
+                ISptSchMeeting m = seq.getCurrentMeeting();
+                if(m!= null)
+                {
+                    SptSchJoinMeeting joinMeeting = new SptSchJoinMeeting(sequenceID, m.getSchMeetingID(), true);
+                    _sdk.joinSchMeeting(joinMeeting);
+                }
+            }
+        }
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -80,14 +117,41 @@ public class MainActivity extends AppCompatActivity {
       // Log.v("Resources name: ", resources.String);
        Log.v("view ID: ", String.valueOf(resources.getIdentifier("activity_main", "layout", package_name)));
 
+
+  //     _pageAdapter = new MainPagerAdapter(getSupportFragmentManager());
+    //   _viewPager = findViewById(R.id.main_view_pager);
+  //     _viewPager = setContentView(resources.getIdentifier("main_view_pager", "id", package_name));
+  //     _viewPager.setAdapter(_pageAdapter);
+  //     _tabLayout = (TabLayout)findViewById(R.id.tablayout);
+  //     _tabLayout.setupWithViewPager(_viewPager);
+       Bundle args = getIntent().getExtras();
+       if(args != null)
+       {
+           _tokenSequenceID = new SptSchMeetingSequenceID(args.getInt(EXTRA_JOIN_TO_MEETING, SptSchMeetingSequenceID.SPT_INVALID_MEETING_SEQUENCE_ID));
+       }
+
+
+
 //package_name = "com.stanleyidesis.cordova.plugin";
        Intent intent = getIntent();
+
        String serverName = intent.getStringExtra("serverName");
        String sessionID = intent.getStringExtra("sessionID");
        String userName = intent.getStringExtra("userName");
 
        _app = SptIMSDKApp.getInstance();
        _sdk = _app.getSptIMSDK(getApplicationContext());
+       _callObserver = new TestConnectSptCallObserver();
+     _sdk.addCallObserver(_callObserver);
+
+       Bundle args = getIntent().getExtras();
+       if(args != null)
+       {
+           _tokenSequenceID = new SptSchMeetingSequenceID(args.getInt(EXTRA_JOIN_TO_MEETING, SptSchMeetingSequenceID.SPT_INVALID_MEETING_SEQUENCE_ID));
+
+       }
+       processLaunchFromToken(_tokenSequenceID);
+
 
       //  String activity_main_connect_buttonData = intent.getStringExtra("activity_main_connect_button");
       //  setContentView(R.layout.activity_main);
@@ -96,14 +160,14 @@ public class MainActivity extends AppCompatActivity {
       //  _app.attachBaseContext(this.getApplicationContext());
       //  _sdk = _app.getSptIMSDK(); // new
       //  _sdk = ((TestConnectMeetingApplication)getApplication()).getSptIMSDK();
-        _callObserver = new TestConnectSptCallObserver();
-      _sdk.addCallObserver(_callObserver);
+
       //  _serverView = (EditText)findViewById(R.id.activity_main_server);
       //  _sessionIdView = (EditText)findViewById(R.id.activity_main_id);
       //  _userView = (EditText)findViewById(R.id.activity_main_user);
       //  _connectButton = (Button)findViewById(R.id.activity_main_connect_button);
       String package_name1 = getApplication().getPackageName();
       Resources resources1 = getApplication().getResources();
+
         _serverView = (EditText)findViewById(resources1.getIdentifier("activity_main_server", "id", package_name1));
         _sessionIdView = (EditText)findViewById(resources1.getIdentifier("activity_main_id", "id", package_name1));
         _userView = (EditText)findViewById(resources1.getIdentifier("activity_main_user", "id", package_name1));
@@ -125,10 +189,13 @@ public class MainActivity extends AppCompatActivity {
                 Log.v("sessionId: ", sessionId);
                 Log.v("user: ", user);
 
+                processLaunchFromToken(_tokenSequenceID);
+                
                 if(server.length() > 0 && sessionId.length() > 0 && user.length()>0)
                 {
 
                   //  launchIntent();
+
                     SptJoinCall joinCall = new SptJoinCall(user, "", sessionId, server);
                     _callID = _sdk.joinCall(joinCall);
                     if(_callID != null) {
@@ -142,6 +209,10 @@ public class MainActivity extends AppCompatActivity {
         });
         manageMainPermissions();
     }
+
+
+
+
 
     void launchIntent()
     {
