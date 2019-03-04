@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
     EditText _sessionIdView;
     EditText _userView;
     Button _connectButton;
-    SptCallID _callID;
+  //  SptCallID _callID;
     SptIMSDKApp _app;
     //TestConnectMeetingApplication _app;
 
