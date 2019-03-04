@@ -32,6 +32,7 @@ import com.clearone.sptimpublicsdk.ISptSchMeetingSequence;
 import com.clearone.sptimpublicsdk.SptIMContactID;
 import com.clearone.sptimpublicsdk.SptSchJoinMeeting;
 import com.clearone.sptimpublicsdk.SptSchMeetingSequenceID;
+import com.clearone.sptimpublicsdk.SptIMObserver;
 
 import java.util.ArrayList;
 
@@ -59,6 +60,10 @@ public class MainActivity extends AppCompatActivity {
 
     //ISptIMSDK _sdk;
     //TestConnectSptCallObserver _callObserver;
+
+
+
+
 
     class TestConnectSptCallObserver extends SptCallObserver
     {
