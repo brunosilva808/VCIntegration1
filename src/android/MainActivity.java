@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
     private static int REQUEST_CODE_ASK_PERMISSIONS = 1;
     public static String EXTRA_JOIN_TO_MEETING = "EXTRA_JOIN_TO_MEETING";
 
-    MainActivitySptIMObserver _sptIMObserver;
+    //MainActivitySptIMObserver _sptIMObserver;
     TestConnectSptCallObserver _callObserver;
     ViewPager _viewPager;
     MainPagerAdapter _pageAdapter;
