@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:theme="@style/AppTheme.NoActionBar"
+    tools:context=".MainActivity">
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/textInputLayoutServer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minWidth="368dp"
+        app:layout_constraintBottom_toTopOf="@+id/textInputLayoutId"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5"
+        app:layout_constraintVertical_chainStyle="packed">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/activity_main_server"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Server" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/textInputLayoutId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minWidth="368dp"
+        app:layout_constraintBottom_toTopOf="@+id/textInputLayoutUser"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutServer">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/activity_main_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Session Id"
+            />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/textInputLayoutUser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minWidth="368dp"
+        app:layout_constraintBottom_toTopOf="@+id/activity_main_connect_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutId">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/activity_main_user"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="User"
+            android:nextFocusForward="@+id/activity_main_connect_button"/>
+    </android.support.design.widget.TextInputLayout>
+
+    <Button
+        android:id="@+id/activity_main_connect_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Connect"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutUser"
+         />
+
+
+</android.support.constraint.ConstraintLayout>
