@@ -1,7 +1,7 @@
 {
   "name": "cordova-plugin-toastyplugin",
   "version": "0.0.1",
-  "description": "An Android Cordova plugin that allows users to display simple Toast messages at the bottom of the screen.",
+  "description": "A Cordova plugin that allows users to connect to ClearOne Video Conference platform.",
   "cordova": {
     "id": "cordova-plugin-toastyplugin",
     "platforms": [
@@ -10,15 +10,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Askblue/ToastyPlugin1.git"
+    "url": "git+https://github.com/Askblue/VCIntegration1.git"
   },
   "keywords": [
-    "Toast",
-    "Notification",
-    "Message",
-    "Alert",
-    "ecosystem:cordova",
-    "cordova-android"
+    "clearone",
+    "video",
+    "conference",
+    "cordova"
   ],
   "engines": [
     {
@@ -26,10 +24,10 @@
       "version": ">=3.0.0"
     }
   ],
-  "author": "Stanley Idesis <stan.idesis@gmail.com>",
+  "author": "Askblue <info@askblue.pt>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Askblue/ToastyPlugin1/issues"
+    "url": "https://github.com/Askblue/VCIntegration1/issues"
   },
-  "homepage": "https://github.com/Askblue/ToastyPlugin1/"
+  "homepage": "https://github.com/Askblue/VCIntegration1/"
 }

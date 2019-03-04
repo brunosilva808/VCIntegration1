@@ -4,12 +4,12 @@
         id="cordova-plugin-toastyplugin" version="0.0.1">
     <name>ToastyPlugin</name>
 
-    <description>An Android Cordova plugin that allows users to display simple Toast messages at the bottom of the screen.</description>
+    <description>A Cordova plugin that allows users to connect to ClearOne Video Conference platform.</description>
     <license>MIT</license>
 
-    <keywords>cordova,android,toast,message,alert</keywords>
-    <repo>https://github.com/Askblue/ToastyPlugin1.git</repo>
-    <issue>https://github.com/Askblue/ToastyPlugin1/issues</issue>
+    <keywords>cordova,video,conference,clearone</keywords>
+    <repo>https://github.com/Askblue/VCIntegration1.git</repo>
+    <issue>https://github.com/Askblue/VCIntegration1/issues</issue>
 
     <engines>
         <engine name="cordova" version=">=3.0.0"/>
@@ -21,12 +21,12 @@
     <platform name="android">
         <config-file target="res/xml/config.xml" parent="/*">
             <feature name="ToastyPlugin">
-                <param name="android-package" value="com.stanleyidesis.cordova.plugin.ToastyPlugin"/>
+                <param name="android-package" value="com.askblue.cordova.plugin.ToastyPlugin"/>
             </feature>
         </config-file>
         <framework src="src/android/build.gradle" custom="true" type="gradleReference" />
         <resource-file src="libs/sptIMSDK-release1.aar" target="libs/sptIMSDK-release1.aar" />
-        <source-file src="src/android/ToastyPlugin.java" target-dir="src/com/stanleyidesis/cordova/plugin" />
+        <source-file src="src/android/ToastyPlugin.java" target-dir="src/com/askblue/cordova/plugin" />
         <config-file parent="/*" target="AndroidManifest.xml"></config-file>
 
         <framework src="com.android.support:support-v4:27.1.0" />
@@ -48,7 +48,7 @@
         </config-file>
 
         <config-file target="AndroidManifest.xml" parent="/manifest/application">
-            <activity android:label="MainActivity" android:name="com.stanleyidesis.cordova.plugin.MainActivity" android:theme="@style/AppTheme">
+            <activity android:label="MainActivity" android:name="com.askblue.cordova.plugin.MainActivity" android:theme="@style/AppTheme">
               <intent-filter>
                   <action android:name="android.intent.action.MAIN" />
                   <category android:name="android.intent.category.LAUNCHER" />
@@ -56,15 +56,15 @@
             </activity>
         </config-file>
         <config-file target="AndroidManifest.xml" parent="/manifest/application">
-            <activity android:label="CallActivity" android:name="com.stanleyidesis.cordova.plugin.CallActivity" android:theme="@style/FullscreenTheme"> </activity>
+            <activity android:label="CallActivity" android:name="com.askblue.cordova.plugin.CallActivity" android:theme="@style/FullscreenTheme"> </activity>
         </config-file>
         <config-file target="AndroidManifest.xml" parent="/manifest/application">
-            <activity android:label="TestConnectMeetingApplication" android:name="com.stanleyidesis.cordova.plugin.TestConnectMeetingApplication"></activity>
+            <activity android:label="TestConnectMeetingApplication" android:name="com.askblue.cordova.plugin.TestConnectMeetingApplication"></activity>
         </config-file>
-        <source-file src="src/android/MainActivity.java" target-dir="src/com/stanleyidesis/cordova/plugin" />
-        <source-file src="src/android/CallActivity.java" target-dir="src/com/stanleyidesis/cordova/plugin" />
-        <source-file src="src/android/SptCallObserver.java" target-dir="src/com/stanleyidesis/cordova/plugin" />
-        <source-file src="src/android/TestConnectMeetingApplication.java" target-dir="src/com/stanleyidesis/cordova/plugin" />
+        <source-file src="src/android/MainActivity.java" target-dir="src/com/askblue/cordova/plugin" />
+        <source-file src="src/android/CallActivity.java" target-dir="src/com/askblue/cordova/plugin" />
+        <source-file src="src/android/SptCallObserver.java" target-dir="src/com/askblue/cordova/plugin" />
+        <source-file src="src/android/TestConnectMeetingApplication.java" target-dir="src/com/askblue/cordova/plugin" />
         <source-file src="src/android/colors.xml" target-dir="res/values"/>
         <source-file src="src/android/styles.xml" target-dir="res/values"/>
         <source-file src="src/android/dimens.xml" target-dir="res/values"/>

@@ -1,4 +1,4 @@
-package com.stanleyidesis.cordova.plugin;
+package com.askblue.cordova.plugin;
 // The native Toast API
 import android.widget.Toast;
 import android.content.Context;
@@ -26,7 +26,7 @@ public class ToastyPlugin extends CordovaPlugin {
   String serverName;
   String sessionID;
   String userName;
-  
+
   @Override
   public boolean execute(String action, JSONArray args,
     final CallbackContext callbackContext) {
@@ -35,9 +35,6 @@ public class ToastyPlugin extends CordovaPlugin {
         callbackContext.error("\"" + action + "\" is not a recognized action.");
         return false;
       }
-
-
-
 
 
       try {

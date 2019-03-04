@@ -27,7 +27,7 @@ import com.clearone.sptimpublicsdk.SptCallID;
 import com.clearone.sptimpublicsdk.SptCallParticipantID;
 import com.clearone.sptimpublicsdk.SptIMSDKApp;
 
-import com.stanleyidesis.cordova.plugin.TestConnectMeetingApplication;
+import com.askblye.cordova.plugin.TestConnectMeetingApplication;
 
 import static com.clearone.sptimpublicsdk.SptCallParticipantID.SPT_LOCAL_CALLPARTICIPANT_ID;
 
