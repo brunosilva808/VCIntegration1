@@ -143,7 +143,7 @@ public class MainActivity extends AppCompatActivity {
   //     _tabLayout.setupWithViewPager(_viewPager);
        Bundle args = getIntent().getExtras();
 
-       Log.v("main - oncreate %d",args.getInt(EXTRA_JOIN_TO_MEETING, SptSchMeetingSequenceID.SPT_INVALID_MEETING_SEQUENCE_ID));
+       Log.v("main - oncreate ", String.valueOf(args.getInt(EXTRA_JOIN_TO_MEETING, SptSchMeetingSequenceID.SPT_INVALID_MEETING_SEQUENCE_ID)));
 
        if(args != null)
        {
