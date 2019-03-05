@@ -378,7 +378,7 @@ Log.v("main: ","onCreat3");
               //  }
             //}
         //});
-        //manageMainPermissions();
+        manageMainPermissions();
     }
 
 
