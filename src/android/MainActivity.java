@@ -37,6 +37,8 @@ import com.clearone.sptimpublicsdk.SptSchJoinMeeting;
 import com.clearone.sptimpublicsdk.SptSchMeetingSequenceID;
 import com.clearone.sptcore.sptim.SptTokenDataResult;
 
+import com.askblue.cordova.plugin.TestConnectMeetingApplication;
+
 import static com.clearone.sptimpublicsdk.ISptIMSDK.eSptResult.eSptIMResultError;
 
 import java.util.ArrayList;
@@ -85,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
                     else if(_sdk.areMeetingsSynchronized())
                     {
                         Intent i = new Intent(MainActivity.this, CallActivity.class);
-                        i.putExtra(CallActivity.EXTRA_JOIN_TO_MEETING, _tokenSequenceID.intValue());
+                        i.putExtra(EXTRA_JOIN_TO_MEETING, _tokenSequenceID.intValue());
                         startActivity(i);
                         finish();
                     }
@@ -103,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
                     if(_tokenSequenceID != null)
                     {
                         Intent i = new Intent(MainActivity.this, CallActivity.class);
-                        i.putExtra(CallActivity.EXTRA_JOIN_TO_MEETING, _tokenSequenceID.intValue());
+                        i.putExtra(EXTRA_JOIN_TO_MEETING, _tokenSequenceID.intValue());
                         startActivity(i);
                         finish();
                     }

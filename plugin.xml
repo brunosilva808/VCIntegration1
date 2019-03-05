@@ -51,7 +51,6 @@
             <activity android:label="MainActivity" android:name="com.askblue.cordova.plugin.MainActivity" android:theme="@style/AppTheme">
               <intent-filter>
                   <action android:name="android.intent.action.MAIN" />
-                  <category android:name="android.intent.category.LAUNCHER" />
               </intent-filter>
             </activity>
         </config-file>
@@ -64,6 +63,7 @@
         <source-file src="src/android/MainActivity.java" target-dir="src/com/askblue/cordova/plugin" />
         <source-file src="src/android/CallActivity.java" target-dir="src/com/askblue/cordova/plugin" />
         <source-file src="src/android/SptCallObserver.java" target-dir="src/com/askblue/cordova/plugin" />
+        <source-file src="src/android/SptIMObserver.java" target-dir="src/com/askblue/cordova/plugin" />
         <source-file src="src/android/TestConnectMeetingApplication.java" target-dir="src/com/askblue/cordova/plugin" />
         <source-file src="src/android/colors.xml" target-dir="res/values"/>
         <source-file src="src/android/styles.xml" target-dir="res/values"/>
