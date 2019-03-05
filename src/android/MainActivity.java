@@ -57,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
     Button _connectButton;
   //  SptCallID _callID;
     SptIMSDKApp _app;
+    AlertDialog _callDialog;
     //TestConnectMeetingApplication _app;
 
     //ISptIMSDK _sdk;
