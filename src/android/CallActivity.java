@@ -16,29 +16,33 @@ import android.view.View;
 import android.view.WindowManager;
 import android.content.res.Resources;
 
-
-
-
 import com.clearone.sptimpublicsdk.ISptCallData;
 import com.clearone.sptimpublicsdk.ISptCallParticipant;
+import com.clearone.sptimpublicsdk.ISptCallRequest;
 import com.clearone.sptimpublicsdk.ISptCallServices;
+import com.clearone.sptimpublicsdk.ISptIMSDK;
 import com.clearone.sptimpublicsdk.SptCallFragment;
 import com.clearone.sptimpublicsdk.SptCallID;
 import com.clearone.sptimpublicsdk.SptCallParticipantID;
 import com.clearone.sptimpublicsdk.SptIMSDKApp;
-import com.clearone.sptimpublicsdk.ISptIMSDK;
 
 import com.askblue.cordova.plugin.TestConnectMeetingApplication;
 
+import static com.clearone.sptimpublicsdk.ParticipantServices.eSptServiceActive;
 import static com.clearone.sptimpublicsdk.SptCallParticipantID.SPT_LOCAL_CALLPARTICIPANT_ID;
 
 public class CallActivity extends AppCompatActivity implements SptCallFragment.OnSptCallFragmentListener{
 
     public static final String EXTRA_CALL_ID = "EXTRA_CALL_ID";
+    private static final int REQUEST_CODE_SHARE_GALLERY = 100;
+
     SptCallID _callID;
     SptCallParticipantID _localParticipantID = new SptCallParticipantID(SPT_LOCAL_CALLPARTICIPANT_ID);
-    SptIMSDKApp _app1;
     ISptIMSDK _sdk;
+    CallActivitySptObserver _sptCallObserver;
+    int _screenSharingRequestCode = -1;
+
+    SptIMSDKApp _app1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +55,7 @@ public class CallActivity extends AppCompatActivity implements SptCallFragment.O
 
         int callId = getIntent().getIntExtra(EXTRA_CALL_ID, SptCallID.SPT_INVALID_CALLID);
 
+        _sdk = SptIMSDKApp.getInstance().getSptIMSDK(getApplicationContext());
 
         _callID = new SptCallID(callId);
 
@@ -62,7 +67,7 @@ public class CallActivity extends AppCompatActivity implements SptCallFragment.O
 
       //  TestConnectMeetingApplication _app = (TestConnectMeetingApplication) getApplication();
       //  _sdk = _app.getSptIMSDK();
-        _sdk = SptIMSDKApp.getInstance().getSptIMSDK(getApplicationContext());
+
 
       //  _app = SptIMSDKApp.getInstance();
         //Toolbar tb = (Toolbar)findViewById(R.id.activity_call_tool_bar);
@@ -85,6 +90,16 @@ public class CallActivity extends AppCompatActivity implements SptCallFragment.O
             //ft.replace(R.id.activity_call_content, f);
             ft.commit();
         }
+
+        sptCallObserver = new CallActivitySptObserver();
+        _sdk.addCallObserver(_sptCallObserver);
+
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        _sdk.removeCallObserver(_sptCallObserver);
     }
 
     private void requestServiceState(int serviceId, boolean bActivate)
@@ -186,4 +201,43 @@ public class CallActivity extends AppCompatActivity implements SptCallFragment.O
       //  app.getSptIMSDK().setServiceState(_callID, _localParticipantID, ISptCallServices.eSptCallServiceWhiteboard, b);
 
   //  }
+
+  public class CallActivitySptObserver extends SptCallObserver
+    {
+        @Override
+        public void onCallEventRequestUpdated(SptCallID sptCallID, ISptCallRequest iSptCallRequest) {
+            switch(iSptCallRequest.getType()) {
+                case eSptCallRequestTypeShareApplication:
+                    if (iSptCallRequest.getState() == ISptCallRequest.eSptCallRequestState.eSptCallRequestStatePending) {
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                          //      FragmentManager fm = getSupportFragmentManager();
+                          //      SharingOptionsDialog sharingDialogFragment = SharingOptionsDialog.newInstance("Some Title");
+                          //      sharingDialogFragment.show(fm, "fragment_edit_name");
+                            }
+                        });
+                    }
+                    break;
+            }
+        }
+
+        @Override
+        public void requestUserAutorization(Intent intent, int i) {
+            _screenSharingRequestCode = i;
+            startActivityForResult(intent, i);
+        }
+
+        @Override
+        public void onCallEventDisconnected(SptCallID sptCallID, ISptCallData iSptCallData)
+        {
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run()
+                {
+                    finish();
+                }
+            });
+        }
+    }
 }
