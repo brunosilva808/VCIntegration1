@@ -199,7 +199,7 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void run() {
                     Intent i = new Intent(MainActivity.this, CallActivity.class);
-                    _tokenSequenceID = new SptSchMeetingSequenceID();
+                    //_tokenSequenceID = new SptSchMeetingSequenceID();
                     if(_callID != null)
                         i.putExtra(CallActivity.EXTRA_CALL_ID, _callID.intValue());
                     startActivity(i);
