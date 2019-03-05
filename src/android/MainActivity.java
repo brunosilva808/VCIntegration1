@@ -100,6 +100,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onSchMeetingsSynchronized()
         {
+          Log.v("main: ", "onSchMeetingsSynchronized");
             runOnUiThread(new Runnable() {
                 @Override
                 public void run()
@@ -164,6 +165,7 @@ public class MainActivity extends AppCompatActivity {
                         case SptTokenDataResultJoinMeeting:
                              Log.v("main: ", "SptTokenDataResultJoinMeeting");
                             _tokenSequenceID = tokenDataRes.getMeetingSequenceID();
+                            processLaunchFromToken(_tokenSequenceID);
                             if(!tokenDataRes.contactAlreadyLogged())
                                 _sdk.loginWithTokenDataResult(tokenDataRes);
                             break;
@@ -222,6 +224,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void processLaunchFromToken(SptSchMeetingSequenceID sequenceID)
     {
+      Log.v("main: ","processLaunchFromToken");
         if(sequenceID != null && sequenceID.intValue() != SptSchMeetingSequenceID.SPT_INVALID_MEETING_SEQUENCE_ID)
         {
             ISptSchMeetingSequence seq = _sdk.getSchMeetingSequenceByID(sequenceID);
@@ -230,6 +233,7 @@ public class MainActivity extends AppCompatActivity {
                 ISptSchMeeting m = seq.getCurrentMeeting();
                 if(m!= null)
                 {
+                  Log.v("main: ","SptSchJoinMeeting");
                     SptSchJoinMeeting joinMeeting = new SptSchJoinMeeting(sequenceID, m.getSchMeetingID(), true);
                     _sdk.joinSchMeeting(joinMeeting);
                 }
@@ -289,7 +293,7 @@ public class MainActivity extends AppCompatActivity {
 
 Log.v("main: ","onCreate2");
 
-       processLaunchFromToken(_tokenSequenceID);
+
 
 Log.v("main: ","onCreat3");
 //package_name = "com.stanleyidesis.cordova.plugin";
