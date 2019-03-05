@@ -63,7 +63,7 @@ public class ToastyPlugin extends CordovaPlugin {
       //SptIMSDKApp app1 = SptIMSDKApp.getInstance();
       //app1.getSptIMSDK(that.cordova.getActivity().getBaseContext());
 
-      _sdk = SptIMSDKApp.getInstance().getSptIMSDK(null);
+      _sdk = SptIMSDKApp.getInstance().getSptIMSDK(getApplicationContext());
 
       cordova.getActivity().runOnUiThread(new Runnable() {
        @Override

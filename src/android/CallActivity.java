@@ -62,7 +62,7 @@ public class CallActivity extends AppCompatActivity implements SptCallFragment.O
 
       //  TestConnectMeetingApplication _app = (TestConnectMeetingApplication) getApplication();
       //  _sdk = _app.getSptIMSDK();
-        _sdk = SptIMSDKApp.getInstance().getSptIMSDK(null);
+        _sdk = SptIMSDKApp.getInstance().getSptIMSDK(getApplicationContext());
 
       //  _app = SptIMSDKApp.getInstance();
         //Toolbar tb = (Toolbar)findViewById(R.id.activity_call_tool_bar);
