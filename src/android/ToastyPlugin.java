@@ -16,6 +16,8 @@ import android.app.Application;
 import android.support.annotation.CallSuper;
 
 import com.clearone.sptimpublicsdk.SptIMSDKApp;
+import com.clearone.sptimpublicsdk.ISptIMSDK;
+
 
 import android.util.Log;
 import android.content.res.Resources;
@@ -26,6 +28,7 @@ public class ToastyPlugin extends CordovaPlugin {
   String serverName;
   String sessionID;
   String userName;
+  ISptIMSDK _sdk;
 
   @Override
   public boolean execute(String action, JSONArray args,
@@ -59,6 +62,8 @@ public class ToastyPlugin extends CordovaPlugin {
 
       //SptIMSDKApp app1 = SptIMSDKApp.getInstance();
       //app1.getSptIMSDK(that.cordova.getActivity().getBaseContext());
+
+      _sdk = SptIMSDKApp.getInstance().getSptIMSDK(null);
 
       cordova.getActivity().runOnUiThread(new Runnable() {
        @Override
