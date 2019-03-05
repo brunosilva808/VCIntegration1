@@ -195,6 +195,7 @@ public class MainActivity extends AppCompatActivity {
 
           Log.v("main: ", "SptCallObserver");
             runOnUiThread(new Runnable() {
+
                 @Override
                 public void run() {
                     Intent i = new Intent(MainActivity.this, CallActivity.class);
@@ -273,7 +274,7 @@ public class MainActivity extends AppCompatActivity {
 
       _sdk.getTokenData("43030687", "collaboratespace.net");
 
-      Log.v("main - oncreate _tokenSequenceID", String.valueOf(_tokenSequenceID));
+    //  Log.v("main - oncreate _tokenSequenceID", String.valueOf(_tokenSequenceID));
 
 //       if(args != null)
 //       {
