@@ -250,10 +250,63 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+  //  @Override
+  //  protected void onDestroy() {
+  //      super.onDestroy();
+  //      _sdk.removeCallObserver(_callObserver);
+  //  }
+
     @Override
-    protected void onDestroy() {
+    protected void onDestroy()
+    {
         super.onDestroy();
-        _sdk.removeCallObserver(_callObserver);
+        _sptIMObserver = new MainActivitySptIMObserver();
+        ISptIMSDK sdk = SptIMSDKApp.getInstance().getSptIMSDK(getApplicationContext());
+        sdk.removeObserver(_sptIMObserver);
+        sdk.removeCallObserver(_callObserver);
+    }
+
+    private void showCallDialog()
+    {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Call In Progress...").setPositiveButton("Hang", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i)
+            {
+               _sdk.hangUpCall(_callID);
+                _callDialog = null;
+            }
+        }).setCancelable(false);
+        _callDialog = builder.show();
+    }
+
+    private void showIncomingCallDialog()
+    {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Call In Progress...")
+                .setPositiveButton("Video", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i)
+                    {
+                        _sdk.answerCall(_callID, true, true);
+                        _callDialog = null;
+                    }
+                }).setNegativeButton("Audio", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i)
+            {
+                _sdk.answerCall(_callID, true, false);
+                _callDialog = null;
+            }
+        }).setNeutralButton("Hang", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i)
+            {
+                _sdk.answerCall(_callID, false, true);
+                _callDialog = null;
+            }
+        }).setCancelable(false);
+        _callDialog = builder.show();
     }
 
     void manageMainPermissions()
