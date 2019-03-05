@@ -19,6 +19,7 @@ import android.content.res.Resources;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.app.AlertDialog;
+import android.content.DialogInterface;
 
 import com.clearone.sptimpublicsdk.ISptCallData;
 import com.clearone.sptimpublicsdk.ISptIMSDK;
