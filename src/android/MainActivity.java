@@ -87,10 +87,10 @@ public class MainActivity extends AppCompatActivity {
                     }
                     else if(_sdk.areMeetingsSynchronized())
                     {
-                        Intent i = new Intent(MainActivity.this, CallActivity.class);
-                    //    _tokenSequenceID = new SptSchMeetingSequenceID();
-                        i.putExtra(EXTRA_JOIN_TO_MEETING, _tokenSequenceID.intValue());
-                        startActivity(i);
+                      //  Intent i = new Intent(MainActivity.this, CallActivity.class);
+
+                      //  i.putExtra(EXTRA_JOIN_TO_MEETING, _tokenSequenceID.intValue());
+                      //  startActivity(i);
                         finish();
                     }
                 }
@@ -107,10 +107,10 @@ public class MainActivity extends AppCompatActivity {
                 {
                     if(_tokenSequenceID != null)
                     {
-                        Intent i = new Intent(MainActivity.this, CallActivity.class);
-                      //  _tokenSequenceID = new SptSchMeetingSequenceID();
-                        i.putExtra(EXTRA_JOIN_TO_MEETING, _tokenSequenceID.intValue());
-                        startActivity(i);
+                //        Intent i = new Intent(MainActivity.this, CallActivity.class);
+
+                //        i.putExtra(EXTRA_JOIN_TO_MEETING, _tokenSequenceID.intValue());
+                //        startActivity(i);
                         finish();
                     }
                 }
