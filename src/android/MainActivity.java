@@ -54,8 +54,8 @@ public class MainActivity extends AppCompatActivity {
     EditText _userView;
     Button _connectButton;
   //  SptCallID _callID;
-    SptIMSDKApp _app1;
-    TestConnectMeetingApplication _app;
+    SptIMSDKApp _app;
+    //TestConnectMeetingApplication _app;
 
     //ISptIMSDK _sdk;
     //TestConnectSptCallObserver _callObserver;
