@@ -286,11 +286,11 @@ public class MainActivity extends AppCompatActivity {
 //           _tokenSequenceID = new SptSchMeetingSequenceID(args.getInt(EXTRA_JOIN_TO_MEETING, SptSchMeetingSequenceID.SPT_INVALID_MEETING_SEQUENCE_ID));
 //       }
 
-Log.v("main: ","onCreate2")
+Log.v("main: ","onCreate2");
 
        processLaunchFromToken(_tokenSequenceID);
 
-Log.v("main: ","onCreat3")
+Log.v("main: ","onCreat3");
 //package_name = "com.stanleyidesis.cordova.plugin";
 
        //Intent intent = getIntent();
