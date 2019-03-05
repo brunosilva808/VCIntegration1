@@ -122,8 +122,9 @@ public class MainActivity extends AppCompatActivity {
        Log.v("view ID: ", String.valueOf(resources.getIdentifier("activity_main", "layout", package_name)));
     //   _sdk = ((SptIMSDKApp)getApplication()).getSptIMSDK();
 
-      _app = SptIMSDKApp.getInstance();
-      _sdk = _app.getSptIMSDK(getApplicationContext());
+      _sdk = SptIMSDKApp.getInstance().getSptIMSDK(null);
+      //_app = SptIMSDKApp.getInstance();
+      //_sdk = _app.getSptIMSDK(getApplicationContext());
 
 
     //   _sdk = ((TestConnectMeetingApplication)getApplication()).getSptIMSDK();
