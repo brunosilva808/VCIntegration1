@@ -213,7 +213,7 @@ public class CallActivity extends AppCompatActivity implements SptCallFragment.O
                               @Override
                               public void run() {
                                   FragmentManager fm = getSupportFragmentManager();
-                                  SharingOptionsDialog sharingDialogFragment = SharingOptionsDialog.newInstance("Some Title");
+                                  //SharingOptionsDialog sharingDialogFragment = SharingOptionsDialog.newInstance("Some Title");
                                   //sharingDialogFragment.show(fm, "fragment_edit_name");
                               }
                           });
