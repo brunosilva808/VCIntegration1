@@ -80,13 +80,14 @@ public class MainActivity extends AppCompatActivity {
                 {
                     if(_tokenSequenceID == null)
                     {
-                        Intent i = new Intent(MainActivity.this, CallActivity.class);
-                        startActivity(i);
+                      //  Intent i = new Intent(MainActivity.this, CallActivity.class);
+                      //  startActivity(i);
                         finish();
                     }
                     else if(_sdk.areMeetingsSynchronized())
                     {
                         Intent i = new Intent(MainActivity.this, CallActivity.class);
+                    //    _tokenSequenceID = new SptSchMeetingSequenceID();
                         i.putExtra(EXTRA_JOIN_TO_MEETING, _tokenSequenceID.intValue());
                         startActivity(i);
                         finish();
@@ -105,6 +106,7 @@ public class MainActivity extends AppCompatActivity {
                     if(_tokenSequenceID != null)
                     {
                         Intent i = new Intent(MainActivity.this, CallActivity.class);
+                      //  _tokenSequenceID = new SptSchMeetingSequenceID();
                         i.putExtra(EXTRA_JOIN_TO_MEETING, _tokenSequenceID.intValue());
                         startActivity(i);
                         finish();
@@ -150,6 +152,8 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onGetTokenDataRes(final SptTokenDataResult tokenDataRes)
         {
+
+           Log.v("main: ", "onGetTokenDataRes");
             runOnUiThread(new Runnable() {
                 @Override
                 public void run()
@@ -157,6 +161,7 @@ public class MainActivity extends AppCompatActivity {
                     switch(tokenDataRes.getResult())
                     {
                         case SptTokenDataResultJoinMeeting:
+                             Log.v("main: ", "SptTokenDataResultJoinMeeting");
                             _tokenSequenceID = tokenDataRes.getMeetingSequenceID();
                             if(!tokenDataRes.contactAlreadyLogged())
                                 _sdk.loginWithTokenDataResult(tokenDataRes);
@@ -187,10 +192,13 @@ public class MainActivity extends AppCompatActivity {
     {
         @Override
         public void onCallEventConnected(SptCallID sptCallID, ISptCallData iSptCallData) {
+
+          Log.v("main: ", "SptCallObserver");
             runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
                     Intent i = new Intent(MainActivity.this, CallActivity.class);
+                    _tokenSequenceID = new SptSchMeetingSequenceID();
                     if(_callID != null)
                         i.putExtra(CallActivity.EXTRA_CALL_ID, _callID.intValue());
                     startActivity(i);
@@ -263,7 +271,7 @@ public class MainActivity extends AppCompatActivity {
 
       // Log.v("main - oncreate ", String.valueOf(args.getInt(EXTRA_JOIN_TO_MEETING, SptSchMeetingSequenceID.SPT_INVALID_MEETING_SEQUENCE_ID)));
 
-      _tokenSequenceID = new SptSchMeetingSequenceID(_sdk.getTokenData("43030687", "collaboratespace.net"));
+      _sdk.getTokenData("43030687", "collaboratespace.net");
 
       Log.v("main - oncreate _tokenSequenceID", String.valueOf(_tokenSequenceID));
 
