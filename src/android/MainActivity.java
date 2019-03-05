@@ -260,6 +260,9 @@ public class MainActivity extends AppCompatActivity {
       // _sdk = ((SptIMSDKApp)getApplication()).getSptIMSDK(getApplicationContext());
        _callObserver = new TestConnectSptCallObserver();
       _sdk.addCallObserver(_callObserver);
+
+      _sptObserver = new TextConnectSptIMObserver();
+        _sdk.addObserver(_sptObserver);
   //     _pageAdapter = new MainPagerAdapter(getSupportFragmentManager());
     //   _viewPager = findViewById(R.id.main_view_pager);
   //     _viewPager = setContentView(resources.getIdentifier("main_view_pager", "id", package_name));
@@ -283,8 +286,11 @@ public class MainActivity extends AppCompatActivity {
 //           _tokenSequenceID = new SptSchMeetingSequenceID(args.getInt(EXTRA_JOIN_TO_MEETING, SptSchMeetingSequenceID.SPT_INVALID_MEETING_SEQUENCE_ID));
 //       }
 
+Log.v("main: ","onCreate2")
+
        processLaunchFromToken(_tokenSequenceID);
 
+Log.v("main: ","onCreat3")
 //package_name = "com.stanleyidesis.cordova.plugin";
 
        //Intent intent = getIntent();
