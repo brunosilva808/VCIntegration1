@@ -260,9 +260,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onDestroy()
     {
         super.onDestroy();
-        _sptIMObserver = new MainActivitySptIMObserver();
+        //_sptIMObserver = new MainActivitySptIMObserver();
         ISptIMSDK sdk = SptIMSDKApp.getInstance().getSptIMSDK(getApplicationContext());
-        sdk.removeObserver(_sptIMObserver);
+        //sdk.removeObserver(_sptIMObserver);
         sdk.removeCallObserver(_callObserver);
     }
 
