@@ -18,6 +18,7 @@ import android.widget.EditText;
 import android.content.res.Resources;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.app.AlertDialog;
 
 import com.clearone.sptimpublicsdk.ISptCallData;
 import com.clearone.sptimpublicsdk.ISptIMSDK;
