@@ -115,6 +115,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+      Log.v("main: ","onCreate");
       String package_name = getApplication().getPackageName();
        //String package_name = "com.stanleyidesis.cordova.plugin";
        Resources resources = getApplication().getResources();
@@ -141,8 +142,13 @@ public class MainActivity extends AppCompatActivity {
   //     _tabLayout = (TabLayout)findViewById(R.id.tablayout);
   //     _tabLayout.setupWithViewPager(_viewPager);
        Bundle args = getIntent().getExtras();
+
+       Log.v("main - oncreate %d",args.getInt(EXTRA_JOIN_TO_MEETING, SptSchMeetingSequenceID.SPT_INVALID_MEETING_SEQUENCE_ID));
+
        if(args != null)
        {
+           Log.v("main: ","onCreate _tokenSequenceID");
+
            _tokenSequenceID = new SptSchMeetingSequenceID(args.getInt(EXTRA_JOIN_TO_MEETING, SptSchMeetingSequenceID.SPT_INVALID_MEETING_SEQUENCE_ID));
        }
 
