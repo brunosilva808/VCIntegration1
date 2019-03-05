@@ -34,6 +34,7 @@ import com.clearone.sptimpublicsdk.ISptSchMeetingSequence;
 import com.clearone.sptimpublicsdk.SptIMContactID;
 import com.clearone.sptimpublicsdk.SptSchJoinMeeting;
 import com.clearone.sptimpublicsdk.SptSchMeetingSequenceID;
+import com.clearone.sptcore.sptim.SptTokenDataResult;
 
 import java.util.ArrayList;
 
