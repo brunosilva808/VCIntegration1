@@ -63,34 +63,117 @@ public class MainActivity extends AppCompatActivity {
     //ISptIMSDK _sdk;
     //TestConnectSptCallObserver _callObserver;
 
-
-
-
-
     class TestConnectSptCallObserver extends SptCallObserver
     {
         @Override
-        public void onCallEventConnected(SptCallID sptCallID, ISptCallData iSptCallData) {
+        public void onConnected()
+        {
             runOnUiThread(new Runnable() {
                 @Override
-                public void run() {
-                  Log.v("main: ","onCallEventConnected");
-                    Intent i = new Intent(MainActivity.this, CallActivity.class);
-                    if(_callID != null)
-                        i.putExtra(CallActivity.EXTRA_CALL_ID, _callID.intValue());
-                    startActivity(i);
+                public void run()
+                {
+                    if(_tokenSequenceID == null)
+                    {
+                        Intent i = new Intent(MainActivity.this, CallActivity.class);
+                        startActivity(i);
+                        finish();
+                    }
+                    else if(_sdk.areMeetingsSynchronized())
+                    {
+                        Intent i = new Intent(MainActivity.this, CallActivity.class);
+                        i.putExtra(MainActivity.EXTRA_JOIN_TO_MEETING, _tokenSequenceID.intValue());
+                        startActivity(i);
+                        finish();
+                    }
                 }
             });
         }
 
         @Override
-        public void onCallEventDisconnected(SptCallID sptCallID, ISptCallData iSptCallData) {
-            super.onCallEventDisconnected(sptCallID, iSptCallData);
+        public void onSchMeetingsSynchronized()
+        {
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run()
+                {
+                    if(_tokenSequenceID != null)
+                    {
+                        Intent i = new Intent(MainActivity.this, CallActivity.class);
+                        i.putExtra(CallActivity.EXTRA_JOIN_TO_MEETING, _tokenSequenceID.intValue());
+                        startActivity(i);
+                        finish();
+                    }
+                }
+            });
         }
 
         @Override
-        public void onCallEventStateUpdated(SptCallID sptCallID, ISptCallData iSptCallData) {
-            super.onCallEventStateUpdated(sptCallID, iSptCallData);
+        public void onDisconnected()
+        {
+            super.onDisconnected();
+        }
+
+        @Override
+        public void onConnectionError(final ISptIMSDK.eSptConnectionResult eResult)
+        {
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run()
+                {
+                    _progressView.setVisibility(View.GONE);
+                    switch (eResult)
+                    {
+                        case eSptIMConnect_AuthError:
+                            showToast("eSptIMConnect_AuthError");
+                            break;
+                        case eSptIMConnect_GDPRPending:
+                            showGdprDialog();
+                            break;
+                        case eSptIMConnect_CredentialsError:
+                            _emailView.setError("Credentials Error");
+                            _passwordView.setError("Credentials Error");
+                            break;
+                        case eSptIMConnect_NetworkError:
+                            _serverView.setError("Server Not Reachable");
+                            break;
+                    }
+                }
+            });
+        }
+
+        @Override
+        public void onGetTokenDataRes(final SptTokenDataResult tokenDataRes)
+        {
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run()
+                {
+                    switch(tokenDataRes.getResult())
+                    {
+                        case SptTokenDataResultJoinMeeting:
+                            _tokenSequenceID = tokenDataRes.getMeetingSequenceID();
+                            if(!tokenDataRes.contactAlreadyLogged())
+                                _sdk.loginWithTokenDataResult(tokenDataRes);
+                            break;
+                        case SptTokenDataResultLogin:
+                            if(!tokenDataRes.contactAlreadyLogged())
+                                _sdk.loginWithTokenDataResult(tokenDataRes);
+                            break;
+                        case SptTokenDataResultInvalidToken:
+                            _tokenView.setError("Invalid Token");
+                            _progressView.setVisibility(View.GONE);
+                            break;
+                        case SptTokenDataResultServerNotReachable:
+                            _passwordView.setError("Server Not Reachable");
+                            _progressView.setVisibility(View.GONE);
+                            break;
+                        case SptTokenDataResultError:
+                            showToast("SptTokenDataResultError");
+                            break;
+                    }
+
+                }
+            });
         }
     }
 
@@ -141,16 +224,22 @@ public class MainActivity extends AppCompatActivity {
   //     _viewPager.setAdapter(_pageAdapter);
   //     _tabLayout = (TabLayout)findViewById(R.id.tablayout);
   //     _tabLayout.setupWithViewPager(_viewPager);
-       Bundle args = getIntent().getExtras();
+       //undle args = getIntent().getExtras();
 
-       Log.v("main - oncreate ", String.valueOf(args.getInt(EXTRA_JOIN_TO_MEETING, SptSchMeetingSequenceID.SPT_INVALID_MEETING_SEQUENCE_ID)));
+       //_sdk.getTokenData("43030687", "collaboratespace.net");
 
-       if(args != null)
-       {
-           Log.v("main: ","onCreate _tokenSequenceID");
+      // Log.v("main - oncreate ", String.valueOf(args.getInt(EXTRA_JOIN_TO_MEETING, SptSchMeetingSequenceID.SPT_INVALID_MEETING_SEQUENCE_ID)));
 
-           _tokenSequenceID = new SptSchMeetingSequenceID(args.getInt(EXTRA_JOIN_TO_MEETING, SptSchMeetingSequenceID.SPT_INVALID_MEETING_SEQUENCE_ID));
-       }
+      _tokenSequenceID = new SptSchMeetingSequenceID(_sdk.getTokenData("43030687", "collaboratespace.net"));
+
+      Log.v("main - oncreate _tokenSequenceID", String.valueOf(_tokenSequenceID));
+
+//       if(args != null)
+//       {
+//           Log.v("main: ","onCreate _tokenSequenceID");
+//
+//           _tokenSequenceID = new SptSchMeetingSequenceID(args.getInt(EXTRA_JOIN_TO_MEETING, SptSchMeetingSequenceID.SPT_INVALID_MEETING_SEQUENCE_ID));
+//       }
 
        processLaunchFromToken(_tokenSequenceID);
 
