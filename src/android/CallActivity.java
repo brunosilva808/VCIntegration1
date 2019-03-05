@@ -44,6 +44,46 @@ public class CallActivity extends AppCompatActivity implements SptCallFragment.O
 
     SptIMSDKApp _app1;
 
+
+    public class CallActivitySptObserver extends SptCallObserver
+    {
+        @Override
+        public void onCallEventRequestUpdated(SptCallID sptCallID, ISptCallRequest iSptCallRequest) {
+            switch(iSptCallRequest.getType()) {
+                case eSptCallRequestTypeShareApplication:
+                    if (iSptCallRequest.getState() == ISptCallRequest.eSptCallRequestState.eSptCallRequestStatePending) {
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                          //      FragmentManager fm = getSupportFragmentManager();
+                          //      SharingOptionsDialog sharingDialogFragment = SharingOptionsDialog.newInstance("Some Title");
+                          //      sharingDialogFragment.show(fm, "fragment_edit_name");
+                            }
+                        });
+                    }
+                    break;
+            }
+        }
+
+        @Override
+        public void requestUserAutorization(Intent intent, int i) {
+            _screenSharingRequestCode = i;
+            startActivityForResult(intent, i);
+        }
+
+        @Override
+        public void onCallEventDisconnected(SptCallID sptCallID, ISptCallData iSptCallData)
+        {
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run()
+                {
+                    finish();
+                }
+            });
+        }
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -202,42 +242,5 @@ public class CallActivity extends AppCompatActivity implements SptCallFragment.O
 
   //  }
 
-  public class CallActivitySptObserver extends SptCallObserver
-    {
-        @Override
-        public void onCallEventRequestUpdated(SptCallID sptCallID, ISptCallRequest iSptCallRequest) {
-            switch(iSptCallRequest.getType()) {
-                case eSptCallRequestTypeShareApplication:
-                    if (iSptCallRequest.getState() == ISptCallRequest.eSptCallRequestState.eSptCallRequestStatePending) {
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                          //      FragmentManager fm = getSupportFragmentManager();
-                          //      SharingOptionsDialog sharingDialogFragment = SharingOptionsDialog.newInstance("Some Title");
-                          //      sharingDialogFragment.show(fm, "fragment_edit_name");
-                            }
-                        });
-                    }
-                    break;
-            }
-        }
 
-        @Override
-        public void requestUserAutorization(Intent intent, int i) {
-            _screenSharingRequestCode = i;
-            startActivityForResult(intent, i);
-        }
-
-        @Override
-        public void onCallEventDisconnected(SptCallID sptCallID, ISptCallData iSptCallData)
-        {
-            runOnUiThread(new Runnable() {
-                @Override
-                public void run()
-                {
-                    finish();
-                }
-            });
-        }
-    }
 }
