@@ -21,6 +21,7 @@ import android.content.res.Resources;
 import com.clearone.sptimpublicsdk.ISptCallData;
 import com.clearone.sptimpublicsdk.ISptIMSDK;
 import com.clearone.sptimpublicsdk.ISptSDKCallObserver;
+import com.clearone.sptimpublicsdk.ISptIMSDKObserver;
 import com.clearone.sptimpublicsdk.SptCallID;
 import com.clearone.sptimpublicsdk.SptJoinCall;
 

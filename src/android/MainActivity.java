@@ -39,7 +39,6 @@ import com.clearone.sptcore.sptim.SptTokenDataResult;
 import static com.clearone.sptimpublicsdk.ISptIMSDK.eSptResult.eSptIMResultError;
 
 import java.util.ArrayList;
-import com.askblue.cordova.plugin.SptIMObserver;
 
 public class MainActivity extends AppCompatActivity {
 
