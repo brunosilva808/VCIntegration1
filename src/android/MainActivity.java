@@ -165,9 +165,9 @@ public class MainActivity extends AppCompatActivity {
                         case SptTokenDataResultJoinMeeting:
                              Log.v("main: ", "SptTokenDataResultJoinMeeting");
                             _tokenSequenceID = tokenDataRes.getMeetingSequenceID();
-                            processLaunchFromToken(_tokenSequenceID);
                             if(!tokenDataRes.contactAlreadyLogged())
                                 _sdk.loginWithTokenDataResult(tokenDataRes);
+                            processLaunchFromToken(_tokenSequenceID);
                             break;
                         case SptTokenDataResultLogin:
                             if(!tokenDataRes.contactAlreadyLogged())
