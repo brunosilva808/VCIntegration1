@@ -36,6 +36,8 @@ import com.clearone.sptimpublicsdk.SptSchJoinMeeting;
 import com.clearone.sptimpublicsdk.SptSchMeetingSequenceID;
 import com.clearone.sptcore.sptim.SptTokenDataResult;
 
+import static com.clearone.sptimpublicsdk.ISptIMSDK.eSptResult.eSptIMResultError;
+
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
@@ -64,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
     //ISptIMSDK _sdk;
     //TestConnectSptCallObserver _callObserver;
 
-    class TestConnectSptCallObserver extends SptCallObserver
+    class TextConnectSptIMObserver extends SptIMObserver
     {
         @Override
         public void onConnected()
@@ -82,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
                     else if(_sdk.areMeetingsSynchronized())
                     {
                         Intent i = new Intent(MainActivity.this, CallActivity.class);
-                        i.putExtra(MainActivity.EXTRA_JOIN_TO_MEETING, _tokenSequenceID.intValue());
+                        i.putExtra(CallActivity.EXTRA_JOIN_TO_MEETING, _tokenSequenceID.intValue());
                         startActivity(i);
                         finish();
                     }
@@ -121,21 +123,21 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void run()
                 {
-                    _progressView.setVisibility(View.GONE);
+                  //  _progressView.setVisibility(View.GONE);
                     switch (eResult)
                     {
                         case eSptIMConnect_AuthError:
-                            showToast("eSptIMConnect_AuthError");
+                  //          showToast("eSptIMConnect_AuthError");
                             break;
                         case eSptIMConnect_GDPRPending:
-                            showGdprDialog();
+                    //        showGdprDialog();
                             break;
                         case eSptIMConnect_CredentialsError:
-                            _emailView.setError("Credentials Error");
-                            _passwordView.setError("Credentials Error");
+                      //      _emailView.setError("Credentials Error");
+                      //      _passwordView.setError("Credentials Error");
                             break;
                         case eSptIMConnect_NetworkError:
-                            _serverView.setError("Server Not Reachable");
+                      //      _serverView.setError("Server Not Reachable");
                             break;
                     }
                 }
@@ -161,20 +163,47 @@ public class MainActivity extends AppCompatActivity {
                                 _sdk.loginWithTokenDataResult(tokenDataRes);
                             break;
                         case SptTokenDataResultInvalidToken:
-                            _tokenView.setError("Invalid Token");
-                            _progressView.setVisibility(View.GONE);
+                          //  _tokenView.setError("Invalid Token");
+                          //  _progressView.setVisibility(View.GONE);
                             break;
                         case SptTokenDataResultServerNotReachable:
-                            _passwordView.setError("Server Not Reachable");
-                            _progressView.setVisibility(View.GONE);
+                          //  _passwordView.setError("Server Not Reachable");
+                        //    _progressView.setVisibility(View.GONE);
                             break;
                         case SptTokenDataResultError:
-                            showToast("SptTokenDataResultError");
+                          //  showToast("SptTokenDataResultError");
                             break;
                     }
 
                 }
             });
+        }
+    }
+
+    class TestConnectSptCallObserver extends SptCallObserver
+    {
+        @Override
+        public void onCallEventConnected(SptCallID sptCallID, ISptCallData iSptCallData) {
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    Intent i = new Intent(MainActivity.this, CallActivity.class);
+                    if(_callID != null)
+                        i.putExtra(CallActivity.EXTRA_CALL_ID, _callID.intValue());
+                    startActivity(i);
+                    finish();
+                }
+            });
+        }
+
+        @Override
+        public void onCallEventDisconnected(SptCallID sptCallID, ISptCallData iSptCallData) {
+            super.onCallEventDisconnected(sptCallID, iSptCallData);
+        }
+
+        @Override
+        public void onCallEventStateUpdated(SptCallID sptCallID, ISptCallData iSptCallData) {
+            super.onCallEventStateUpdated(sptCallID, iSptCallData);
         }
     }
 
