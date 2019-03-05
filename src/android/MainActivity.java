@@ -120,8 +120,11 @@ public class MainActivity extends AppCompatActivity {
        Log.v("package name: ", package_name);
       // Log.v("Resources name: ", resources.String);
        Log.v("view ID: ", String.valueOf(resources.getIdentifier("activity_main", "layout", package_name)));
-
-
+       _sdk = ((SptIMSDKApp)getApplication()).getSptIMSDK();
+    //   _sdk = (TestConnectMeetingApplicatiogetApplication()).getSptIMSDK();
+      // _sdk = ((SptIMSDKApp)getApplication()).getSptIMSDK(getApplicationContext());
+       _callObserver = new TestConnectSptCallObserver();
+      _sdk.addCallObserver(_callObserver);
   //     _pageAdapter = new MainPagerAdapter(getSupportFragmentManager());
     //   _viewPager = findViewById(R.id.main_view_pager);
   //     _viewPager = setContentView(resources.getIdentifier("main_view_pager", "id", package_name));
@@ -134,31 +137,33 @@ public class MainActivity extends AppCompatActivity {
            _tokenSequenceID = new SptSchMeetingSequenceID(args.getInt(EXTRA_JOIN_TO_MEETING, SptSchMeetingSequenceID.SPT_INVALID_MEETING_SEQUENCE_ID));
        }
 
-
+       processLaunchFromToken(_tokenSequenceID);
 
 //package_name = "com.stanleyidesis.cordova.plugin";
-       Intent intent = getIntent();
 
-       String serverName = intent.getStringExtra("serverName");
-       String sessionID = intent.getStringExtra("sessionID");
-       String userName = intent.getStringExtra("userName");
+       //Intent intent = getIntent();
 
-       _sdk = ((SptIMSDKApp)getApplication()).getSptIMSDK(getApplicationContext());
-       _callObserver = new TestConnectSptCallObserver();
-      _sdk.addCallObserver(_callObserver);
+       //String serverName = intent.getStringExtra("serverName");
+       //String sessionID = intent.getStringExtra("sessionID");
+       //String userName = intent.getStringExtra("userName");
+
+      // _sdk = ((TestConnectMeetingApplicatiogetApplication()).getSptIMSDK();
+      // _sdk = ((SptIMSDKApp)getApplication()).getSptIMSDK(getApplicationContext());
+      // _callObserver = new TestConnectSptCallObserver();
+      //_sdk.addCallObserver(_callObserver);
 
     //   _app = SptIMSDKApp.getInstance();
 //       _sdk = _app.getSptIMSDK(getApplicationContext());
 //       _callObserver = new TestConnectSptCallObserver();
     // _sdk.addCallObserver(_callObserver);
 
-       Bundle args = getIntent().getExtras();
-       if(args != null)
-       {
-           _tokenSequenceID = new SptSchMeetingSequenceID(args.getInt(EXTRA_JOIN_TO_MEETING, SptSchMeetingSequenceID.SPT_INVALID_MEETING_SEQUENCE_ID));
+    //   Bundle args = getIntent().getExtras();
+    //   if(args != null)
+    //   {
+    //       _tokenSequenceID = new SptSchMeetingSequenceID(args.getInt(EXTRA_JOIN_TO_MEETING, SptSchMeetingSequenceID.SPT_INVALID_MEETING_SEQUENCE_ID));
 
-       }
-       processLaunchFromToken(_tokenSequenceID);
+//       }
+  //     processLaunchFromToken(_tokenSequenceID);
 
 
       //  String activity_main_connect_buttonData = intent.getStringExtra("activity_main_connect_button");
@@ -173,49 +178,50 @@ public class MainActivity extends AppCompatActivity {
       //  _sessionIdView = (EditText)findViewById(R.id.activity_main_id);
       //  _userView = (EditText)findViewById(R.id.activity_main_user);
       //  _connectButton = (Button)findViewById(R.id.activity_main_connect_button);
-      String package_name1 = getApplication().getPackageName();
-      Resources resources1 = getApplication().getResources();
 
-        _serverView = (EditText)findViewById(resources1.getIdentifier("activity_main_server", "id", package_name1));
-        _sessionIdView = (EditText)findViewById(resources1.getIdentifier("activity_main_id", "id", package_name1));
-        _userView = (EditText)findViewById(resources1.getIdentifier("activity_main_user", "id", package_name1));
-        _connectButton = (Button)findViewById(resources1.getIdentifier("activity_main_connect_button", "id", package_name1));
+    //  String package_name1 = getApplication().getPackageName();
+    //  Resources resources1 = getApplication().getResources();
 
-        _serverView.setText(serverName);
-        _sessionIdView.setText(sessionID);
-        _userView.setText(userName);
+      //  _serverView = (EditText)findViewById(resources1.getIdentifier("activity_main_server", "id", package_name1));
+      //  _sessionIdView = (EditText)findViewById(resources1.getIdentifier("activity_main_id", "id", package_name1));
+      //  _userView = (EditText)findViewById(resources1.getIdentifier("activity_main_user", "id", package_name1));
+      //  _connectButton = (Button)findViewById(resources1.getIdentifier("activity_main_connect_button", "id", package_name1));
+
+    //    _serverView.setText(serverName);
+    //    _sessionIdView.setText(sessionID);
+    //    _userView.setText(userName);
 // Log.v("activity_main_server: ", String.valueOf(resources1.getIdentifier("activity_main_server", "layout", package_name1)));
 
-        _connectButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String server = _serverView.getText().toString();
-                String sessionId = _sessionIdView.getText().toString();
-                String user = _userView.getText().toString();
+      //  _connectButton.setOnClickListener(new View.OnClickListener() {
+      //      @Override
+      //      public void onClick(View v) {
+      //          String server = _serverView.getText().toString();
+      //          String sessionId = _sessionIdView.getText().toString();
+      //          String user = _userView.getText().toString();
 
-                Log.v("server: ", server);
-                Log.v("sessionId: ", sessionId);
-                Log.v("user: ", user);
+        //        Log.v("server: ", server);
+        //        Log.v("sessionId: ", sessionId);
+        //        Log.v("user: ", user);
 
-                processLaunchFromToken(_tokenSequenceID);
+        //        processLaunchFromToken(_tokenSequenceID);
 
-                if(server.length() > 0 && sessionId.length() > 0 && user.length()>0)
-                {
-
-                  //  launchIntent();
-
-                    SptJoinCall joinCall = new SptJoinCall(user, "", sessionId, server);
-                    _callID = _sdk.joinCall(joinCall);
-                    if(_callID != null) {
-                      Log.v("one: ","call Id valid");
-                      Log.v("_callID: ",String.valueOf(_callID));
-                    }
+          //      if(server.length() > 0 && sessionId.length() > 0 && user.length()>0)
+            //    {
 
                   //  launchIntent();
-                }
-            }
-        });
-        manageMainPermissions();
+
+              //      SptJoinCall joinCall = new SptJoinCall(user, "", sessionId, server);
+              //      _callID = _sdk.joinCall(joinCall);
+              //      if(_callID != null) {
+              //        Log.v("one: ","call Id valid");
+              //        Log.v("_callID: ",String.valueOf(_callID));
+              //      }
+
+                  //  launchIntent();
+              //  }
+            //}
+        //});
+        //manageMainPermissions();
     }
 
 

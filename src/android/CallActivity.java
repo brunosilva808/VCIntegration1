@@ -26,6 +26,7 @@ import com.clearone.sptimpublicsdk.SptCallFragment;
 import com.clearone.sptimpublicsdk.SptCallID;
 import com.clearone.sptimpublicsdk.SptCallParticipantID;
 import com.clearone.sptimpublicsdk.SptIMSDKApp;
+import com.clearone.sptimpublicsdk.ISptIMSDK;
 
 import com.askblue.cordova.plugin.TestConnectMeetingApplication;
 
@@ -37,6 +38,7 @@ public class CallActivity extends AppCompatActivity implements SptCallFragment.O
     SptCallID _callID;
     SptCallParticipantID _localParticipantID = new SptCallParticipantID(SPT_LOCAL_CALLPARTICIPANT_ID);
     SptIMSDKApp _app;
+    ISptIMSDK _sdk;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +60,11 @@ public class CallActivity extends AppCompatActivity implements SptCallFragment.O
           Log.v("two: ","bolas");
         }
 
-        _app = SptIMSDKApp.getInstance();
+        TestConnectMeetingApplication _app = (TestConnectMeetingApplication) getApplication();
+        _sdk = _app.getSptIMSDK();
+
+
+      //  _app = SptIMSDKApp.getInstance();
         //Toolbar tb = (Toolbar)findViewById(R.id.activity_call_tool_bar);
         Toolbar tb = (Toolbar)findViewById(resources.getIdentifier("activity_call_tool_bar", "id", package_name));
         setSupportActionBar(tb);
@@ -84,20 +90,32 @@ public class CallActivity extends AppCompatActivity implements SptCallFragment.O
     private void requestServiceState(int serviceId, boolean bActivate)
     {
         //_app = SptIMSDKApp.getInstance();
-        _app.getSptIMSDK(getApplicationContext()).setServiceState(_callID, _localParticipantID,serviceId, bActivate);
+        //_app.getSptIMSDK(getApplicationContext()).setServiceState(_callID, _localParticipantID,serviceId, bActivate);
 
+        _sdk.setServiceState(_callID, _localParticipantID,serviceId, bActivate);
     //    TestConnectMeetingApplication app = (TestConnectMeetingApplication) getApplication();
       //  app.getSptIMSDK().setServiceState(_callID, _localParticipantID,serviceId, bActivate);
     }
 
     @Override
-    public void onCallHangButtonPressed() {
+    public boolean isActionBarShowing() {
+        return false;
+    }
+
+    @Override
+        public void onCallHangButtonPressed() {
+            _sdk.hangUpCall(_callID);
+            finish();
+        }
+
+  //  @Override
+  //  public void onCallHangButtonPressed() {
         //TestConnectMeetingApplication app = (TestConnectMeetingApplication) getApplication();
 
-        _app.getSptIMSDK(getApplicationContext()).hangUpCall(_callID);
+    //    _app.getSptIMSDK(getApplicationContext()).hangUpCall(_callID);
       //  app.getSptIMSDK().hangUpCall(_callID);
-        finish();
-    }
+      //  finish();
+  //  }
 
     @Override
     public void OnRotateCamera() {
@@ -157,10 +175,15 @@ public class CallActivity extends AppCompatActivity implements SptCallFragment.O
     }
 
     @Override
-    public void activateWhiteboard(boolean b) {
-      //  TestConnectMeetingApplication app = (TestConnectMeetingApplication) getApplication();
-        _app.getSptIMSDK(getApplicationContext()).setServiceState(_callID, _localParticipantID, ISptCallServices.eSptCallServiceWhiteboard, b);
-      //  app.getSptIMSDK().setServiceState(_callID, _localParticipantID, ISptCallServices.eSptCallServiceWhiteboard, b);
+        public void activateWhiteboard(boolean b) {
+           _sdk.setServiceState(_callID, _localParticipantID, ISptCallServices.eSptCallServiceWhiteboard, b);
 
     }
+  //  @Override
+  //  public void activateWhiteboard(boolean b) {
+      //  TestConnectMeetingApplication app = (TestConnectMeetingApplication) getApplication();
+    //    _app.getSptIMSDK(getApplicationContext()).setServiceState(_callID, _localParticipantID, ISptCallServices.eSptCallServiceWhiteboard, b);
+      //  app.getSptIMSDK().setServiceState(_callID, _localParticipantID, ISptCallServices.eSptCallServiceWhiteboard, b);
+
+  //  }
 }
