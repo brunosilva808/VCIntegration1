@@ -37,7 +37,7 @@ public class CallActivity extends AppCompatActivity implements SptCallFragment.O
     public static final String EXTRA_CALL_ID = "EXTRA_CALL_ID";
     SptCallID _callID;
     SptCallParticipantID _localParticipantID = new SptCallParticipantID(SPT_LOCAL_CALLPARTICIPANT_ID);
-    SptIMSDKApp _app;
+    SptIMSDKApp _app1;
     ISptIMSDK _sdk;
 
     @Override

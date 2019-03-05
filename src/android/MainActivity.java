@@ -54,8 +54,8 @@ public class MainActivity extends AppCompatActivity {
     EditText _userView;
     Button _connectButton;
   //  SptCallID _callID;
-    SptIMSDKApp _app;
-    //TestConnectMeetingApplication _app;
+    SptIMSDKApp _app1;
+    TestConnectMeetingApplication _app;
 
     //ISptIMSDK _sdk;
     //TestConnectSptCallObserver _callObserver;
@@ -120,8 +120,8 @@ public class MainActivity extends AppCompatActivity {
        Log.v("package name: ", package_name);
       // Log.v("Resources name: ", resources.String);
        Log.v("view ID: ", String.valueOf(resources.getIdentifier("activity_main", "layout", package_name)));
-       _sdk = ((SptIMSDKApp)getApplication()).getSptIMSDK();
-    //   _sdk = (TestConnectMeetingApplicatiogetApplication()).getSptIMSDK();
+    //   _sdk = ((SptIMSDKApp)getApplication()).getSptIMSDK();
+       _sdk = ((TestConnectMeetingApplication)getApplication()).getSptIMSDK();
       // _sdk = ((SptIMSDKApp)getApplication()).getSptIMSDK(getApplicationContext());
        _callObserver = new TestConnectSptCallObserver();
       _sdk.addCallObserver(_callObserver);
