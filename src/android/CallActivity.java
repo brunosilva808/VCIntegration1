@@ -65,11 +65,11 @@ public class CallActivity extends AppCompatActivity implements SptCallFragment.O
             }
         }
 
-        @Override
-        public void requestUserAutorization(Intent intent, int i) {
-            _screenSharingRequestCode = i;
-            startActivityForResult(intent, i);
-        }
+      //  @Override
+      //  public void requestUserAutorization(Intent intent, int i) {
+      //      _screenSharingRequestCode = i;
+      //      startActivityForResult(intent, i);
+      //  }
 
         @Override
         public void onCallEventDisconnected(SptCallID sptCallID, ISptCallData iSptCallData)
