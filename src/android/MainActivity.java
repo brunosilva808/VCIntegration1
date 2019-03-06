@@ -111,6 +111,13 @@ public class MainActivity extends AppCompatActivity {
 
                 //        i.putExtra(EXTRA_JOIN_TO_MEETING, _tokenSequenceID.intValue());
                 //        startActivity(i);
+
+                          Intent i = new Intent(MainActivity.this, CallActivity.class);
+                            //_tokenSequenceID = new SptSchMeetingSequenceID();
+                          if(_callID != null)
+                              i.putExtra(CallActivity.EXTRA_CALL_ID, _callID.intValue());
+
+
                         finish();
                     }
                 }
@@ -216,9 +223,74 @@ public class MainActivity extends AppCompatActivity {
             super.onCallEventDisconnected(sptCallID, iSptCallData);
         }
 
+//        @Override
+//        public void onCallEventStateUpdated(SptCallID sptCallID, ISptCallData iSptCallData) {
+//            super.onCallEventStateUpdated(sptCallID, iSptCallData);
+//        }
+
         @Override
-        public void onCallEventStateUpdated(SptCallID sptCallID, ISptCallData iSptCallData) {
-            super.onCallEventStateUpdated(sptCallID, iSptCallData);
+        public void onCallEventStateUpdated(final SptCallID sptCallID, final ISptCallData iSptCallData) {
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run()
+                {
+                  Log.v("main: ", "SptCallObserver1");
+                    if(_callID == null)
+                        _callID = sptCallID;
+                    Log.d("call state", iSptCallData.getCallState().name());
+                    switch (iSptCallData.getCallState())
+                    {
+
+                        case eCallStateCreating:
+                            showCallDialog();
+                            break;
+                        case eCallStateRinging:
+                            break;
+                        case eCallStateAccepted:
+                            break;
+                        case eCallStateConnecting:
+                            break;
+                        case eCallStateWaitingParticipants:
+                            break;
+                        case eCallStateReconnecting:
+                            break;
+                        case eCallStateConnected:
+                            break;
+                        case eCallStateConnectedInOtherDevice:
+                            break;
+                        case eCallStateDisconnecting:
+                            break;
+                        case eCallStateDisconnected:
+                            _callID = null;
+                            break;
+                        case eCallStateRejected:
+                            _callID = null;
+                            break;
+                        case eCallStateError:
+                            _callID = null;
+                            break;
+                    }
+                }
+            });
+        }
+
+        @Override
+        public void onCallEventIncomingCall(SptCallID sptCallID, ISptCallData iSptCallData)
+        {
+
+          Log.v("main: ", "SptCallObserver2");
+            if(_callID == null)
+            {
+                _callID = sptCallID;
+                runOnUiThread(new Runnable()
+                {
+                    @Override
+                    public void run()
+                    {
+                      //  showIncomingCallDialog();
+                    }
+                });
+            }
         }
     }
 
