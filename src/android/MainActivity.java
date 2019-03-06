@@ -337,7 +337,7 @@ public class MainActivity extends AppCompatActivity {
 
       String serverName = intent1.getStringExtra("serverName");
       String userMail = intent1.getStringExtra("userMail");
-      String passWor = intent1.getStringExtra("passWord");
+      String passWord = intent1.getStringExtra("passWord");
       String personalID = intent1.getStringExtra("personalID");
 
       Log.v("MainActivity - serverName: ", serverName);
