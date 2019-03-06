@@ -8,7 +8,7 @@ ToastyPlugin.prototype.show = function(serverName, userMail, passWord, personalI
   options.serverName = serverName;
   options.userMail = userMail;
   options.passWord = passWord;
-  ptions.personalID = personalID;
+  options.personalID = personalID;
 
   cordova.exec(successCallback, errorCallback, 'ToastyPlugin', 'show', [options]);
 }
