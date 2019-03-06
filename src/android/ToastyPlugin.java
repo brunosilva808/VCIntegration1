@@ -74,6 +74,10 @@ public class ToastyPlugin extends CordovaPlugin {
           intentScan.putExtra("sessionID", sessionID);
           intentScan.putExtra("userName", userName);
 
+          log.v("ToastyPlugin - serverName: ", serverName);
+          log.v("ToastyPlugin - sessionID: ", sessionID);
+          log.v("ToastyPlugin - userName: ", userName);
+
           //String package_name = cordova.getApplication().getPackageName();
           //Resources resources = getApplication().getResources();
 

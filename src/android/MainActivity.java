@@ -352,7 +352,7 @@ public class MainActivity extends AppCompatActivity {
 
       // Log.v("main - oncreate ", String.valueOf(args.getInt(EXTRA_JOIN_TO_MEETING, SptSchMeetingSequenceID.SPT_INVALID_MEETING_SEQUENCE_ID)));
 
-      _sdk.getTokenData("22556959", "collaboratespace.net");
+      _sdk.getTokenData("88817741", "collaboratespace.net");
 
     //  Log.v("main - oncreate _tokenSequenceID", String.valueOf(_tokenSequenceID));
 
