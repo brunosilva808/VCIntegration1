@@ -26,8 +26,9 @@ public class ToastyPlugin extends CordovaPlugin {
   private static final String DURATION_LONG = "long";
 
   String serverName;
-  String sessionID;
-  String userName;
+  String userMail;
+  String passWord;
+  String personalID;
   ISptIMSDK _sdk;
 
   @Override
@@ -44,8 +45,9 @@ public class ToastyPlugin extends CordovaPlugin {
 
         JSONObject options = args.getJSONObject(0);
         serverName = options.getString("serverName");
-        sessionID = options.getString("sessionID");
-        userName = options.getString("userName");
+        userMail = options.getString("userMail");
+        passWord = options.getString("passWord");
+        personalID = options.getString("personalID");
 
       } catch (JSONException e) {
         callbackContext.error("Error encountered: " + e.getMessage());
@@ -71,12 +73,14 @@ public class ToastyPlugin extends CordovaPlugin {
 
           Intent intentScan = new Intent(that.cordova.getActivity().getBaseContext(), MainActivity.class);
           intentScan.putExtra("serverName", serverName);
-          intentScan.putExtra("sessionID", sessionID);
-          intentScan.putExtra("userName", userName);
+          intentScan.putExtra("userMail", userMail);
+          intentScan.putExtra("passWord", passWord);
+          intentScan.putExtra("personalID", personalID);
 
           Log.v("ToastyPlugin - serverName: ", serverName);
-          Log.v("ToastyPlugin - sessionID: ", sessionID);
-          Log.v("ToastyPlugin - userName: ", userName);
+          Log.v("ToastyPlugin - userMail: ", userMail);
+          Log.v("ToastyPlugin - passWord: ", passWord);
+          Log.v("ToastyPlugin - personalID: ", personalID);
 
           //String package_name = cordova.getApplication().getPackageName();
           //Resources resources = getApplication().getResources();

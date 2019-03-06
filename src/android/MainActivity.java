@@ -65,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
   //  SptCallID _callID;
     SptIMSDKApp _app;
     AlertDialog _callDialog;
+
     //TestConnectMeetingApplication _app;
 
     //ISptIMSDK _sdk;
@@ -332,6 +333,18 @@ public class MainActivity extends AppCompatActivity {
       //_app = SptIMSDKApp.getInstance();
       //_sdk = _app.getSptIMSDK(getApplicationContext());
 
+      Intent intent1 = getIntent();
+
+      String serverName = intent1.getStringExtra("serverName");
+      String userMail = intent1.getStringExtra("userMail");
+      String passWor = intent1.getStringExtra("passWord");
+      String personalID = intent1.getStringExtra("personalID");
+
+      Log.v("MainActivity - serverName: ", serverName);
+      Log.v("MainActivity - userMail: ", userMail);
+      Log.v("MainActivity - passWord: ", passWord);
+      Log.v("MainActivity - personalID: ", personalID);
+
 
     //   _sdk = ((TestConnectMeetingApplication)getApplication()).getSptIMSDK();
       // _sdk = ((SptIMSDKApp)getApplication()).getSptIMSDK(getApplicationContext());
@@ -340,6 +353,11 @@ public class MainActivity extends AppCompatActivity {
 
       _sptObserver = new TextConnectSptIMObserver();
         _sdk.addObserver(_sptObserver);
+
+
+
+
+
   //     _pageAdapter = new MainPagerAdapter(getSupportFragmentManager());
     //   _viewPager = findViewById(R.id.main_view_pager);
   //     _viewPager = setContentView(resources.getIdentifier("main_view_pager", "id", package_name));
