@@ -52,7 +52,8 @@ public class CallActivity extends AppCompatActivity implements SptCallFragment.O
         String package_name = getApplication().getPackageName();
         Resources resources = getApplication().getResources();
         setContentView(resources.getIdentifier("content_main", "layout", package_name));
-
+        setTitle(" ");
+        
         int callId = getIntent().getIntExtra(EXTRA_CALL_ID, SptCallID.SPT_INVALID_CALLID);
 
         _sdk = SptIMSDKApp.getInstance().getSptIMSDK(getApplicationContext());

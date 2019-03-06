@@ -323,6 +323,7 @@ public class MainActivity extends AppCompatActivity {
        //String package_name = "com.stanleyidesis.cordova.plugin";
        Resources resources = getApplication().getResources();
        setContentView(resources.getIdentifier("activity_main", "layout", package_name));
+       setTitle(" ");
 
        Log.v("package name: ", package_name);
       // Log.v("Resources name: ", resources.String);
