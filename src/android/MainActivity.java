@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
                     {
                       //  Intent i = new Intent(MainActivity.this, CallActivity.class);
                       //  startActivity(i);
-                        finish();
+                      //  finish();
                     }
                     else if(_sdk.areMeetingsSynchronized())
                     {
@@ -91,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
 
                       //  i.putExtra(EXTRA_JOIN_TO_MEETING, _tokenSequenceID.intValue());
                       //  startActivity(i);
-                        finish();
+                      //  finish();
                     }
                 }
             });
@@ -112,13 +112,13 @@ public class MainActivity extends AppCompatActivity {
                 //        i.putExtra(EXTRA_JOIN_TO_MEETING, _tokenSequenceID.intValue());
                 //        startActivity(i);
 
-                          Intent i = new Intent(MainActivity.this, CallActivity.class);
-                            //_tokenSequenceID = new SptSchMeetingSequenceID();
-                          if(_callID != null)
-                              i.putExtra(CallActivity.EXTRA_CALL_ID, _callID.intValue());
+                  //        Intent i = new Intent(MainActivity.this, CallActivity.class);
+
+                  //        if(_callID != null)
+                  //            i.putExtra(CallActivity.EXTRA_CALL_ID, _callID.intValue());
 
 
-                        finish();
+                    //    finish();
                     }
                 }
             });
