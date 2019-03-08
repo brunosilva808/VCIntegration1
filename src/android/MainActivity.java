@@ -88,11 +88,11 @@ public class MainActivity extends AppCompatActivity {
                     }
                     else if(_sdk.areMeetingsSynchronized())
                     {
-                      //  Intent i = new Intent(MainActivity.this, CallActivity.class);
+                        Intent i = new Intent(MainActivity.this, CallActivity.class);
 
-                      //  i.putExtra(EXTRA_JOIN_TO_MEETING, _tokenSequenceID.intValue());
-                      //  startActivity(i);
-                      //  finish();
+                        i.putExtra(EXTRA_JOIN_TO_MEETING, _tokenSequenceID.intValue());
+                        startActivity(i);
+                        finish();
                     }
                 }
             });
@@ -108,10 +108,10 @@ public class MainActivity extends AppCompatActivity {
                 {
                     if(_tokenSequenceID != null)
                     {
-                //        Intent i = new Intent(MainActivity.this, CallActivity.class);
+                        Intent i = new Intent(MainActivity.this, CallActivity.class);
 
-                //        i.putExtra(EXTRA_JOIN_TO_MEETING, _tokenSequenceID.intValue());
-                //        startActivity(i);
+                        i.putExtra(EXTRA_JOIN_TO_MEETING, _tokenSequenceID.intValue());
+                        startActivity(i);
 
                   //        Intent i = new Intent(MainActivity.this, CallActivity.class);
 
@@ -119,7 +119,7 @@ public class MainActivity extends AppCompatActivity {
                   //            i.putExtra(CallActivity.EXTRA_CALL_ID, _callID.intValue());
 
 
-                    //    finish();
+                        finish();
                     }
                 }
             });
@@ -175,7 +175,8 @@ public class MainActivity extends AppCompatActivity {
                             _tokenSequenceID = tokenDataRes.getMeetingSequenceID();
                             if(!tokenDataRes.contactAlreadyLogged())
                                 _sdk.loginWithTokenDataResult(tokenDataRes);
-                            processLaunchFromToken(_tokenSequenceID);
+                            else
+                                processLaunchFromToken(_tokenSequenceID);
                             break;
                         case SptTokenDataResultLogin:
                             if(!tokenDataRes.contactAlreadyLogged())
