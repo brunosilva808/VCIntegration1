@@ -118,8 +118,7 @@ public class MainActivity extends AppCompatActivity {
                         if(_callID != null)
                               i.putExtra(CallActivity.EXTRA_CALL_ID, _callID.intValue());
                         startActivity(i);
-
-                        //finish();
+                        finish();
                     }
                 }
             });
@@ -215,7 +214,7 @@ public class MainActivity extends AppCompatActivity {
                     if(_callID != null)
                         i.putExtra(CallActivity.EXTRA_CALL_ID, _callID.intValue());
                     startActivity(i);
-                    //finish();
+                    finish();
                 }
             });
         }
