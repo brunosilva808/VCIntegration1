@@ -85,6 +85,8 @@ public class MainActivity extends AppCompatActivity {
                     {
                       //  Intent i = new Intent(MainActivity.this, CallActivity.class);
                       //  startActivity(i);
+
+                      Log.v("main: ", "onSchMeetingsSynchronized1 - null");
                       //  finish();
                     }
                     else if(_sdk.areMeetingsSynchronized())
@@ -118,7 +120,7 @@ public class MainActivity extends AppCompatActivity {
                       //  i.putExtra(EXTRA_JOIN_TO_MEETING, _tokenSequenceID.intValue());
                       //  startActivity(i);
 
-
+                        Log.v("main: ", "onSchMeetingsSynchronized not null");
                         processLaunchFromToken(_tokenSequenceID);
                       //  Intent i = new Intent(MainActivity.this, CallActivity.class);
 
