@@ -91,6 +91,8 @@ public class MainActivity extends AppCompatActivity {
                     {
 
                       Log.v("main: ", "onSchMeetingsSynchronized3");
+
+                      processLaunchFromToken(_tokenSequenceID);
                       //  Intent i = new Intent(MainActivity.this, CallActivity.class);
 
                       //  i.putExtra(EXTRA_JOIN_TO_MEETING, _tokenSequenceID.intValue());
@@ -116,12 +118,14 @@ public class MainActivity extends AppCompatActivity {
                       //  i.putExtra(EXTRA_JOIN_TO_MEETING, _tokenSequenceID.intValue());
                       //  startActivity(i);
 
-                        Intent i = new Intent(MainActivity.this, CallActivity.class);
 
-                        if(_callID != null)
-                              i.putExtra(CallActivity.EXTRA_CALL_ID, _callID.intValue());
-                        startActivity(i);
-                        finish();
+                        processLaunchFromToken(_tokenSequenceID);
+                      //  Intent i = new Intent(MainActivity.this, CallActivity.class);
+
+                      //  if(_callID != null)
+                      //        i.putExtra(CallActivity.EXTRA_CALL_ID, _callID.intValue());
+                      //  startActivity(i);
+                      //  finish();
                     }
                 }
             });
@@ -184,9 +188,6 @@ public class MainActivity extends AppCompatActivity {
                             _tokenSequenceID = tokenDataRes.getMeetingSequenceID();
                             if(!tokenDataRes.contactAlreadyLogged())
                                 _sdk.loginWithTokenDataResult(tokenDataRes);
-                            else
-                                processLaunchFromToken(_tokenSequenceID);
-                            break;
                         case SptTokenDataResultInvalidToken:
                           //  _tokenView.setError("Invalid Token");
                           //  _progressView.setVisibility(View.GONE);
