@@ -53,7 +53,7 @@ public class CallActivity extends AppCompatActivity implements SptCallFragment.O
         Resources resources = getApplication().getResources();
         setContentView(resources.getIdentifier("content_main", "layout", package_name));
         setTitle(" ");
-        
+
         int callId = getIntent().getIntExtra(EXTRA_CALL_ID, SptCallID.SPT_INVALID_CALLID);
 
         _sdk = SptIMSDKApp.getInstance().getSptIMSDK(getApplicationContext());
@@ -92,8 +92,8 @@ public class CallActivity extends AppCompatActivity implements SptCallFragment.O
             ft.commit();
         }
 
-      //  sptCallObserver = new CallActivitySptObserver();
-      //  _sdk.addCallObserver(_sptCallObserver);
+        sptCallObserver = new CallActivitySptObserver();
+        _sdk.addCallObserver(_sptCallObserver);
 
     }
 
@@ -191,6 +191,15 @@ public class CallActivity extends AppCompatActivity implements SptCallFragment.O
     }
 
     @Override
+    public void onBackPressed()
+    {
+        super.onBackPressed();
+        _sdk.hangUpCall(_callID);
+        _callID = null;
+    }
+
+
+    @Override
         public void activateWhiteboard(boolean b) {
            _sdk.setServiceState(_callID, _localParticipantID, ISptCallServices.eSptCallServiceWhiteboard, b);
 
@@ -221,6 +230,18 @@ public class CallActivity extends AppCompatActivity implements SptCallFragment.O
                       }
                       break;
               }
+          }
+
+          @Override
+          public void onCallEventDisconnected(SptCallID sptCallID, ISptCallData iSptCallData)
+          {
+              runOnUiThread(new Runnable() {
+                  @Override
+                  public void run()
+                  {
+                      finish();
+                  }
+              });
           }
 
       //    @Override

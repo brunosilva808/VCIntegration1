@@ -88,11 +88,11 @@ public class MainActivity extends AppCompatActivity {
                     }
                     else if(_sdk.areMeetingsSynchronized())
                     {
-                        Intent i = new Intent(MainActivity.this, CallActivity.class);
+                      //  Intent i = new Intent(MainActivity.this, CallActivity.class);
 
-                        i.putExtra(EXTRA_JOIN_TO_MEETING, _tokenSequenceID.intValue());
-                        startActivity(i);
-                        finish();
+                      //  i.putExtra(EXTRA_JOIN_TO_MEETING, _tokenSequenceID.intValue());
+                      //  startActivity(i);
+                      //  finish();
                     }
                 }
             });
@@ -108,18 +108,18 @@ public class MainActivity extends AppCompatActivity {
                 {
                     if(_tokenSequenceID != null)
                     {
+                        // Intent i = new Intent(MainActivity.this, CallActivity.class);
+
+                      //  i.putExtra(EXTRA_JOIN_TO_MEETING, _tokenSequenceID.intValue());
+                      //  startActivity(i);
+
                         Intent i = new Intent(MainActivity.this, CallActivity.class);
 
-                        i.putExtra(EXTRA_JOIN_TO_MEETING, _tokenSequenceID.intValue());
+                        if(_callID != null)
+                              i.putExtra(CallActivity.EXTRA_CALL_ID, _callID.intValue());
                         startActivity(i);
 
-                  //        Intent i = new Intent(MainActivity.this, CallActivity.class);
-
-                  //        if(_callID != null)
-                  //            i.putExtra(CallActivity.EXTRA_CALL_ID, _callID.intValue());
-
-
-                        finish();
+                        //finish();
                     }
                 }
             });
@@ -215,15 +215,30 @@ public class MainActivity extends AppCompatActivity {
                     if(_callID != null)
                         i.putExtra(CallActivity.EXTRA_CALL_ID, _callID.intValue());
                     startActivity(i);
-                    finish();
+                    //finish();
                 }
             });
         }
 
         @Override
         public void onCallEventDisconnected(SptCallID sptCallID, ISptCallData iSptCallData) {
-            super.onCallEventDisconnected(sptCallID, iSptCallData);
-        }
+          //  super.onCallEventDisconnected(sptCallID, iSptCallData);
+          Log.v("main: ", "SptCallObserver4");
+            runOnUiThread(new Runnable() {
+                  @Override
+                  public void run()
+                  {
+                      Log.d("call state", "onCallEventDisconnected");
+                      if(_callDialog != null)
+                      {
+                          _callDialog.cancel();
+                          _callDialog = null;
+                          _callID = null;
+                      }
+                  }
+            });
+
+          }
 
 //        @Override
 //        public void onCallEventStateUpdated(SptCallID sptCallID, ISptCallData iSptCallData) {
@@ -274,6 +289,13 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
             });
+        }
+
+        @Override
+        public void onCallEventCallConnectivityUpdated(SptCallID sptCallID, ISptCallData iSptCallData)
+        {
+            Log.v("main: ", "SptCallObserver5");
+            super.onCallEventCallConnectivityUpdated(sptCallID, iSptCallData);
         }
 
         @Override
@@ -347,14 +369,14 @@ public class MainActivity extends AppCompatActivity {
       Log.v("MainActivity - passWord: ", passWord);
       Log.v("MainActivity - personalID: ", personalID);
 
-
+      _sptObserver = new TextConnectSptIMObserver();
+        _sdk.addObserver(_sptObserver);
     //   _sdk = ((TestConnectMeetingApplication)getApplication()).getSptIMSDK();
       // _sdk = ((SptIMSDKApp)getApplication()).getSptIMSDK(getApplicationContext());
        _callObserver = new TestConnectSptCallObserver();
       _sdk.addCallObserver(_callObserver);
 
-      _sptObserver = new TextConnectSptIMObserver();
-        _sdk.addObserver(_sptObserver);
+
 
 
 
