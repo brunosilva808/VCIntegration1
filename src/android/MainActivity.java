@@ -94,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
 
                       Log.v("main: ", "onSchMeetingsSynchronized3");
 
-                      processLaunchFromToken(_tokenSequenceID);
+                      //processLaunchFromToken(_tokenSequenceID);
                       //  Intent i = new Intent(MainActivity.this, CallActivity.class);
 
                       //  i.putExtra(EXTRA_JOIN_TO_MEETING, _tokenSequenceID.intValue());
