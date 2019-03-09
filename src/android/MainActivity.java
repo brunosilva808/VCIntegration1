@@ -121,7 +121,7 @@ public class MainActivity extends AppCompatActivity {
                       //  startActivity(i);
 
                         Log.v("main: ", "onSchMeetingsSynchronized not null");
-                        processLaunchFromToken(_tokenSequenceID);
+                        //processLaunchFromToken(_tokenSequenceID);
                       //  Intent i = new Intent(MainActivity.this, CallActivity.class);
 
                       //  if(_callID != null)
