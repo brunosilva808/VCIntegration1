@@ -538,9 +538,12 @@ Log.v("main: ","onCreat3");
     {
         super.onDestroy();
         //_sptIMObserver = new MainActivitySptIMObserver();
-        ISptIMSDK sdk = SptIMSDKApp.getInstance().getSptIMSDK(getApplicationContext());
+        //ISptIMSDK sdk = SptIMSDKApp.getInstance().getSptIMSDK(getApplicationContext());
         //sdk.removeObserver(_sptIMObserver);
-        sdk.removeCallObserver(_callObserver);
+        _sdk = SptIMSDKApp.getInstance().getSptIMSDK(getApplicationContext());
+        _sdk.removeCallObserver(_callObserver);
+        _sdk.removeObserver(_sptObserver);
+
     }
 
     private void showCallDialog()

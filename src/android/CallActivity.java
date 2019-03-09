@@ -119,10 +119,10 @@ public class CallActivity extends AppCompatActivity implements SptCallFragment.O
     }
 
     @Override
-        public void onCallHangButtonPressed() {
+    public void onCallHangButtonPressed() {
             _sdk.hangUpCall(_callID);
             finish();
-        }
+    }
 
   //  @Override
   //  public void onCallHangButtonPressed() {
