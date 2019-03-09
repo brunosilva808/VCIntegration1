@@ -211,7 +211,7 @@ public class MainActivity extends AppCompatActivity {
     class TestConnectSptCallObserver extends SptCallObserver
     {
         @Override
-        public void onCallEventConnected(SptCallID sptCallID, ISptCallData iSptCallData) {
+        public void onCallEventConnected(final SptCallID sptCallID, ISptCallData iSptCallData) {
 
           Log.v("main: ", "SptCallObserver");
             runOnUiThread(new Runnable() {
@@ -219,9 +219,10 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void run() {
                     Intent i = new Intent(MainActivity.this, CallActivity.class);
-
+                    if(_callID == null)
+                        _callID = sptCallID;
                     //_tokenSequenceID = new SptSchMeetingSequenceID();
-                    if(sptCallID != null)
+                    if(_callID  != null)
                         i.putExtra(CallActivity.EXTRA_CALL_ID, sptCallID.intValue());
                     startActivity(i);
                     finish();
