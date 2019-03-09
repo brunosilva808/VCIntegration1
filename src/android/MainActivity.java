@@ -80,6 +80,7 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void run()
                 {
+                    Log.v("main: ", "onSchMeetingsSynchronized1");
                     if(_tokenSequenceID == null)
                     {
                       //  Intent i = new Intent(MainActivity.this, CallActivity.class);
@@ -88,6 +89,8 @@ public class MainActivity extends AppCompatActivity {
                     }
                     else if(_sdk.areMeetingsSynchronized())
                     {
+
+                      Log.v("main: ", "onSchMeetingsSynchronized3");
                       //  Intent i = new Intent(MainActivity.this, CallActivity.class);
 
                       //  i.putExtra(EXTRA_JOIN_TO_MEETING, _tokenSequenceID.intValue());
@@ -178,8 +181,11 @@ public class MainActivity extends AppCompatActivity {
                                 processLaunchFromToken(_tokenSequenceID);
                             break;
                         case SptTokenDataResultLogin:
+                            _tokenSequenceID = tokenDataRes.getMeetingSequenceID();
                             if(!tokenDataRes.contactAlreadyLogged())
                                 _sdk.loginWithTokenDataResult(tokenDataRes);
+                            else
+                                processLaunchFromToken(_tokenSequenceID);
                             break;
                         case SptTokenDataResultInvalidToken:
                           //  _tokenView.setError("Invalid Token");
