@@ -92,7 +92,7 @@ public class CallActivity extends AppCompatActivity implements SptCallFragment.O
             ft.commit();
         }
 
-        sptCallObserver = new CallActivitySptObserver();
+        _sptCallObserver = new CallActivitySptObserver();
         _sdk.addCallObserver(_sptCallObserver);
 
     }
