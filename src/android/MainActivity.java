@@ -370,13 +370,13 @@ public class MainActivity extends AppCompatActivity {
       Intent intent1 = getIntent();
 
       String serverName = intent1.getStringExtra("serverName");
-      String userMail = intent1.getStringExtra("userMail");
-      String passWord = intent1.getStringExtra("passWord");
+    //  String userMail = intent1.getStringExtra("userMail");
+    //  String passWord = intent1.getStringExtra("passWord");
       String personalID = intent1.getStringExtra("personalID");
 
       Log.v("MainActivity - serverName: ", serverName);
-      Log.v("MainActivity - userMail: ", userMail);
-      Log.v("MainActivity - passWord: ", passWord);
+    //  Log.v("MainActivity - userMail: ", userMail);
+    //  Log.v("MainActivity - passWord: ", passWord);
       Log.v("MainActivity - personalID: ", personalID);
 
       _sptObserver = new TextConnectSptIMObserver();
