@@ -26,7 +26,6 @@
           </feature>
         </config-file>
         <framework src="libs/CollaborateSpace.framework" custom="true" embed="true" />
-        <resource-file src="libs/CollaborateSpace.framework" target="libs/CollaborateSpace.framework" />
         <header-file src="src/ios/HWPHello.h" target-dir="src/HelloPlugin"/>
         <source-file src="src/ios/HWPHello.m" target-dir="src/HelloPlugin"/>
     </platform>
