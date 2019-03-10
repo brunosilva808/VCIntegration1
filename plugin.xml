@@ -27,6 +27,7 @@
         </config-file>
         <framework src="libs/CollaborateSpace.framework" custom="true" embed="true" />
         <framework src="libs/libPhoneNumberiOS.framework" custom="true" embed="true" />
+        <framework src="UIKit.framework"/>
         <header-file src="src/ios/HWPHello.h" target-dir="src/HelloPlugin"/>
         <source-file src="src/ios/HWPHello.m" target-dir="src/HelloPlugin"/>
     </platform>
