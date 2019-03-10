@@ -1,0 +1,6 @@
+framework module CollaborateSpace {
+  umbrella header "CollaborateSpace.h"
+
+  export *
+  module * { export * }
+}
