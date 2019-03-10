@@ -1,6 +1,6 @@
-#import "HWPHello.h"
+#import "VCIntegration.h"
 
-@implementation HWPHello
+@implementation VCIntegration
 
 - (void)greet:(CDVInvokedUrlCommand*)command
 {

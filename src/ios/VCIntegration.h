@@ -3,7 +3,7 @@
 #import <CollaborateSpace/CollaborateSpace.h>
 
 
-@interface HWPHello : CDVPlugin
+@interface VCIntegration : CDVPlugin
 
 - (void) greet:(CDVInvokedUrlCommand*)command;
 
