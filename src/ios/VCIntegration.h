@@ -3,8 +3,10 @@
 #import <CollaborateSpace/CollaborateSpace.h>
 
 
-@interface VCIntegration : CDVPlugin
-
+@interface VCIntegration : CDVPlugin {
+    UIViewController* _launchScreenViewController;
+    NSString* _storyboardName;
+}
 - (void) show:(CDVInvokedUrlCommand*)command;
 
 @end
