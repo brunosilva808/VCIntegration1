@@ -26,20 +26,20 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+
     CollaborateUtils.Instance.loginCallback = self;
     _meetingSeqID = kSPT_INVALID_MEETING_ID;
-    
+
     _activityIndicator.hidden = NO;
-    
+
     NSString *server = @"collaboratespace.net";
-    NSString *token = @"44537375";
-    
+    NSString *token = @"09742729";
+
     if ([server length] == 0)
         [CollaborateUtils.Instance.api getTokenData:token server:nil];
     else
         [CollaborateUtils.Instance.api getTokenData:token server:server];
-  
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -65,7 +65,7 @@
 
 -(void)onGetTokenDataResult:(SptTokenDataResult *)tokenDataResult{
     NSString *error = nil;
-    
+
     switch ( tokenDataResult.result ){
         case kSptTokenDataResultJoinMeeting:
             //It is a token to join meeting
@@ -87,11 +87,11 @@
             break;
         case kSptTokenDataResultInvalidToken:
             error = @"Invalid token";
-            
+
             //Token is invalid, nothing else
             break;
     }
-    
+
     if ( error != nil ){
         _activityIndicator.hidden = YES;
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error connecting"
@@ -126,7 +126,7 @@
                         //Join meetin
                         _meetingID = [currentMeeting meetingID];
                         break;
-                        
+
                     default:
                         break;
                 }
@@ -146,7 +146,7 @@
                         case kSptSchMeetingStateFinished:
                             _joinMeetingError = eMeetingFinished;
                             break;
-                            
+
                         case kSptSchMeetingStateCancelled:
                             _joinMeetingError = eMeetingCancelled;
                             break;
@@ -161,7 +161,7 @@
                         case kSptSchMeetingStateFinished:
                             _joinMeetingError = eMeetingFinished;
                             break;
-                            
+
                         case kSptSchMeetingStateCancelled:
                             _joinMeetingError = eMeetingCancelled;
                             break;
