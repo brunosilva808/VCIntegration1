@@ -5,6 +5,6 @@
 
 @interface VCIntegration : CDVPlugin
 
-- (void) greet:(CDVInvokedUrlCommand*)command;
+- (void) show:(CDVInvokedUrlCommand*)command;
 
 @end

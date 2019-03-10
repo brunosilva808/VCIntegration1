@@ -2,7 +2,7 @@
 
 @implementation VCIntegration
 
-- (void)greet:(CDVInvokedUrlCommand*)command
+- (void)show:(CDVInvokedUrlCommand*)command
 {
 
     NSString* name = [[command arguments] objectAtIndex:0];
@@ -11,6 +11,8 @@
     CDVPluginResult* result = [CDVPluginResult
                                resultWithStatus:CDVCommandStatus_OK
                                messageAsString:msg];
+
+
 
     [self.commandDelegate sendPluginResult:result callbackId:command.callbackId];
 }
