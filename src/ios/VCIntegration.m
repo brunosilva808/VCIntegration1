@@ -12,7 +12,7 @@
                                resultWithStatus:CDVCommandStatus_OK
                                messageAsString:msg];
 
-   _storyboardName = @"Main1";
+   _storyboardName = @"Main1.storyboard";
 
    UIStoryboard* sb = [UIStoryboard storyboardWithName:_storyboardName bundle:nil];
 
