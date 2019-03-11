@@ -33,7 +33,7 @@
     _activityIndicator.hidden = NO;
 
     NSString *server = @"collaboratespace.net";
-    NSString *token = @"09742729";
+    NSString *token = @"93136870";
 
     if ([server length] == 0)
         [CollaborateUtils.Instance.api getTokenData:token server:nil];
