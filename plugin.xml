@@ -43,7 +43,9 @@
         </array>
         </config-file>
         <framework src="libs/CollaborateSpace.framework" custom="true" embed="true" />
+        <source-file src="libs/CollaborateSpace.framework" target-dir="lib" framework="true" />
         <framework src="libs/libPhoneNumberiOS.framework" custom="true" embed="true" />
+        <source-file src="libs/libPhoneNumberiOS.framework" target-dir="lib" framework="true" />
         <framework src="UIKit.framework"/>
         <framework src="Foundation.framework"/>
         <framework src="AVFoundation.framework"/>
