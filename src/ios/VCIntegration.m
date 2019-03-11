@@ -12,7 +12,7 @@
                                resultWithStatus:CDVCommandStatus_OK
                                messageAsString:msg];
 
-   _storyboardName = @"Main1.storyboard";
+  /* _storyboardName = @"Main1.storyboard";
 
    UIStoryboard* sb = [UIStoryboard storyboardWithName:_storyboardName
                                                   bundle:nil];
@@ -23,7 +23,7 @@
     [self.viewController addChildViewController:_launchScreenViewController];
     _launchScreenViewController.view.frame = self.viewController.view.frame;
     [self.viewController.view addSubview:_launchScreenViewController.view];
-    [_launchScreenViewController didMoveToParentViewController:self.viewController];
+    [_launchScreenViewController didMoveToParentViewController:self.viewController];*/
 
     [self.commandDelegate sendPluginResult:result callbackId:command.callbackId];
 }
