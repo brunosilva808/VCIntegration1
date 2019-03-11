@@ -20,7 +20,7 @@
     </js-module>
 
     <platform name="ios">
-        <config-file target="res/xml/config.xml" parent="/widget">
+        <config-file target="config.xml" parent="/*">
           <feature name="ToastyPlugin">
             <param name="ios-package" value="VCIntegration" />
           </feature>
