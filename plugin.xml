@@ -51,6 +51,10 @@
         <framework src="libs/CollaborateSpace.framework" custom="true" embed="true" />
         <framework src="libs/libPhoneNumberiOS.framework" custom="true" embed="true" />
         <framework src="UIKit.framework"/>
+        <framework src="Foundation.framework"/>
+        <framework src="AVFoundation.framework"/>
+        <framework src="AssetsLibrary.framework"/>
+        <framework src="MobileCoreServices.framework"/>
         <header-file src="src/ios/VCIntegration.h" target-dir="src/VCIntegration"/>
         <source-file src="src/ios/VCIntegration.m" target-dir="src/VCIntegration"/>
         <header-file src="src/ios/CallViewController.h" target-dir="src/VCIntegration"/>
