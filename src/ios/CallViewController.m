@@ -45,11 +45,11 @@
 
     CollaborateUtils.Instance.callManagerCallback = self;
 
-    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Testing"
+    UIAlertView *alert1 = [[UIAlertView alloc]initWithTitle:@"Testing"
                                       message:@"CallViewController - viewDidLoad1"
                                      delegate:nil cancelButtonTitle:@"ok" otherButtonTitles: nil];
 
-    [alert show];
+    [alert1 show];
 
     if ((_joinMeetingError == eNoError)&&(_seqID != kSPT_INVALID_MEETING_SEQUENCE_ID)&&(_meetingID != kSPT_INVALID_MEETING_ID))
     {
@@ -101,11 +101,11 @@
     //_dictVideoStreamings = [NSMutableDictionary dictionary];
     //[self updateCall];
 
-    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Testing"
+    UIAlertView *alert2 = [[UIAlertView alloc]initWithTitle:@"Testing"
                                       message:@"CallViewController - viewDidLoad2"
                                      delegate:nil cancelButtonTitle:@"ok" otherButtonTitles: nil];
 
-    [alert show];
+    [alert2 show];
 
 
 }
