@@ -14,10 +14,10 @@
 
    _storyboardName = @"Main1";
 
-   UIStoryboard* sb = [UIStoryboard storyboardWithName:_storyboardName
-                                                  bundle:nil];
-     _launchScreenViewController = [sb instantiateInitialViewController];
-     _launchScreenStartAlpha = _launchScreenViewController.view.alpha;
+   UIStoryboard* sb = [UIStoryboard storyboardWithName:_storyboardName bundle:nil];
+
+   _launchScreenViewController = [sb instantiateInitialViewController];
+   _launchScreenStartAlpha = _launchScreenViewController.view.alpha;
 
      _launchScreenViewController.view.alpha = _launchScreenStartAlpha;
     [self.viewController addChildViewController:_launchScreenViewController];
