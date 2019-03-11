@@ -12,6 +12,12 @@
                                resultWithStatus:CDVCommandStatus_OK
                                messageAsString:msg];
 
+   UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Testing"
+                                     message:@"Im in the Cordova plugin"
+                                    delegate:nil cancelButtonTitle:@"ok" otherButtonTitles: nil];
+
+   [alert show];                            
+
    _storyboardName = @"Main1.storyboard";
 
    UIStoryboard* sb = [UIStoryboard storyboardWithName:_storyboardName bundle:nil];
@@ -26,6 +32,8 @@
     [_launchScreenViewController didMoveToParentViewController:self.viewController];
 
     [self.commandDelegate sendPluginResult:result callbackId:command.callbackId];
+
+
 }
 
 @end
