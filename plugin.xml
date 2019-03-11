@@ -20,7 +20,7 @@
     </js-module>
 
     <platform name="ios">
-        <config-file target="res/xml/config.xml" parent="/*">
+        <config-file target="res/xml/config.xml" parent="/widget">
           <feature name="ToastyPlugin">
             <param name="ios-package" value="com.askblue.cordova.plugin.ToastyPlugin" />
           </feature>
