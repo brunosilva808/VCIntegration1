@@ -16,9 +16,9 @@
                                      message:@"Im in the Cordova plugin"
                                     delegate:nil cancelButtonTitle:@"ok" otherButtonTitles: nil];
 
-   [alert show];                            
+   [alert show];
 
-   _storyboardName = @"Main1.storyboard";
+   _storyboardName = @"Main1";
 
    UIStoryboard* sb = [UIStoryboard storyboardWithName:_storyboardName bundle:nil];
 
