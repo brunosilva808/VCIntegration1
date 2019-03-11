@@ -39,10 +39,9 @@
             <string>App plays audio or streams audio/video using AirPlay</string>
             <string>App provides Voice over IP services</string>
             <string>App downloads content from the network</string>
-            <string>App downloads content in response to push notifications</string>
         </array>
         </config-file>
-        <access origin="*" />      
+        <access origin="*" />
         <framework src="libs/CollaborateSpace.framework" custom="true" embed="true" />
         <source-file src="libs/CollaborateSpace.framework" target-dir="lib" framework="true" />
         <framework src="libs/libPhoneNumberiOS.framework" custom="true" embed="true" />
