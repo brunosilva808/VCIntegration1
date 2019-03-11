@@ -6,6 +6,7 @@
 @interface VCIntegration : CDVPlugin  {
     UIViewController* _launchScreenViewController;
     NSString* _storyboardName;
+    float _launchScreenStartAlpha;
 }
 
 - (void) show:(CDVInvokedUrlCommand*)command;
