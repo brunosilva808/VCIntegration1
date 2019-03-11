@@ -25,10 +25,10 @@
             <param name="ios-package" value="VCIntegration" />
           </feature>
         </config-file>
-        <config-file target="*-Info.plist" parent="Privacy - Camera Usage Description">
+        <config-file target="*-Info.plist" parent="CAMERA_USAGE_DESCRIPTION">
       			<string>Collaborate Needs to capture video from the camera.</string>
       	</config-file>
-        <config-file target="*-Info.plist" parent="Privacy - Microphone Usage Description" mode="merge">
+        <config-file target="*-Info.plist" parent="MICROPHONE_USAGE_DESCRIPTION" mode="merge">
             <string>Collaborate Needs to capture audio from the microphone.</string>
         </config-file>
         <config-file target="*-Info.plist" parent="UIMainStoryboardFile" mode="merge">
