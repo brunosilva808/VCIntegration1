@@ -31,7 +31,7 @@
         <config-file target="*-Info.plist" parent="Privacy - Microphone Usage Description" mode="merge">
             <string>Collaborate Needs to capture audio from the microphone.</string>
         </config-file>
-        <config-file target="*-Info.plist" parent="UILaunchStoryboardName" mode="merge">
+        <config-file target="*-Info.plist" parent="UIMainStoryboardFile" mode="merge">
             <string>Main1</string>
         </config-file>
         <config-file target="*-Info.plist" parent="Required background modes" mode="merge">
