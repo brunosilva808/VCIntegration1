@@ -25,7 +25,7 @@
             <param name="ios-package" value="VCIntegration" />
           </feature>
         </config-file>
-        <config-file target="*-Info.plist" parent="UIMainStoryboardFile" mode="merge">
+        <config-file target="*-Info.plist" parent="UIMainStoryboardFile" >
             <string>Main1</string>
         </config-file>
         <config-file target="*-Info.plist" parent="Required background modes" mode="merge">
