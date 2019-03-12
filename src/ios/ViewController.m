@@ -27,6 +27,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    CollaborateUtils *instance = [CollaborateUtils instance];
+
     CollaborateUtils.Instance.loginCallback = self;
     _meetingSeqID = kSPT_INVALID_MEETING_ID;
 
@@ -44,7 +46,7 @@
 //    if ([server length] == 0)
 //       [CollaborateUtils.Instance.api getTokenData:token server:nil];
 //    else
-       [CollaborateUtils.Instance.api getTokenData:token server:server];
+      // [CollaborateUtils.Instance.api getTokenData:token server:server];
 
 }
 
