@@ -20,8 +20,9 @@
 
    _storyboardName = @"Main1";
 
-  UIStoryboard* sb = [UIStoryboard storyboardWithName:_storyboardName bundle:nil];
+  //UIStoryboard* sb = [UIStoryboard storyboardWithName:_storyboardName bundle:nil];
 
+    self.sb = [UIStoryboard storyboardWithName:_storyboardName bundle:[NSBundle mainBundle]];
    _launchScreenViewController = [sb instantiateInitialViewController];
    _launchScreenStartAlpha = _launchScreenViewController.view.alpha;
 
