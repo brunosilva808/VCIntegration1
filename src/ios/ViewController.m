@@ -27,7 +27,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    CollaborateUtils *instance = [CollaborateUtils instance];
+    CollaborateUtils *instance = [CollaborateUtils Instance];
 
     CollaborateUtils.Instance.loginCallback = self;
     _meetingSeqID = kSPT_INVALID_MEETING_ID;
