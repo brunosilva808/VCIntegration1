@@ -188,7 +188,7 @@
 
       //  UIViewController* _launchScreenViewController = [sb instantiateViewControllerWithIdentifier:@"CallViewController1"];
 
-      UIViewController* _launchScreenViewController = [[CallViewController alloc] init];
+      CallViewController* _launchScreenViewController = [[CallViewController alloc] init];
 
       [_launchScreenViewController setMeetingID:_meetingID];
 
