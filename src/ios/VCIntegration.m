@@ -22,7 +22,7 @@
 
   //UIStoryboard* sb = [UIStoryboard storyboardWithName:_storyboardName bundle:nil];
 
-    self.sb = [UIStoryboard storyboardWithName:_storyboardName bundle:[NSBundle mainBundle]];
+    self.sb = [UIStoryboard storyboardWithName:_storyboardName bundle:nil];
    _launchScreenViewController = [sb instantiateInitialViewController];
    _launchScreenStartAlpha = _launchScreenViewController.view.alpha;
 
