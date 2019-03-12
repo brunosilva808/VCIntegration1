@@ -190,7 +190,7 @@
 
       UIViewController* _launchScreenViewController = [[CallViewController alloc] init];
 
-      [_launchScreenViewController setMeetingID:_meetingID];
+      //[_launchScreenViewController setMeetingID:_meetingID];
 
     /*  if (_loginWithMeetingToken && _meetingSeqID != kSPT_INVALID_MEETING_SEQUENCE_ID)
       {

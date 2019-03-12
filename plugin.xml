@@ -28,13 +28,6 @@
         <config-file target="*-Info.plist" parent="UIMainStoryboardFile" >
             <string>Main1</string>
         </config-file>
-        <config-file target="*-Info.plist" parent="Privacy - Camera Usage Description" mode="merge">
-      			<string>Collaborate Needs to capture video from the camera.</string>
-      	</config-file>
-        <config-file target="*-Info.plist" parent="Privacy - Microphone Usage Description" mode="merge">
-            <string>Collaborate Needs to capture audio from the microphone.</string>
-        </config-file>
-
         <config-file target="*-Info.plist" parent="Required background modes" mode="merge">
         <array>
             <string>App plays audio or streams audio/video using AirPlay</string>
