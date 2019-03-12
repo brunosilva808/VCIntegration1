@@ -194,7 +194,9 @@
       //  _launchScreenStartAlpha = _launchScreenViewController.view.alpha;
 
       //   _launchScreenViewController.view.alpha = _launchScreenStartAlpha;
-      [self.viewController addChildViewController:_launchScreenViewController];
+    //  [self.viewController addChildViewController:_launchScreenViewController];
+
+      [self presentViewController:_launchScreenViewController animated:YES completion:nil];
 
      //    [appDelegate.window.rootViewController presentViewController:_launchScreenViewController animated:NO completion: nil];
 
