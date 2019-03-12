@@ -14,7 +14,7 @@
 
 @interface ViewController ()
 
-@property (strong, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
+//@property (strong, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (nonatomic, assign) SptMeetingSeqID meetingSeqID;
 @property (nonatomic, assign) SptMeetingID meetingID;
 @property (nonatomic, assign) BOOL loginWithMeetingToken;
@@ -32,7 +32,7 @@
     CollaborateUtils.Instance.loginCallback = self;
     _meetingSeqID = kSPT_INVALID_MEETING_ID;
 
-    _activityIndicator.hidden = NO;
+    //_activityIndicator.hidden = NO;
 
     NSString *server = @"collaboratespace.net";
     NSString *token = @"13135501";
@@ -60,11 +60,11 @@
         // in case we are login with meeting token, wait for onMeetingsSynchronized
         if (!_loginWithMeetingToken)
         {
-            _activityIndicator.hidden = YES;
+          //  _activityIndicator.hidden = YES;
             [self performSegueWithIdentifier:@"showMain" sender:self];
         }
     }else{
-        _activityIndicator.hidden = YES;
+      //  _activityIndicator.hidden = YES;
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error connecting" message:@"Unable to login to the service" preferredStyle:UIAlertControllerStyleAlert ];
         [alert addAction:[UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:nil]];
         [self presentViewController:alert animated:YES completion:nil];
@@ -101,7 +101,7 @@
     }
 
     if ( error != nil ){
-        _activityIndicator.hidden = YES;
+      //  _activityIndicator.hidden = YES;
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error connecting"
                                                                        message:error
                                                                 preferredStyle:UIAlertControllerStyleAlert];
@@ -117,7 +117,7 @@
     //in case we are not in a login with meeting token process, ignore
     if (_loginWithMeetingToken)
     {
-        _activityIndicator.hidden = YES;
+      //  _activityIndicator.hidden = YES;
         SptSchMeetingSequence *meetingSeq = [CollaborateUtils.Instance.api getSchMeetingSequenceByID:_meetingSeqID];
         if (meetingSeq != nil)
         {
