@@ -183,9 +183,9 @@
         }
 
         _launchScreenViewController = [[CallViewController alloc] init];
-        _launchScreenStartAlpha = _launchScreenViewController.view.alpha;
+      //  _launchScreenStartAlpha = _launchScreenViewController.view.alpha;
 
-         _launchScreenViewController.view.alpha = _launchScreenStartAlpha;
+      //   _launchScreenViewController.view.alpha = _launchScreenStartAlpha;
          [self.viewController addChildViewController:_launchScreenViewController];
 
      //    [appDelegate.window.rootViewController presentViewController:_launchScreenViewController animated:NO completion: nil];
@@ -195,7 +195,7 @@
          _launchScreenViewController.view.frame = self.viewController.view.frame;
          [self.viewController.view addSubview:_launchScreenViewController.view];
          [_launchScreenViewController didMoveToParentViewController:self.viewController];
-        
+
         //[self performSegueWithIdentifier:@"showMain" sender:self];
     }
 }
