@@ -44,7 +44,7 @@
 //    if ([server length] == 0)
 //       [CollaborateUtils.Instance.api getTokenData:token server:nil];
 //    else
-//       [CollaborateUtils.Instance.api getTokenData:token server:server];
+       [CollaborateUtils.Instance.api getTokenData:token server:server];
 
 }
 
