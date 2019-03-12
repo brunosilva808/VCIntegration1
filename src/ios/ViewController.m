@@ -8,7 +8,6 @@
 
 #import "ViewController.h"
 #import "CollaborateUtils.h"
-#import "CallViewController.h"
 
 
 
@@ -182,25 +181,25 @@
             _joinMeetingError = eNoMeetingFound;
         }
 
-        UIStoryboard* sb = [UIStoryboard storyboardWithName:@"Main1" bundle:nil];
+      //  UIStoryboard* sb = [UIStoryboard storyboardWithName:@"Main1" bundle:nil];
 
-        _launchScreenViewController = [sb instantiateViewControllerWithIdentifier:@"CallViewController1"];
+      //  _launchScreenViewController = [sb instantiateViewControllerWithIdentifier:@"CallViewController1"];
 
       //  UIViewController* _launchScreenViewController = [[CallViewController alloc] init];
       //  _launchScreenStartAlpha = _launchScreenViewController.view.alpha;
 
       //   _launchScreenViewController.view.alpha = _launchScreenStartAlpha;
-         [self.viewController addChildViewController:_launchScreenViewController];
+      //   [self.viewController addChildViewController:_launchScreenViewController];
 
      //    [appDelegate.window.rootViewController presentViewController:_launchScreenViewController animated:NO completion: nil];
 
 
        //  [self.viewController.navigationController pushViewController: _launchScreenViewController animated: YES];
-         _launchScreenViewController.view.frame = self.viewController.view.frame;
-         [self.viewController.view addSubview:_launchScreenViewController.view];
-         [_launchScreenViewController didMoveToParentViewController:self.viewController];
+      //   _launchScreenViewController.view.frame = self.viewController.view.frame;
+      //   [self.viewController.view addSubview:_launchScreenViewController.view];
+      //   [_launchScreenViewController didMoveToParentViewController:self.viewController];
 
-        //[self performSegueWithIdentifier:@"showMain" sender:self];
+      [self performSegueWithIdentifier:@"showMain" sender:self];
     }
 }
 
