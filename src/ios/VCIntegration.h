@@ -7,7 +7,6 @@
     UIViewController* _launchScreenViewController;
     NSString* _storyboardName;
     float _launchScreenStartAlpha;
-    UIStoryboard* sb;
 
 }
 
