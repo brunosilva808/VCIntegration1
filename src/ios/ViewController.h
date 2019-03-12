@@ -11,7 +11,6 @@
 
 @interface ViewController : UIViewController <CollaborateLoginCallback>
 
-
+@property (nonatomic, retain) UIViewController* _launchScreenViewController;
 
 @end
-
