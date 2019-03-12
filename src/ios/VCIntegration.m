@@ -28,13 +28,13 @@
    _launchScreenViewController = [sb instantiateInitialViewController];
    _launchScreenStartAlpha = _launchScreenViewController.view.alpha;
 
-  //  _launchScreenViewController.view.alpha = _launchScreenStartAlpha;
-//    [self.viewController addChildViewController:_launchScreenViewController];
+    _launchScreenViewController.view.alpha = _launchScreenStartAlpha;
+    [self.viewController addChildViewController:_launchScreenViewController];
 
-    [self.viewController.navigationController pushViewController: _launchScreenViewController animated: YES];
-  //  _launchScreenViewController.view.frame = self.viewController.view.frame;
-  //  [self.viewController.view addSubview:_launchScreenViewController.view];
-  //  [_launchScreenViewController didMoveToParentViewController:self.viewController];
+  //  [self.viewController.navigationController pushViewController: _launchScreenViewController animated: YES];
+    _launchScreenViewController.view.frame = self.viewController.view.frame;
+    [self.viewController.view addSubview:_launchScreenViewController.view];
+    [_launchScreenViewController didMoveToParentViewController:self.viewController];
 
     [self.commandDelegate sendPluginResult:result callbackId:command.callbackId];
 
