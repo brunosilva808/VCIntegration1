@@ -35,10 +35,16 @@
     NSString *server = @"collaboratespace.net";
     NSString *token = @"93136870";
 
-    if ([server length] == 0)
-        [CollaborateUtils.Instance.api getTokenData:token server:nil];
-    else
-        [CollaborateUtils.Instance.api getTokenData:token server:server];
+    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Testing"
+                                      message:@"Inside ViewController"
+                                     delegate:nil cancelButtonTitle:@"ok" otherButtonTitles: nil];
+
+    //[alert show];
+//
+//    if ([server length] == 0)
+//        [CollaborateUtils.Instance.api getTokenData:token server:nil];
+//    else
+//        [CollaborateUtils.Instance.api getTokenData:token server:server];
 
 }
 
