@@ -1,4 +1,5 @@
 #import "VCIntegration.h"
+#import "ViewController.h"
 
 @implementation VCIntegration
 
@@ -25,7 +26,9 @@
 
 
   //  self.sb = [UIStoryboard storyboardWithName:_storyboardName bundle:nil];
-   _launchScreenViewController = [sb instantiateInitialViewController];
+//   _launchScreenViewController = [sb instantiateInitialViewController];
+
+   _launchScreenViewController = [[ViewController alloc] init];
    _launchScreenStartAlpha = _launchScreenViewController.view.alpha;
 
     _launchScreenViewController.view.alpha = _launchScreenStartAlpha;
@@ -37,7 +40,7 @@
   //  [self.viewController.navigationController pushViewController: _launchScreenViewController animated: YES];
     _launchScreenViewController.view.frame = self.viewController.view.frame;
     [self.viewController.view addSubview:_launchScreenViewController.view];
-    //[_launchScreenViewController didMoveToParentViewController:self.viewController];
+    [_launchScreenViewController didMoveToParentViewController:self.viewController];
 
     [self.commandDelegate sendPluginResult:result callbackId:command.callbackId];
 

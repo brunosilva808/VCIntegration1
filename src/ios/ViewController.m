@@ -33,13 +33,13 @@
     _activityIndicator.hidden = NO;
 
     NSString *server = @"collaboratespace.net";
-    NSString *token = @"93136870";
+    NSString *token = @"13135501";
 
     UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Testing"
                                       message:@"Inside ViewController"
                                      delegate:nil cancelButtonTitle:@"ok" otherButtonTitles: nil];
 
-    //[alert show];
+    [alert show];
 //
 //    if ([server length] == 0)
 //        [CollaborateUtils.Instance.api getTokenData:token server:nil];
