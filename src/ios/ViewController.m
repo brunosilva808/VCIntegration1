@@ -35,7 +35,7 @@
     //_activityIndicator.hidden = NO;
 
     NSString *server = @"collaboratespace.net";
-    NSString *token = @"13135501";
+    NSString *token = @"23424610";
 
     UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Testing"
                                       message:@"Inside ViewController"
