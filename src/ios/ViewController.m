@@ -190,7 +190,7 @@
 
       UIViewController* _launchScreenViewController = [[CallViewController alloc] init];
 
-      if (_loginWithMeetingToken && _meetingSeqID != kSPT_INVALID_MEETING_SEQUENCE_ID)
+    /*  if (_loginWithMeetingToken && _meetingSeqID != kSPT_INVALID_MEETING_SEQUENCE_ID)
       {
           [_launchScreenViewController setMeetingID:_meetingID];
           [_launchScreenViewController setSeqID:_meetingSeqID];
@@ -202,7 +202,7 @@
           [_launchScreenViewController setSeqID:kSPT_INVALID_MEETING_SEQUENCE_ID];
           [_launchScreenViewController setJoinMeetingError:eNoError];
       }
-
+*/
       //  UIViewController* _launchScreenViewController = [[CallViewController alloc] init];
 
       //  UIViewController* _launchScreenViewController = [[CallViewController alloc] init];
