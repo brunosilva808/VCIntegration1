@@ -182,7 +182,11 @@
             _joinMeetingError = eNoMeetingFound;
         }
 
-        UIViewController* _launchScreenViewController = [[CallViewController alloc] init];
+        UIStoryboard* sb = [UIStoryboard storyboardWithName:@"Main1" bundle:nil];
+
+        _launchScreenViewController = [sb instantiateViewControllerWithIdentifier:@"CallViewController1"];
+
+      //  UIViewController* _launchScreenViewController = [[CallViewController alloc] init];
       //  _launchScreenStartAlpha = _launchScreenViewController.view.alpha;
 
       //   _launchScreenViewController.view.alpha = _launchScreenStartAlpha;
