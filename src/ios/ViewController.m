@@ -40,7 +40,7 @@
     UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Testing"
                                       message:@"Inside ViewController"
                                      delegate:nil cancelButtonTitle:@"ok" otherButtonTitles: nil];
-    NSlog(@"DC - before CollaborateUtils.Instance.api");
+    NSlog(@"DCBug", @"before CollaborateUtils.Instance.api");
 //    [alert show];
 //
 //   if ([server length] == 0)
@@ -48,7 +48,7 @@
 //    else
        [CollaborateUtils.Instance.api getTokenData:token server:server];
 
-    NSlog(@"DC - after CollaborateUtils.Instance.api");
+    NSlog(@"DCBug",@"after CollaborateUtils.Instance.api");
 
 }
 
