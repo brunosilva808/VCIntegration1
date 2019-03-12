@@ -39,12 +39,12 @@
                                       message:@"Inside ViewController"
                                      delegate:nil cancelButtonTitle:@"ok" otherButtonTitles: nil];
 
-    [alert show];
+//    [alert show];
 //
-//    if ([server length] == 0)
-//       [CollaborateUtils.Instance.api getTokenData:token server:nil];
-//    else
-//       [CollaborateUtils.Instance.api getTokenData:token server:server];
+    if ([server length] == 0)
+       [CollaborateUtils.Instance.api getTokenData:token server:nil];
+    else
+       [CollaborateUtils.Instance.api getTokenData:token server:server];
 
 }
 
