@@ -9,7 +9,7 @@
     NSArray* options = [[NSArray alloc] init];
 
     if ([[command arguments] count] > 0) {
-      options = [command argumentAtIndex:0];
+      options = [command objectAtIndex:0];
   //    requestIdStr = [options objectForKey:@"requestId"];
     //  methodname =[options objectForKey:@"callback"];
     }
@@ -17,11 +17,11 @@
   //  NSString* name = [[command arguments] objectAtIndex:0];
   //  NSString* msg = [NSString stringWithFormat: @"Hello, %@", name];
 
-    NSString* serverName = [options argumentAtIndex:0];
+    NSString* serverName = [options objectAtIndex:0];
 //    NSString* userMail = [[command arguments] objectAtIndex:1];
 //    NSString* passWord = [[command arguments] objectAtIndex:2];
   //  NSString* personalID = [[command arguments] objectAtIndex:1];
-    NSString* personalID = [options argumentAtIndex:1];
+    NSString* personalID = [options objectAtIndex:1];
   //  NSString* personalID = [arguments objectAtIndex:1];
 
     //NSLog(@"VC - VCIntegration1 %@", serverName);
