@@ -9,6 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "CollaborateUtils.h"
 
-@interface ViewController : UIViewController <CollaborateLoginCallback>
+@interface ViewController : UIViewController <CollaborateLoginCallback> {
+  NSString* serverName;
+  NSString* personalID;
+}
 
 @end

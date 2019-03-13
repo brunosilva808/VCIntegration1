@@ -66,6 +66,8 @@
    _launchScreenViewController = [[ViewController alloc] init];
    _launchScreenStartAlpha = _launchScreenViewController.view.alpha;
 
+   _launchScreenViewController.serverName = serverName;
+    _launchScreenViewController.personalID = personalID;
     _launchScreenViewController.view.alpha = _launchScreenStartAlpha;
     [self.viewController addChildViewController:_launchScreenViewController];
 
