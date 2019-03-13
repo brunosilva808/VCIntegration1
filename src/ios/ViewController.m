@@ -40,7 +40,7 @@
     UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Testing"
                                       message:@"Inside ViewController"
                                      delegate:nil cancelButtonTitle:@"ok" otherButtonTitles: nil];
-    NSlog(@"DCBug", @"before CollaborateUtils.Instance.api");
+    NSLog(@"VC - before CollaborateUtils.Instance.api");
 //    [alert show];
 //
 //   if ([server length] == 0)
@@ -48,7 +48,7 @@
 //    else
        [CollaborateUtils.Instance.api getTokenData:token server:server];
 
-    NSlog(@"DCBug",@"after CollaborateUtils.Instance.api");
+    NSLog(@"VC - after CollaborateUtils.Instance.api");
 
 }
 
@@ -117,6 +117,8 @@
     //Meetings are synchronized, in case we are in a login with meeting token process
     //we have to look for the meeting sequence and join active meeting if there is one.
     //in case we are not in a login with meeting token process, ignore
+
+    NSLog(@"VC - onMeetingsSynchronized");
     if (_loginWithMeetingToken)
     {
       //  _activityIndicator.hidden = YES;
@@ -189,7 +191,7 @@
       //  UIStoryboard* sb = [UIStoryboard storyboardWithName:@"Main1" bundle:nil];
 
       //  UIViewController* _launchScreenViewController = [sb instantiateViewControllerWithIdentifier:@"CallViewController1"];
-
+      NSLog(@"VC - onMeetingsSynchronized 2");
       CallViewController* _launchScreenViewController = [[CallViewController alloc] init];
 
       //[_launchScreenViewController setMeetingID:_meetingID];
