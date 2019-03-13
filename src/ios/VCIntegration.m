@@ -23,6 +23,9 @@
       //options = [command objectAtIndex:0];
   //    requestIdStr = [options objectForKey:@"requestId"];
     //  methodname =[options objectForKey:@"callback"];
+
+    NSLog(@"VC - VCIntegration - serverName %@",serverName );
+    NSLog(@"VC - VCIntegration - personalID %@",personalID );
     }
 
   //  NSString* name = [[command arguments] objectAtIndex:0];

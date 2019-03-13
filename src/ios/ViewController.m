@@ -41,6 +41,9 @@
                                       message:@"Inside ViewController"
                                      delegate:nil cancelButtonTitle:@"ok" otherButtonTitles: nil];
     NSLog(@"VC - before CollaborateUtils.Instance.api");
+
+    NSLog(@"VC - ViewController - serverName %@",self.serverName );
+    NSLog(@"VC - ViewController - personalID %@",self.personalID );
 //    [alert show];
 //
 //   if ([server length] == 0)
