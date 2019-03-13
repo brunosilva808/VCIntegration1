@@ -49,7 +49,20 @@
                                       message:@"CallViewController - viewDidLoad1"
                                     delegate:nil cancelButtonTitle:@"ok" otherButtonTitles: nil];
 
-    [alert1 show];
+    //
+
+    //[alert1 show];
+
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeSystem];
+    [button setTitle:@"Hangup" forState:UIControlStateNormal];
+    [button sizeToFit];
+    button.center = CGPointMake(320/2, 60);
+
+    // Add an action in current code file (i.e. target)
+    [button addTarget:self action:@selector(onCancel:)
+     forControlEvents:UIControlEventTouchUpInside];
+
+    [self.view addSubview:button];
 
     if ((_joinMeetingError == eNoError)&&(_seqID != kSPT_INVALID_MEETING_SEQUENCE_ID)&&(_meetingID != kSPT_INVALID_MEETING_ID))
     {
