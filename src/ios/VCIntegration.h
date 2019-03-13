@@ -5,13 +5,13 @@
 
 
 @interface VCIntegration : CDVPlugin  {
-    ViewController* _launchScreenViewController;
+    UIViewController* _launchScreenViewController;
     NSString* _storyboardName;
     float _launchScreenStartAlpha;
 
 }
 
 //- (void) show:(NSMutableArray*)arguments withDict:(NSMutableDictionary*)options;
-- (void) show:(CDVInvokedUrlCommand*)command;
+- (void) show:(CUIDVInvokedUrlCommand*)command;
 
 @end
