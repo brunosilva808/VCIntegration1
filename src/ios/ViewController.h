@@ -9,9 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "CollaborateUtils.h"
 
-@interface ViewController : UIViewController <CollaborateLoginCallback> {
-  NSString* serverName;
-  NSString* personalID;
-}
+@interface ViewController : UIViewController <CollaborateLoginCallback>
+
+@property (nonatomic, assign) NSString* serverName;
+@property (nonatomic, assign) NSString* personalID;
 
 @end
