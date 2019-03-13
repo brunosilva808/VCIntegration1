@@ -5,7 +5,7 @@
 
 
 @interface VCIntegration : CDVPlugin  {
-    UIViewController* _launchScreenViewController;
+    ViewController* _launchScreenViewController;
     NSString* _storyboardName;
     float _launchScreenStartAlpha;
 
