@@ -3,16 +3,19 @@
 
 @implementation VCIntegration
 
-- (void)show:(CDVInvokedUrlCommand*)command
+//- (void)show:(CDVInvokedUrlCommand*)command
+- (void) show:(NSMutableArray*)arguments withDict:(NSMutableDictionary*)options
 {
 
   //  NSString* name = [[command arguments] objectAtIndex:0];
   //  NSString* msg = [NSString stringWithFormat: @"Hello, %@", name];
 
-    NSString* serverName = [[command arguments] objectAtIndex:0];
+    NSString* serverName = [arguments objectAtIndex:0];
 //    NSString* userMail = [[command arguments] objectAtIndex:1];
 //    NSString* passWord = [[command arguments] objectAtIndex:2];
   //  NSString* personalID = [[command arguments] objectAtIndex:1];
+
+    NSString* personalID = [arguments objectAtIndex:1];
 
     //NSLog(@"VC - VCIntegration1 %@", serverName);
   //  NSLog(@"VC - VCIntegration2 %@", userMail);
