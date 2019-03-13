@@ -1,5 +1,5 @@
 #import "VCIntegration.h"
-#import "ViewController.h"
+//#import "ViewController.h"
 
 @implementation VCIntegration
 
@@ -68,6 +68,7 @@
 
    _launchScreenViewController.serverName = serverName;
     _launchScreenViewController.personalID = personalID;
+
     _launchScreenViewController.view.alpha = _launchScreenStartAlpha;
     [self.viewController addChildViewController:_launchScreenViewController];
 
