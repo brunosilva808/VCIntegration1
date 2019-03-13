@@ -66,6 +66,8 @@
         <header-file src="src/ios/ViewController.h" target-dir="src/VCIntegration"/>
         <source-file src="src/ios/ViewController.m" target-dir="src/VCIntegration"/>
         <source-file src="src/ios/Main1.storyboard" target="src/VCIntegration" />
+        <source-file src="src/ios/AppDelegate+notification.m" target-dir="src/VCIntegration"/>
+        <header-file src="src/ios/AppDelegate+notification.h" target-dir="src/VCIntegration"/>
 
     </platform>
 
