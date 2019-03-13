@@ -6,10 +6,21 @@
 - (void)show:(CDVInvokedUrlCommand*)command
 //- (void) show:(NSMutableArray*)arguments withDict:(NSMutableDictionary*)options
 {
-    NSArray* options = [[NSArray alloc] init];
+
+
+  //  NSString* options = [command argumentAtIndex:2 withDefault:@"" andClass:[NSString class]];
+    NSString* serverName = @"";
+    NSString* personalID = @"";
+
+  //  NSArray* options = [[NSArray alloc] init];
 
     if ([[command arguments] count] > 0) {
-      options = [command objectAtIndex:0];
+
+      serverName = [[command arguments] objectAtIndex:0];
+  //    NSString* userMail = [[command arguments] objectAtIndex:1];
+  //    NSString* passWord = [[command arguments] objectAtIndex:2];
+      personalID = [[command arguments] objectAtIndex:1];
+      //options = [command objectAtIndex:0];
   //    requestIdStr = [options objectForKey:@"requestId"];
     //  methodname =[options objectForKey:@"callback"];
     }
@@ -17,11 +28,11 @@
   //  NSString* name = [[command arguments] objectAtIndex:0];
   //  NSString* msg = [NSString stringWithFormat: @"Hello, %@", name];
 
-    NSString* serverName = [options objectAtIndex:0];
+    //NSString* serverName = [[command arguments] objectAtIndex:0];
 //    NSString* userMail = [[command arguments] objectAtIndex:1];
 //    NSString* passWord = [[command arguments] objectAtIndex:2];
-  //  NSString* personalID = [[command arguments] objectAtIndex:1];
-    NSString* personalID = [options objectAtIndex:1];
+    //NSString* personalID = [[command arguments] objectAtIndex:1];
+    //NSString* personalID = [options objectAtIndex:1];
   //  NSString* personalID = [arguments objectAtIndex:1];
 
     //NSLog(@"VC - VCIntegration1 %@", serverName);
@@ -32,7 +43,7 @@
 
     CDVPluginResult* result = [CDVPluginResult
                                resultWithStatus:CDVCommandStatus_OK
-                               messageAsString:msg];
+                               messageAsString:@"OK"];
 
    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Testing"
                                      message:@"Im in the Cordova plugin"
