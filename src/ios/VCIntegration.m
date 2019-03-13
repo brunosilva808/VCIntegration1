@@ -6,19 +6,19 @@
 - (void)show:(CDVInvokedUrlCommand*)command
 {
 
-    NSString* name = [[command arguments] objectAtIndex:0];
-    NSString* msg = [NSString stringWithFormat: @"Hello, %@", name];
+  //  NSString* name = [[command arguments] objectAtIndex:0];
+  //  NSString* msg = [NSString stringWithFormat: @"Hello, %@", name];
 
-/*    NSString* serverName = [[command arguments] objectAtIndex:0];
-    NSString* userMail = [[command arguments] objectAtIndex:1];
-    NSString* passWord = [[command arguments] objectAtIndex:2];
-    NSString* personalID = [[command arguments] objectAtIndex:3];
+    NSString* serverName = [[command arguments] objectAtIndex:0];
+//    NSString* userMail = [[command arguments] objectAtIndex:1];
+//    NSString* passWord = [[command arguments] objectAtIndex:2];
+    NSString* personalID = [[command arguments] objectAtIndex:1];
 
     NSLog(@"VC - VCIntegration1 %@", serverName);
-    NSLog(@"VC - VCIntegration2 %@", userMail);
-    NSLog(@"VC - VCIntegration3 %@", passWord);
+  //  NSLog(@"VC - VCIntegration2 %@", userMail);
+  //  NSLog(@"VC - VCIntegration3 %@", passWord);
     NSLog(@"VC - VCIntegration4 %@", personalID);
-*/
+
 
     CDVPluginResult* result = [CDVPluginResult
                                resultWithStatus:CDVCommandStatus_OK
