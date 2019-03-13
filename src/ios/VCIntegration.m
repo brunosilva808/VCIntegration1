@@ -10,11 +10,15 @@
     NSString* msg = [NSString stringWithFormat: @"Hello, %@", name];
 
     NSString* serverName = [[command arguments] objectAtIndex:0];
-    NSString* personalID = [[command arguments] objectAtIndex:1];
+    NSString* userMail = [[command arguments] objectAtIndex:1];
+    NSString* passWord = [[command arguments] objectAtIndex:2];
+    NSString* personalID = [[command arguments] objectAtIndex:3];
 
-    NSLog(@"VC - VCIntegration %@", serverName);
-    NSLog(@"VC - VCIntegration %@", personalID);
-    
+    NSLog(@"VC - VCIntegration1 %@", serverName);
+    NSLog(@"VC - VCIntegration2 %@", userMail);
+    NSLog(@"VC - VCIntegration3 %@", passWord);
+    NSLog(@"VC - VCIntegration4 %@", personalID);
+
     CDVPluginResult* result = [CDVPluginResult
                                resultWithStatus:CDVCommandStatus_OK
                                messageAsString:msg];
