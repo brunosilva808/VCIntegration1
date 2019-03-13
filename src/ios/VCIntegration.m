@@ -9,6 +9,12 @@
     NSString* name = [[command arguments] objectAtIndex:0];
     NSString* msg = [NSString stringWithFormat: @"Hello, %@", name];
 
+    NSString* serverName = [[command arguments] objectAtIndex:0];
+    NSString* personalID = [[command arguments] objectAtIndex:1];
+
+    NSLog(@"VC - VCIntegration %@", serverName);
+    NSLog(@"VC - VCIntegration %@", personalID);
+    
     CDVPluginResult* result = [CDVPluginResult
                                resultWithStatus:CDVCommandStatus_OK
                                messageAsString:msg];
