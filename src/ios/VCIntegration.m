@@ -1,9 +1,8 @@
 #import "VCIntegration.h"
-#import "ViewController.h"
 
 @implementation VCIntegration
 
-- (void) show:(CDVInvokedUrlCommand*)command
+- (void) show:(CDVInvokedUrlCommand*) command
 {
 
 

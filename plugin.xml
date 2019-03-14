@@ -47,27 +47,7 @@
         <framework src="MobileCoreServices.framework"/>
         <header-file src="src/ios/VCIntegration.h" target-dir="src/VCIntegration"/>
         <source-file src="src/ios/VCIntegration.m" target-dir="src/VCIntegration"/>
-        <header-file src="src/ios/CallViewController.h" target-dir="src/VCIntegration"/>
-        <source-file src="src/ios/CallViewController.m" target-dir="src/VCIntegration"/>
-        <header-file src="src/ios/CollaborateUtils.h" target-dir="src/VCIntegration"/>
-        <source-file src="src/ios/CollaborateUtils.m" target-dir="src/VCIntegration"/>
-        <header-file src="src/ios/ContactImageView.h" target-dir="src/VCIntegration"/>
-        <source-file src="src/ios/ContactImageView.m" target-dir="src/VCIntegration"/>
-        <header-file src="src/ios/DocSelectionController.h" target-dir="src/VCIntegration"/>
-        <source-file src="src/ios/DocSelectionController.m" target-dir="src/VCIntegration"/>
-        <header-file src="src/ios/ISptContactData+UIUtils.h" target-dir="src/VCIntegration"/>
-        <source-file src="src/ios/ISptContactData+UIUtils.m" target-dir="src/VCIntegration"/>
-        <header-file src="src/ios/ISptEventData+StringFeatures.h" target-dir="src/VCIntegration"/>
-        <source-file src="src/ios/ISptEventData+StringFeatures.m" target-dir="src/VCIntegration"/>
-        <header-file src="src/ios/LocalSharedDocument.h" target-dir="src/VCIntegration"/>
-        <source-file src="src/ios/LocalSharedDocument.m" target-dir="src/VCIntegration"/>
-        <header-file src="src/ios/StartingCallViewController.h" target-dir="src/VCIntegration"/>
-        <source-file src="src/ios/StartingCallViewController.m" target-dir="src/VCIntegration"/>
-        <header-file src="src/ios/ViewController.h" target-dir="src/VCIntegration"/>
-        <source-file src="src/ios/ViewController.m" target-dir="src/VCIntegration"/>
-        <source-file src="src/ios/Main1.storyboard" target="src/VCIntegration" />
-        <source-file src="src/ios/AppDelegate+notification.m" target-dir="src/VCIntegration"/>
-        <header-file src="src/ios/AppDelegate+notification.h" target-dir="src/VCIntegration"/>
+    
 
     </platform>
 
