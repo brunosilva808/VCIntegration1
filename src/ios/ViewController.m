@@ -35,22 +35,18 @@
     //_activityIndicator.hidden = NO;
 
     NSString *server = @"collaboratespace.net";
-    NSString *token = @"70269633";
+    NSString *token = @"35713510";
 
     UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Testing"
                                       message:@"Inside ViewController"
                                      delegate:nil cancelButtonTitle:@"ok" otherButtonTitles: nil];
     NSLog(@"VC - before CollaborateUtils.Instance.api");
-
-    //NSLog(@"VC - ViewController - serverName %@",self.serverName );
-    //NSLog(@"VC - ViewController - personalID %@",self.personalID );
 //    [alert show];
 //
 //   if ([server length] == 0)
 //       [CollaborateUtils.Instance.api getTokenData:token server:nil];
 //    else
        [CollaborateUtils.Instance.api getTokenData:token server:server];
-      //[CollaborateUtils.Instance.api getTokenData:self.personalID server:self.serverName];
 
     NSLog(@"VC - after CollaborateUtils.Instance.api");
 
