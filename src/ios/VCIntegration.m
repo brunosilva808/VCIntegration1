@@ -1,5 +1,5 @@
 #import "VCIntegration.h"
-//#import "ViewController.h"
+#import "ViewController.h"
 
 @implementation VCIntegration
 
@@ -9,30 +9,30 @@
 
 
   //  NSString* options = [command argumentAtIndex:2 withDefault:@"" andClass:[NSString class]];
-    NSString* serverName = @"";
-    NSString* personalID = @"";
+//    NSString* serverName = @"";
+//    NSString* personalID = @"";
 
-  NSLog(@"VC - VCIntegration");
+//  NSLog(@"VC - VCIntegration");
   //  NSArray* options = [[NSArray alloc] init];
 
-    if ([[command arguments] count] > 0) {
+//    if ([[command arguments] count] > 0) {
 
-      serverName = [[command arguments] objectForKey:@"serverName"];
+  //    serverName = [[command arguments] objectForKey:@"serverName"];
       //serverName = [[command arguments] objectAtIndex:0];
   //    NSString* userMail = [[command arguments] objectAtIndex:1];
   //    NSString* passWord = [[command arguments] objectAtIndex:2];
     //  personalID = [[command arguments] objectAtIndex:1];
-      personalID = [[command arguments] objectForKey:@"personalID"];
+    //  personalID = [[command arguments] objectForKey:@"personalID"];
       //options = [command objectAtIndex:0];
   //    requestIdStr = [options objectForKey:@"requestId"];
     //  methodname =[options objectForKey:@"callback"];
 
-    NSLog(@"VC - VCIntegration - serverName %@",serverName );
-    NSLog(@"VC - VCIntegration - personalID %@",personalID );
-    }
+    //NSLog(@"VC - VCIntegration - serverName %@",serverName );
+    //NSLog(@"VC - VCIntegration - personalID %@",personalID );
+  //  }
 
-  //  NSString* name = [[command arguments] objectAtIndex:0];
-  //  NSString* msg = [NSString stringWithFormat: @"Hello, %@", name];
+   NSString* name = [[command arguments] objectAtIndex:0];
+   NSString* msg = [NSString stringWithFormat: @"Hello, %@", name];
 
     //NSString* serverName = [[command arguments] objectAtIndex:0];
 //    NSString* userMail = [[command arguments] objectAtIndex:1];
@@ -72,8 +72,8 @@
    _launchScreenViewController = [[ViewController alloc] init];
    _launchScreenStartAlpha = _launchScreenViewController.view.alpha;
 
-    _launchScreenViewController.serverName = serverName;
-    _launchScreenViewController.personalID = personalID;
+    //_launchScreenViewController.serverName = serverName;
+    //_launchScreenViewController.personalID = personalID;
 
     _launchScreenViewController.view.alpha = _launchScreenStartAlpha;
     [self.viewController addChildViewController:_launchScreenViewController];
