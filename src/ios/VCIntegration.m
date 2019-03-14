@@ -17,10 +17,12 @@
 
     if ([[command arguments] count] > 0) {
 
-      serverName = [[command arguments] objectAtIndex:0];
+      serverName = [[command arguments] objectForKey:@"serverName"];
+      //serverName = [[command arguments] objectAtIndex:0];
   //    NSString* userMail = [[command arguments] objectAtIndex:1];
   //    NSString* passWord = [[command arguments] objectAtIndex:2];
-      personalID = [[command arguments] objectAtIndex:1];
+    //  personalID = [[command arguments] objectAtIndex:1];
+      personalID = [[command arguments] objectForKey:@"personalID"];
       //options = [command objectAtIndex:0];
   //    requestIdStr = [options objectForKey:@"requestId"];
     //  methodname =[options objectForKey:@"callback"];
