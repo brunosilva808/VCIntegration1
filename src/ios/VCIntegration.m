@@ -49,7 +49,7 @@
 
     CDVPluginResult* result = [CDVPluginResult
                                resultWithStatus:CDVCommandStatus_OK
-                               messageAsString:@"OK"];
+                               messageAsString:msg];
 
    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Testing"
                                      message:@"Im in the Cordova plugin"
