@@ -19,8 +19,8 @@
 
   //    serverName = [[command arguments] objectForKey:@"serverName"];
       //serverName = [[command arguments] objectAtIndex:0];
-  //    NSString* userMail = [[command arguments] objectAtIndex:1];
-  //    NSString* passWord = [[command arguments] objectAtIndex:2];
+    //  NSString* userMail = [[command arguments] objectAtIndex:1];
+    //  NSString* passWord = [[command arguments] objectAtIndex:2];
     //  personalID = [[command arguments] objectAtIndex:1];
     //  personalID = [[command arguments] objectForKey:@"personalID"];
       //options = [command objectAtIndex:0];
@@ -32,20 +32,20 @@
   //  }
 
    NSString* name = [[command arguments] objectAtIndex:0];
-   NSString* name1 = [[command arguments] objectAtIndex:1];
-   //NSString* msg = [NSString stringWithFormat: @"Hello, %@", name];
+   //NSString* name1 = [[command arguments] objectAtIndex:1];
+   NSString* msg = [NSString stringWithFormat: @"Hello, %@", name];
 
-    //NSString* serverName = [[command arguments] objectAtIndex:0];
-//    NSString* userMail = [[command arguments] objectAtIndex:1];
-//    NSString* passWord = [[command arguments] objectAtIndex:2];
-    //NSString* personalID = [[command arguments] objectAtIndex:1];
+    NSString* serverName = [[command arguments] objectAtIndex:0];
+    NSString* userMail = [[command arguments] objectAtIndex:1];
+    NSString* passWord = [[command arguments] objectAtIndex:2];
+    NSString* personalID = [[command arguments] objectAtIndex:3];
     //NSString* personalID = [options objectAtIndex:1];
   //  NSString* personalID = [arguments objectAtIndex:1];
 
-    //NSLog(@"VC - VCIntegration1 %@", serverName);
-  //  NSLog(@"VC - VCIntegration2 %@", userMail);
-  //  NSLog(@"VC - VCIntegration3 %@", passWord);
-  //  NSLog(@"VC - VCIntegration4 %@", personalID);
+    NSLog(@"VC - VCIntegration1 %@", serverName);
+    NSLog(@"VC - VCIntegration2 %@", userMail);
+    NSLog(@"VC - VCIntegration3 %@", passWord);
+    NSLog(@"VC - VCIntegration4 %@", personalID);
 
 
     CDVPluginResult* result = [CDVPluginResult
@@ -56,7 +56,7 @@
                                      message:@"Im in the Cordova plugin"
                                     delegate:nil cancelButtonTitle:@"ok" otherButtonTitles: nil];
 
-   [alert show];
+   //[alert show];
 
    _storyboardName = @"Main1";
 
