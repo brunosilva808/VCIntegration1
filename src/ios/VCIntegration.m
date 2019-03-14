@@ -12,6 +12,7 @@
     NSString* serverName = @"";
     NSString* personalID = @"";
 
+  NSLog(@"VC - VCIntegration");
   //  NSArray* options = [[NSArray alloc] init];
 
     if ([[command arguments] count] > 0) {
