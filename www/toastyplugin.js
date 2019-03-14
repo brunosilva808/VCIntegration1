@@ -3,12 +3,12 @@ function ToastyPlugin() {}
 
 // The function that passes work along to native shells
 // Message is a string, duration may be 'long' or 'short'
-//ToastyPlugin.prototype.show = function(serverName, userMail, passWord, personalID, successCallback, errorCallback) {
-ToastyPlugin.prototype.show = function(serverName, personalID, successCallback, errorCallback) {
+ToastyPlugin.prototype.show = function(serverName, userMail, passWord, personalID, successCallback, errorCallback) {
+//ToastyPlugin.prototype.show = function(serverName, personalID, successCallback, errorCallback) {
   var options = {};
   options.serverName = serverName;
-  //options.userMail = userMail;
-  //options.passWord = passWord;
+  options.userMail = userMail;
+  options.passWord = passWord;
   options.personalID = personalID;
 
   cordova.exec(successCallback, errorCallback, 'ToastyPlugin', 'show', [options]);
