@@ -45,9 +45,10 @@
         <framework src="AVFoundation.framework"/>
         <framework src="AssetsLibrary.framework"/>
         <framework src="MobileCoreServices.framework"/>
+        <source-file src="src/ios/Main1.storyboard" target="src/VCIntegration" />
         <header-file src="src/ios/VCIntegration.h" target-dir="src/VCIntegration"/>
         <source-file src="src/ios/VCIntegration.m" target-dir="src/VCIntegration"/>
-    
+
 
     </platform>
 
