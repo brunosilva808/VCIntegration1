@@ -25,31 +25,8 @@
             <param name="ios-package" value="VCIntegration" />
           </feature>
         </config-file>
-        <config-file target="*-Info.plist" parent="UIMainStoryboardFile" >
-            <string>Main1</string>
-        </config-file>
-        <config-file target="*-Info.plist" parent="Required background modes" merge="true">
-        <array>
-            <string>App plays audio or streams audio/video using AirPlay</string>
-            <string>App provides Voice over IP services</string>
-            <string>App downloads content from the network</string>
-        </array>
-        </config-file>
-        <access origin="*" />
-        <framework src="libs/CollaborateSpace.framework" custom="true" embed="true" />
-        <source-file src="libs/CollaborateSpace.framework" target-dir="lib" framework="true" />
-        <framework src="libs/libPhoneNumberiOS.framework" custom="true" embed="true" />
-        <source-file src="libs/libPhoneNumberiOS.framework" target-dir="lib" framework="true" />
-        <framework src="UIKit.framework"/>
-        <framework src="Foundation.framework"/>
-        <framework src="AVFoundation.framework"/>
-        <framework src="AssetsLibrary.framework"/>
-        <framework src="MobileCoreServices.framework"/>
-        <source-file src="src/ios/Main1.storyboard" target="src/VCIntegration" />
         <header-file src="src/ios/VCIntegration.h" target-dir="src/VCIntegration"/>
         <source-file src="src/ios/VCIntegration.m" target-dir="src/VCIntegration"/>
-
-
     </platform>
 
     <platform name="android">
