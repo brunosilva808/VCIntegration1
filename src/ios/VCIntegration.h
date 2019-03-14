@@ -10,7 +10,6 @@
 
 }
 
-//- (void) show:(NSMutableArray*)arguments withDict:(NSMutableDictionary*)options;
 - (void) show:(CUIDVInvokedUrlCommand*)command;
 
 @end

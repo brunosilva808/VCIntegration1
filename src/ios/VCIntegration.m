@@ -4,7 +4,6 @@
 @implementation VCIntegration
 
 - (void) show:(CDVInvokedUrlCommand*)command
-//- (void) show:(NSMutableArray*)arguments withDict:(NSMutableDictionary*)options
 {
 
 
