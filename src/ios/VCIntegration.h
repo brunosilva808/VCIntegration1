@@ -5,6 +5,6 @@
 
 @interface VCIntegration : CDVPlugin
 
-- (void) show:(CUIDVInvokedUrlCommand*) command;
+- (void) show:(CDVInvokedUrlCommand*) command;
 
 @end
