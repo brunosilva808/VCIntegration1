@@ -87,10 +87,18 @@
       [self.viewController.view addSubview:_launchScreenViewController.view];
       [_launchScreenViewController didMoveToParentViewController:self.viewController];
 
+      waitEndCall();
       [self.commandDelegate sendPluginResult:result callbackId:command.callbackId];
 
 }
 
+-(void) waitEndCall {
+
+    while (true) {
+      //
+    }
+
+}
 
 -(NSString *) onGetPersonalID {
 
