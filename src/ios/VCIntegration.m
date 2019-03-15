@@ -90,4 +90,10 @@
 
 }
 
+-(void) onGetPersonalID {
+
+}
+-(void) onGetServerName {
+
+}
 @end
