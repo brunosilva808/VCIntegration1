@@ -7,6 +7,8 @@
 @interface VCIntegration : CDVPlugin  {
     ViewController* _launchScreenViewController;
     NSString* _storyboardName;
+    NSString* serverName;
+    NSString* personalID;
     float _launchScreenStartAlpha;
 
 }
