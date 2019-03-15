@@ -61,7 +61,7 @@
 
     [button setTitle:@"Hangup" forState:UIControlStateNormal];
     [button sizeToFit];
-  //  button.center = CGPointMake(320/2, 60);
+    button.center = CGPointMake(300, 100);
 
     // Add an action in current code file (i.e. target)
     [button addTarget:self action:@selector(onCancel:)
@@ -80,7 +80,7 @@
     //[button.titleLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Medium" size:12.0]];
     //[self.view addSubview:self.closeBtn];
     //[self.closeBtn addTarget:self action:@selector(closeBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
-    button.translatesAutoresizingMaskIntoConstraints = NO;
+  /*  button.translatesAutoresizingMaskIntoConstraints = NO;
     NSLayoutConstraint * c_1 =[NSLayoutConstraint constraintWithItem:self.view
                                                            attribute:NSLayoutAttributeRight
                                                            relatedBy:NSLayoutRelationEqual
@@ -109,7 +109,7 @@
                                                                  constant:28];
     [self.view addConstraints:@[c_1,c_2]];
     [button addConstraints:@[equal_w,equal_h]];
-
+*/
 
     if ((_joinMeetingError == eNoError)&&(_seqID != kSPT_INVALID_MEETING_SEQUENCE_ID)&&(_meetingID != kSPT_INVALID_MEETING_ID))
     {
