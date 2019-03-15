@@ -24,6 +24,8 @@
 
      personalID = [NSString stringWithFormat: @"%@",[options valueForKey:@"personalID"]];
 
+     NSString* msg1 = [NSString stringWithFormat: @"serverName: %@ personalID: %@", serverName, personalID];
+
     //  NSString* serverName = [[command arguments] objectAtIndex:0];
     //  NSString* userMail = [[command arguments] objectAtIndex:1];
     //  NSString* passWord = [[command arguments] objectAtIndex:2];
@@ -42,7 +44,7 @@
                                  messageAsString:msg];
 
      UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"nope"
-                                       message:msg
+                                       message:msg1
                                       delegate:nil cancelButtonTitle:@"ok" otherButtonTitles: nil];
 
     // [alert show];
@@ -73,10 +75,10 @@
   //    [appDelegate.window.rootViewController presentViewController:_launchScreenViewController animated:NO completion: nil];
 
 
-    //  [self.viewController.navigationController pushViewController: _launchScreenViewController animated: YES];
-      _launchScreenViewController.view.frame = self.viewController.view.frame;
-      [self.viewController.view addSubview:_launchScreenViewController.view];
-      [_launchScreenViewController didMoveToParentViewController:self.viewController];
+      [self.viewController.navigationController pushViewController: _launchScreenViewController animated: YES];
+      //_launchScreenViewController.view.frame = self.viewController.view.frame;
+      //[self.viewController.view addSubview:_launchScreenViewController.view];
+      //[_launchScreenViewController didMoveToParentViewController:self.viewController];
 
       [self.commandDelegate sendPluginResult:result callbackId:command.callbackId];
 
