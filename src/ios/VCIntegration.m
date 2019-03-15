@@ -52,7 +52,7 @@
                                  messageAsString:msg];
 
      UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"nope"
-                                       message:@"nope"
+                                       message:serverName
                                       delegate:nil cancelButtonTitle:@"ok" otherButtonTitles: nil];
 
      [alert show];
