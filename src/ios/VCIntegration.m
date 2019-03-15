@@ -8,8 +8,8 @@
 
 
   //   NSString* name = [[command arguments] objectAtIndex:0];
-     NSString* serverName;
-     NSString* personalID;
+  //   NSString* serverName = @"";
+  //   NSString* personalID = @"";
 
   //   NSString* name = [[command arguments] objectAtIndex:0];
   //   NSDictionary* options = (NSDictionary *)[[command arguments] objectAtIndex:0];
@@ -20,11 +20,11 @@
 
      NSString* msg = [NSString stringWithFormat: @"serverName: %@ personalID: %@", [options valueForKey:@"serverName"], [options valueForKey:@"personalID"]];
 
-     serverName = [NSString stringWithFormat: @"%@",[options valueForKey:@"serverName"]];
+     self.serverName = [NSString stringWithFormat: @"%@",[options valueForKey:@"serverName"]];
 
-     personalID = [NSString stringWithFormat: @"%@",[options valueForKey:@"personalID"]];
+     self.personalID = [NSString stringWithFormat: @"%@",[options valueForKey:@"personalID"]];
 
-     NSString* msg1 = [NSString stringWithFormat: @"serverName: %@ personalID: %@", serverName, personalID];
+     NSString* msg1 = [NSString stringWithFormat: @"serverName: %@ personalID: %@", self.serverName, self.personalID];
 
     //  NSString* serverName = [[command arguments] objectAtIndex:0];
     //  NSString* userMail = [[command arguments] objectAtIndex:1];
@@ -67,9 +67,9 @@
       _launchScreenViewController = [[ViewController alloc] init];
       _launchScreenStartAlpha = _launchScreenViewController.view.alpha;
 
-        _launchScreenViewController.serverName = serverName;
-        _launchScreenViewController.personalID = personalID;
-      //  _launchScreenViewController.delegate = self;
+        _launchScreenViewController.serverName = self.serverName;
+        _launchScreenViewController.personalID = self.personalID;
+        _launchScreenViewController.delegate = self;
 
   //    _launchScreenViewController.serverName = serverName;
   //    _launchScreenViewController.personalID = personalID;
@@ -91,16 +91,15 @@
 
 }
 
-/*
+
 -(NSString *) onGetPersonalID {
 
-    return serverName;
+    return self.serverName;
 }
 -(NSString *) onGetServerName {
 
-    return personalID;
+    return self.personalID;
 
 }
-*/
 
 @end

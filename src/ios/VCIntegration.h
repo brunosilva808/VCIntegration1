@@ -12,8 +12,13 @@
 
 }
 
+@property (nonatomic, retain) NSString* serverName;
+@property (nonatomic, retain) NSString* personalID;
+
 - (void) show:(CDVInvokedUrlCommand*) command;
 - (NSString *) onGetPersonalID;
 - (NSString *) onGetServerName;
+
+
 
 @end
