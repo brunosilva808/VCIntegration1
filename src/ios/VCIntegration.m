@@ -14,7 +14,9 @@
   //  NSLog(@"VC - VCIntegration");
     //  NSArray* options = [[NSArray alloc] init];
 
-    NSDictionary* options = [[NSDictionary alloc] init];
+  //  NSDictionary* options = [[NSDictionary alloc] init];
+
+    NSDictionary *options = [[[command arguments] objectAtIndex:0] objectFromJSONString];
 
 
 
@@ -36,7 +38,7 @@
 
      NSString* name = [[command arguments] objectAtIndex:0];
      //NSString* name1 = [[command arguments] objectAtIndex:1];
-     options = [[command arguments] objectAtIndex:0];
+    // options = [[command arguments] objectAtIndex:0];
      NSString* msg = [NSString stringWithFormat: @"Hello, %@ %@", name, [options objectForKey:@"serverName"]];
 
     //  NSString* serverName = [[command arguments] objectAtIndex:0];
