@@ -37,7 +37,7 @@
     NSString *server = @"collaboratespace.net";
     NSString *token = @"76385055";
 
-    //NSString* msg = [NSString stringWithFormat: @"serverName: %@ personalID: %@", self.serverName, self.personalID];
+    NSString* msg = [NSString stringWithFormat: @"serverName: %@ personalID: %@", self.serverName, self.personalID];
 
   //  NSString* msg = [NSString stringWithFormat: @"serverName: %@ personalID: %@", [self.delegate onGetServerName] , [self.delegate onGetPersonalID]];
 
