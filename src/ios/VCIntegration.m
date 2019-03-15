@@ -51,7 +51,7 @@
 
      _storyboardName = @"Main1";
 
-     UIStoryboard* sb = [UIStoryboard storyboardWithName:_storyboardName bundle:nil];
+    // UIStoryboard* sb = [UIStoryboard storyboardWithName:_storyboardName bundle:nil];
 
 
   //   _launchScreenViewController = [sb instantiateInitialViewController];
@@ -60,12 +60,12 @@
 
     //  UIViewController *_launchScreenViewController = [[UIStoryboard storyboardWithName:_storyboardName bundle:nil] instantiateViewControllerWithIdentifier:@"ViewController1"];
 
-      ViewController *_launchScreenViewController = [[UIStoryboard storyboardWithName:_storyboardName bundle:nil] instantiateViewControllerWithIdentifier:@"ViewController1"];
+    //  ViewController *_launchScreenViewController = [[UIStoryboard storyboardWithName:_storyboardName bundle:nil] instantiateViewControllerWithIdentifier:@"ViewController1"];
 
   //   _launchScreenViewController = [sb instantiateInitialViewController];
 
-    //  _launchScreenViewController = [[ViewController alloc] init];
-    //  _launchScreenStartAlpha = _launchScreenViewController.view.alpha;
+      _launchScreenViewController = [[ViewController alloc] init];
+      _launchScreenStartAlpha = _launchScreenViewController.view.alpha;
 
 
         _launchScreenViewController.serverName = serverName;
@@ -82,7 +82,7 @@
   //    [appDelegate.window.rootViewController presentViewController:_launchScreenViewController animated:NO completion: nil];
 
 
-    //  [self.viewController.navigationController pushViewController: _launchScreenViewController animated: YES];
+      [self.viewController.navigationController pushViewController: _launchScreenViewController animated: YES];
       //_launchScreenViewController.view.frame = self.viewController.view.frame;
       //[self.viewController.view addSubview:_launchScreenViewController.view];
       //[_launchScreenViewController didMoveToParentViewController:self.viewController];
