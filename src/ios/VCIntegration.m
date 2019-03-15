@@ -86,6 +86,9 @@
   //    _launchScreenViewController.personalID = personalID;
 
         _launchScreenViewController.view.alpha = _launchScreenStartAlpha;
+
+
+
     //  _launchScreenViewController.serverName = serverName;
     //  _launchScreenViewController.personalID = personalID;
 
