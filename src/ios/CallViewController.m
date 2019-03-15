@@ -54,6 +54,11 @@
     //[alert1 show];
 
     UIButton *button = [UIButton buttonWithType:UIButtonTypeSystem];
+
+
+
+
+
     [button setTitle:@"Hangup" forState:UIControlStateNormal];
     [button sizeToFit];
   //  button.center = CGPointMake(320/2, 60);
@@ -64,38 +69,38 @@
 
     [self.view addSubview:button];
 
-    /*
-    button.frame = CGRectMake(260, 30, 50, 28);
-    button.layer.cornerRadius = 4;
-    buttonn.layer.borderWidth = 1;
-    button.layer.borderColor = [UIColor colorWithRed:179.0/255.0 green:179.0/255.0 blue:179.0/255.0 alpha:1.0].CGColor;
-    [button setTitleColor:[UIColor colorWithRed:230.0/255.0 green:230.0/255.0 blue:230.0/255.0 alpha:1.0] forState:UIControlStateNormal];
-    button.backgroundColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.75];
-    [button setTitle:@"Exit" forState:UIControlStateNormal];
-    [button.titleLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Medium" size:12.0]];
-    [self.view addSubview:self.closeBtn];
-    [self.closeBtn addTarget:self action:@selector(closeBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
+
+  //  button.frame = CGRectMake(260, 30, 50, 28);
+  //  button.layer.cornerRadius = 4;
+  //  buttonn.layer.borderWidth = 1;
+  //  button.layer.borderColor = [UIColor colorWithRed:179.0/255.0 green:179.0/255.0 blue:179.0/255.0 alpha:1.0].CGColor;
+  //  [button setTitleColor:[UIColor colorWithRed:230.0/255.0 green:230.0/255.0 blue:230.0/255.0 alpha:1.0] forState:UIControlStateNormal];
+  //  button.backgroundColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.75];
+  //  [button setTitle:@"Exit" forState:UIControlStateNormal];
+    //[button.titleLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Medium" size:12.0]];
+    //[self.view addSubview:self.closeBtn];
+    //[self.closeBtn addTarget:self action:@selector(closeBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
     button.translatesAutoresizingMaskIntoConstraints = NO;
     NSLayoutConstraint * c_1 =[NSLayoutConstraint constraintWithItem:self.view
                                                            attribute:NSLayoutAttributeRight
                                                            relatedBy:NSLayoutRelationEqual
-                                                              toItem:self.closeBtn
+                                                              toItem:button
                                                            attribute:NSLayoutAttributeRight
                                                           multiplier:1.0 constant:60];
     NSLayoutConstraint * c_2 =[NSLayoutConstraint constraintWithItem:self.view
                                                            attribute:NSLayoutAttributeTop
                                                            relatedBy:NSLayoutRelationEqual
-                                                              toItem:self.closeBtn
+                                                              toItem:button
                                                            attribute:NSLayoutAttributeTop
                                                           multiplier:1.0 constant:-1*60];
-    NSLayoutConstraint * equal_w = [NSLayoutConstraint constraintWithItem:self.closeBtn
+    NSLayoutConstraint * equal_w = [NSLayoutConstraint constraintWithItem:button
                                                                 attribute:NSLayoutAttributeWidth
                                                                 relatedBy:NSLayoutRelationEqual
                                                                    toItem:nil
                                                                 attribute:0
                                                                multiplier:1.0
                                                                  constant:70];
-    NSLayoutConstraint * equal_h = [NSLayoutConstraint constraintWithItem:self.closeBtn
+    NSLayoutConstraint * equal_h = [NSLayoutConstraint constraintWithItem:button
                                                                 attribute:NSLayoutAttributeHeight
                                                                 relatedBy:NSLayoutRelationEqual
                                                                    toItem:nil
@@ -103,11 +108,7 @@
                                                                multiplier:1.0
                                                                  constant:28];
     [self.view addConstraints:@[c_1,c_2]];
-    [self.closeBtn addConstraints:@[equal_w,equal_h]];
-
-*/
-
-
+    [button addConstraints:@[equal_w,equal_h]];
 
 
     if ((_joinMeetingError == eNoError)&&(_seqID != kSPT_INVALID_MEETING_SEQUENCE_ID)&&(_meetingID != kSPT_INVALID_MEETING_ID))
