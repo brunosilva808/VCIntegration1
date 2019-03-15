@@ -91,6 +91,7 @@
 
 }
 
+/*
 -(NSString *) onGetPersonalID {
 
     return serverName;
@@ -100,5 +101,6 @@
     return personalID;
 
 }
+*/
 
 @end

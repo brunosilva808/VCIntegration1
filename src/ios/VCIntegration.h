@@ -3,7 +3,9 @@
 #import <CollaborateSpace/CollaborateSpace.h>
 #import "ViewController.h"
 
-@interface VCIntegration : CDVPlugin <VCIntegrationDelegate> {
+// <VCIntegrationDelegate>
+
+@interface VCIntegration : CDVPlugin  {
     ViewController* _launchScreenViewController;
     NSString* _storyboardName;
     float _launchScreenStartAlpha;
