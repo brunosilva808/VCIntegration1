@@ -20,13 +20,55 @@
     </js-module>
 
     <platform name="ios">
-        <config-file target="config.xml" parent="/*">
-          <feature name="ToastyPlugin">
-            <param name="ios-package" value="VCIntegration" />
-          </feature>
-        </config-file>
-        <header-file src="src/ios/VCIntegration.h" target-dir="src/VCIntegration"/>
-        <source-file src="src/ios/VCIntegration.m" target-dir="src/VCIntegration"/>
+      <config-file target="config.xml" parent="/*">
+        <feature name="ToastyPlugin">
+          <param name="ios-package" value="VCIntegration" />
+        </feature>
+      </config-file>
+      <config-file target="*-Info.plist" parent="UIMainStoryboardFile" >
+          <string>Main1</string>
+      </config-file>
+      <config-file target="*-Info.plist" parent="Required background modes" merge="true">
+      <array>
+          <string>App plays audio or streams audio/video using AirPlay</string>
+          <string>App provides Voice over IP services</string>
+          <string>App downloads content from the network</string>
+      </array>
+      </config-file>
+      <access origin="*" />
+      <framework src="libs/CollaborateSpace.framework" custom="true" embed="true" />
+      <source-file src="libs/CollaborateSpace.framework" target-dir="lib" framework="true" />
+      <framework src="libs/libPhoneNumberiOS.framework" custom="true" embed="true" />
+      <source-file src="libs/libPhoneNumberiOS.framework" target-dir="lib" framework="true" />
+      <framework src="UIKit.framework"/>
+      <framework src="Foundation.framework"/>
+      <framework src="AVFoundation.framework"/>
+      <framework src="AssetsLibrary.framework"/>
+      <framework src="MobileCoreServices.framework"/>
+      <header-file src="src/ios/VCIntegration.h" target-dir="src/VCIntegration"/>
+      <source-file src="src/ios/VCIntegration.m" target-dir="src/VCIntegration"/>
+      <header-file src="src/ios/CallViewController.h" target-dir="src/VCIntegration"/>
+      <source-file src="src/ios/CallViewController.m" target-dir="src/VCIntegration"/>
+      <header-file src="src/ios/CollaborateUtils.h" target-dir="src/VCIntegration"/>
+      <source-file src="src/ios/CollaborateUtils.m" target-dir="src/VCIntegration"/>
+      <header-file src="src/ios/ContactImageView.h" target-dir="src/VCIntegration"/>
+      <source-file src="src/ios/ContactImageView.m" target-dir="src/VCIntegration"/>
+      <header-file src="src/ios/DocSelectionController.h" target-dir="src/VCIntegration"/>
+      <source-file src="src/ios/DocSelectionController.m" target-dir="src/VCIntegration"/>
+      <header-file src="src/ios/ISptContactData+UIUtils.h" target-dir="src/VCIntegration"/>
+      <source-file src="src/ios/ISptContactData+UIUtils.m" target-dir="src/VCIntegration"/>
+      <header-file src="src/ios/ISptEventData+StringFeatures.h" target-dir="src/VCIntegration"/>
+      <source-file src="src/ios/ISptEventData+StringFeatures.m" target-dir="src/VCIntegration"/>
+      <header-file src="src/ios/LocalSharedDocument.h" target-dir="src/VCIntegration"/>
+      <source-file src="src/ios/LocalSharedDocument.m" target-dir="src/VCIntegration"/>
+      <header-file src="src/ios/StartingCallViewController.h" target-dir="src/VCIntegration"/>
+      <source-file src="src/ios/StartingCallViewController.m" target-dir="src/VCIntegration"/>
+      <header-file src="src/ios/ViewController.h" target-dir="src/VCIntegration"/>
+      <source-file src="src/ios/ViewController.m" target-dir="src/VCIntegration"/>
+      <source-file src="src/ios/Main1.storyboard" target="src/VCIntegration" />
+      <source-file src="src/ios/AppDelegate+notification.m" target-dir="src/VCIntegration"/>
+      <header-file src="src/ios/AppDelegate+notification.h" target-dir="src/VCIntegration"/>
+
     </platform>
 
     <platform name="android">
