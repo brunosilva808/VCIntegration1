@@ -85,20 +85,13 @@
       //[self.viewController.navigationController pushViewController: _launchScreenViewController animated: YES];
       _launchScreenViewController.view.frame = self.viewController.view.frame;
       [self.viewController.view addSubview:_launchScreenViewController.view];
-      [_launchScreenViewController didMoveToParentViewController:self.viewController];
+      //[_launchScreenViewController didMoveToParentViewController:self.viewController];
 
-      waitEndCall();
+      //waitEndCall();
       [self.commandDelegate sendPluginResult:result callbackId:command.callbackId];
 
 }
 
--(void) waitEndCall {
-
-    while (true) {
-      //
-    }
-
-}
 
 -(NSString *) onGetPersonalID {
 
