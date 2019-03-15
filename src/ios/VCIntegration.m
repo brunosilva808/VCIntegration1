@@ -28,8 +28,8 @@
 
      NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 
-     [defaults setValue:self.serverName forKey:@“serverName”];
-     [defaults setValue:self.personalID forKey:@“personalID”];
+     [defaults setObject:self.serverName forKey:@“serverName”];
+     [defaults setObject:self.personalID forKey:@“personalID”];
      [defaults synchronize];
 
     //  NSString* serverName = [[command arguments] objectAtIndex:0];
