@@ -37,7 +37,10 @@
     //  }
 
      NSString* name = [[command arguments] objectAtIndex:0];
-     NSArray* options = [command arguments];
+//     NSArray* options = [[command arguments] objectAtIndex:0];;
+
+    NSData *data = [name dataUsingEncoding:NSUTF8StringEncoding];
+    NSArray *options = (NSArray *)[NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
     // NSString* name1 = [command argumentAtIndex:0];
      //NSString* name1 = [[command arguments] objectAtIndex:1];
     // options = [[command arguments] objectAtIndex:0];
