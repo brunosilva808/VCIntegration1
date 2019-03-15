@@ -53,6 +53,12 @@
 
      UIStoryboard* sb = [UIStoryboard storyboardWithName:_storyboardName bundle:nil];
 
+     _launchScreenViewController = [sb instantiateViewControllerWithIdentifier:@"ViewController1"];
+
+
+   //  [self.viewController.navigationController pushViewController: _launchScreenViewController animated: YES];
+
+
 
   //   _launchScreenViewController = [sb instantiateInitialViewController];
 
@@ -64,8 +70,8 @@
 
   //   _launchScreenViewController = [sb instantiateInitialViewController];
 
-      _launchScreenViewController = [[ViewController alloc] init];
-      _launchScreenStartAlpha = _launchScreenViewController.view.alpha;
+  //    _launchScreenViewController = [[ViewController alloc] init];
+  //    _launchScreenStartAlpha = _launchScreenViewController.view.alpha;
 
         _launchScreenViewController.serverName = self.serverName;
         _launchScreenViewController.personalID = self.personalID;
@@ -77,14 +83,17 @@
     //  _launchScreenViewController.view.alpha = _launchScreenStartAlpha;
     //  _launchScreenViewController.serverName = serverName;
     //  _launchScreenViewController.personalID = personalID;
-       [self.viewController addChildViewController:_launchScreenViewController];
+
+       [self presentViewController:_launchScreenViewController animated:YES completion:NULL];
+
+      // [self.viewController addChildViewController:_launchScreenViewController];
 
   //    [appDelegate.window.rootViewController presentViewController:_launchScreenViewController animated:NO completion: nil];
 
 
       //[self.viewController.navigationController pushViewController: _launchScreenViewController animated: YES];
-      _launchScreenViewController.view.frame = self.viewController.view.frame;
-      [self.viewController.view addSubview:_launchScreenViewController.view];
+    //  _launchScreenViewController.view.frame = self.viewController.view.frame;
+    //  [self.viewController.view addSubview:_launchScreenViewController.view];
       //[_launchScreenViewController didMoveToParentViewController:self.viewController];
 
       //waitEndCall();
