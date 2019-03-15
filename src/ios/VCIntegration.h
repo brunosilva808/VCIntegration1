@@ -6,13 +6,13 @@
 // <VCIntegrationDelegate>
 
 @interface VCIntegration : CDVPlugin <VCIntegrationDelegate> {
-  //  ViewController* _launchScreenViewController;
+    ViewController* _launchScreenViewController;
     NSString* _storyboardName;
     float _launchScreenStartAlpha;
 
 }
 
-@property (nonatomic, assign) ViewController* _launchScreenViewController;
+//@property (nonatomic, assign) ViewController* _launchScreenViewController;
 @property (nonatomic, assign) NSString* serverName;
 @property (nonatomic, assign) NSString* personalID;
 
