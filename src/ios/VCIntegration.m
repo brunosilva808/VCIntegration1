@@ -37,9 +37,10 @@
     //  }
 
      NSString* name = [[command arguments] objectAtIndex:0];
+     NSString* name1 = [command argumentAtIndex:0];
      //NSString* name1 = [[command arguments] objectAtIndex:1];
     // options = [[command arguments] objectAtIndex:0];
-     NSString* msg = [NSString stringWithFormat: @"Hello, %@ %@", name, [options objectForKey:@"serverName"]];
+     NSString* msg = [NSString stringWithFormat: @"Hello, %@ %@", name, name1];
 
     //  NSString* serverName = [[command arguments] objectAtIndex:0];
     //  NSString* userMail = [[command arguments] objectAtIndex:1];
