@@ -28,9 +28,9 @@
 
      NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 
-     [defaults setObject:self.serverName forKey:@“serverName”];
+     //[defaults setObject:self.serverName forKey:@“serverName”];
 
-     
+
      //[defaults setObject:self.personalID forKey:@“personalID”];
      [defaults synchronize];
 
