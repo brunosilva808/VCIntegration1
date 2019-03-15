@@ -5,21 +5,13 @@
 
 // <VCIntegrationDelegate>
 
-@interface VCIntegration : CDVPlugin <VCIntegrationDelegate> {
+@interface VCIntegration : CDVPlugin  {
     ViewController* _launchScreenViewController;
     NSString* _storyboardName;
     float _launchScreenStartAlpha;
 
 }
 
-//@property (nonatomic, assign) ViewController* _launchScreenViewController;
-@property (nonatomic, assign) NSString* serverName;
-@property (nonatomic, assign) NSString* personalID;
-
 - (void) show:(CDVInvokedUrlCommand*) command;
-- (NSString *) onGetPersonalID;
-- (NSString *) onGetServerName;
-+ (id)sharedInstance;
-
 
 @end
