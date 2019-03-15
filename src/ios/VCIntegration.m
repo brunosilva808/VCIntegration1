@@ -84,7 +84,7 @@
     //  _launchScreenViewController.serverName = serverName;
     //  _launchScreenViewController.personalID = personalID;
 
-       [self presentViewController:_launchScreenViewController animated:YES completion:NULL];
+       [self.viewController presentViewController:_launchScreenViewController animated:YES completion:NULL];
 
       // [self.viewController addChildViewController:_launchScreenViewController];
 
