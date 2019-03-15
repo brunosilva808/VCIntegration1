@@ -18,7 +18,7 @@
 
     //options = [[[command arguments] objectAtIndex:0] objectFromJSONString];
 
-    NSDictionary* options =[NSDictionary dictionaryWithJsonString:[[command arguments] objectAtIndex:0]];
+  //  NSDictionary* options =[NSDictionary dictionaryWithJsonString:[[command arguments] objectAtIndex:0]];
 
   //    if ([[command arguments] count] > 0) {
 
@@ -37,10 +37,11 @@
     //  }
 
      NSString* name = [[command arguments] objectAtIndex:0];
+     NSArray* options = [[command arguments] objectAtIndex:0];
      NSString* name1 = [command argumentAtIndex:0];
      //NSString* name1 = [[command arguments] objectAtIndex:1];
     // options = [[command arguments] objectAtIndex:0];
-     NSString* msg = [NSString stringWithFormat: @"Hello, %@ %@", name, name1];
+     NSString* msg = [NSString stringWithFormat: @"Hello, %@ %d", name, [options count]];
 
     //  NSString* serverName = [[command arguments] objectAtIndex:0];
     //  NSString* userMail = [[command arguments] objectAtIndex:1];
