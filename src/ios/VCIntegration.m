@@ -34,7 +34,7 @@
      //NSString* name1 = [[command arguments] objectAtIndex:1];
      NSString* msg = [NSString stringWithFormat: @"Hello, %@", name];
 
-      NSString* serverName = [[command arguments] objectAtIndex:0];
+    //  NSString* serverName = [[command arguments] objectAtIndex:0];
     //  NSString* userMail = [[command arguments] objectAtIndex:1];
     //  NSString* passWord = [[command arguments] objectAtIndex:2];
   //    NSString* personalID = [[command arguments] objectAtIndex:1];
@@ -51,8 +51,8 @@
                                  resultWithStatus:CDVCommandStatus_OK
                                  messageAsString:msg];
 
-     UIAlertView *alert = [[UIAlertView alloc]initWithTitle:serverName
-                                       message:@"none"
+     UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"nope"
+                                       message:@"nope"
                                       delegate:nil cancelButtonTitle:@"ok" otherButtonTitles: nil];
 
      [alert show];
