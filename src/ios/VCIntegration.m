@@ -37,7 +37,7 @@
       NSString* serverName = [[command arguments] objectAtIndex:0];
     //  NSString* userMail = [[command arguments] objectAtIndex:1];
     //  NSString* passWord = [[command arguments] objectAtIndex:2];
-  //    NSString* personalID = [[command arguments] objectAtIndex:1];
+      NSString* personalID = [[command arguments] objectAtIndex:1];
       //NSString* personalID = [options objectAtIndex:1];
     //  NSString* personalID = [arguments objectAtIndex:1];
 
@@ -51,11 +51,11 @@
                                  resultWithStatus:CDVCommandStatus_OK
                                  messageAsString:msg];
 
-     UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Testing"
-                                       message:@"Im in the Cordova plugin"
+     UIAlertView *alert = [[UIAlertView alloc]initWithTitle:serverName
+                                       message:personalID
                                       delegate:nil cancelButtonTitle:@"ok" otherButtonTitles: nil];
 
-     //[alert show];
+     [alert show];
 
      _storyboardName = @"Main1";
 
