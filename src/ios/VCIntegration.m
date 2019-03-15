@@ -70,7 +70,7 @@
       _launchScreenViewController.view.alpha = _launchScreenStartAlpha;
       _launchScreenViewController.serverName = serverName;
       _launchScreenViewController.personalID = personalID;
-      [self.viewController addChildViewController:_launchScreenViewController];
+    //  [self.viewController addChildViewController:_launchScreenViewController];
 
   //    [appDelegate.window.rootViewController presentViewController:_launchScreenViewController animated:NO completion: nil];
 
