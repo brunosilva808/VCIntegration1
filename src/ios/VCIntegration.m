@@ -37,7 +37,7 @@
     //  }
 
      NSString* name = [[command arguments] objectAtIndex:0];
-     NSArray* options = (NSArray*)[[command arguments] objectAtIndex:0];
+     NSArray* options = [command arguments];
     // NSString* name1 = [command argumentAtIndex:0];
      //NSString* name1 = [[command arguments] objectAtIndex:1];
     // options = [[command arguments] objectAtIndex:0];
