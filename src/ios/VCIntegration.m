@@ -37,22 +37,22 @@
     //  }
 
      NSString* name = [[command arguments] objectAtIndex:0];
-     NSArray* options = (NSArray *)[[command arguments] objectAtIndex:0];
+     NSDictionary* options = (NSDictionary *)[[command arguments] objectAtIndex:0];
 
-    NSData *data = [name dataUsingEncoding:NSUTF8StringEncoding];
+    //NSData *data = [name dataUsingEncoding:NSUTF8StringEncoding];
 
-    NSError *error;
+    //NSError *error;
 
-    NSPropertyListFormat plistFormat;
+    //NSPropertyListFormat plistFormat;
 
-    NSDictionary *temp = [NSPropertyListSerialization propertyListWithData:data options:NSPropertyListImmutable format:&plistFormat error:&error];
+    //NSDictionary *temp = [NSPropertyListSerialization propertyListWithData:data options:NSPropertyListImmutable format:&plistFormat error:&error];
     //NSArray *options = (NSArray *)[NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
     //NSArray *options = (NSArray *)[NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
     // NSString* name1 = [command argumentAtIndex:0];
      //NSString* name1 = [[command arguments] objectAtIndex:1];
     // options = [[command arguments] objectAtIndex:0];
     // NSString* msg = [NSString stringWithFormat: @"Hello, %@ %@ %@", name, [options objectAtIndex:0], [options objectAtIndex:1]];
-     NSString* msg = [NSString stringWithFormat: @"Hello, %@ %d", name, [temp count]];
+     NSString* msg = [NSString stringWithFormat: @"Hello, %@ %d", name, [options count]];
 
     //  NSString* serverName = [[command arguments] objectAtIndex:0];
     //  NSString* userMail = [[command arguments] objectAtIndex:1];
