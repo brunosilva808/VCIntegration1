@@ -8,8 +8,8 @@
 
 
   //   NSString* name = [[command arguments] objectAtIndex:0];
-     //NSString* serverName;
-     //NSString* personalID;
+     NSString* serverName;
+     NSString* personalID;
 
   //   NSString* name = [[command arguments] objectAtIndex:0];
   //   NSDictionary* options = (NSDictionary *)[[command arguments] objectAtIndex:0];
@@ -56,20 +56,21 @@
 
   //   _launchScreenViewController = [sb instantiateInitialViewController];
 
+      self.sb = [UIStoryboard storyboardWithName:_storyboardName bundle:nil];
 
       UIViewController *_launchScreenViewController = [[UIStoryboard storyboardWithName:_storyboardName bundle:nil] instantiateViewControllerWithIdentifier:@"ViewController1"];
-    //  self.sb = [UIStoryboard storyboardWithName:_storyboardName bundle:nil];
-     //_launchScreenViewController = [sb instantiateInitialViewController];
 
-  //    _launchScreenViewController = [[ViewController alloc] init];
-  //   _launchScreenStartAlpha = _launchScreenViewController.view.alpha;
+  //   _launchScreenViewController = [sb instantiateInitialViewController];
+
+    //  _launchScreenViewController = [[ViewController alloc] init];
+    //  _launchScreenStartAlpha = _launchScreenViewController.view.alpha;
 
 
         //_launchScreenViewController.serverName = serverName;
         //_launchScreenViewController.personalID = personalID;
 
-      //_launchScreenViewController.serverName = serverName;
-      //_launchScreenViewController.personalID = personalID;
+  //    _launchScreenViewController.serverName = serverName;
+  //    _launchScreenViewController.personalID = personalID;
 
     //  _launchScreenViewController.view.alpha = _launchScreenStartAlpha;
     //  _launchScreenViewController.serverName = serverName;
@@ -79,7 +80,7 @@
   //    [appDelegate.window.rootViewController presentViewController:_launchScreenViewController animated:NO completion: nil];
 
 
-      //[self.viewController.navigationController pushViewController: _launchScreenViewController animated: YES];
+    //  [self.viewController.navigationController pushViewController: _launchScreenViewController animated: YES];
       //_launchScreenViewController.view.frame = self.viewController.view.frame;
       //[self.viewController.view addSubview:_launchScreenViewController.view];
       //[_launchScreenViewController didMoveToParentViewController:self.viewController];
@@ -91,7 +92,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
 
-        SecondView *vc = [segue destinationViewController];
+        ViewController *vc = [segue destinationViewController];
         vc.serverName = serverName;
         vc.personalID = personalID;
 
