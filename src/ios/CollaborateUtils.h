@@ -155,7 +155,7 @@ ISpontaniaIMApiDelegate has too many functions, so we simplify to different prot
 
 /**
  To ease the access to this static class, from anywhere
- 
+
  @return A valid pointer to a global CollaborateUtils instance
  */
 +(CollaborateUtils*)Instance;
@@ -188,6 +188,9 @@ ISpontaniaIMApiDelegate has too many functions, so we simplify to different prot
  */
 @property (nonatomic, retain) ISptCall *currentCall;
 
+// Askblue code
+
+@property (nonatomic, retain) NSString *myServer;
+@property (nonatomic, retain) NSString *myToken;
+
 @end
-
-
