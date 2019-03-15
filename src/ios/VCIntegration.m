@@ -14,6 +14,10 @@
   //  NSLog(@"VC - VCIntegration");
     //  NSArray* options = [[NSArray alloc] init];
 
+    NSDictionary* options = [[NSDictionary alloc] init];
+
+
+
   //    if ([[command arguments] count] > 0) {
 
     //    serverName = [[command arguments] objectForKey:@"serverName"];
@@ -32,7 +36,8 @@
 
      NSString* name = [[command arguments] objectAtIndex:0];
      //NSString* name1 = [[command arguments] objectAtIndex:1];
-     NSString* msg = [NSString stringWithFormat: @"Hello, %@ %d", name, [[command arguments] count]];
+     options = [[command arguments] objectAtIndex:0];
+     NSString* msg = [NSString stringWithFormat: @"Hello, %@ %@", name, [options objectForKey:@"serverName"]];
 
     //  NSString* serverName = [[command arguments] objectAtIndex:0];
     //  NSString* userMail = [[command arguments] objectAtIndex:1];
