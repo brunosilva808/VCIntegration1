@@ -48,11 +48,11 @@
      for (int i=0; i<[elements count];i++) {
 
           if (i==0) {
-            temp = [elements[0] componentsSeparatedByString:@":"];
+            temp = [elements[0] componentsSeparatedByString:@" : "];
             serverName = temp[1];
           }
           if (i==1) {
-            temp = [elements[1] componentsSeparatedByString:@":"];
+            temp = [elements[1] componentsSeparatedByString:@" : "];
             personalID = temp[1];
           }
 
