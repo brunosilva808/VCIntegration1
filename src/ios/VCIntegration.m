@@ -69,7 +69,7 @@
 
         _launchScreenViewController.serverName = serverName;
         _launchScreenViewController.personalID = personalID;
-        _launchScreenViewController.delegate = self;
+      //  _launchScreenViewController.delegate = self;
 
   //    _launchScreenViewController.serverName = serverName;
   //    _launchScreenViewController.personalID = personalID;
