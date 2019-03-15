@@ -19,7 +19,7 @@
 @interface ViewController : UIViewController <CollaborateLoginCallback>
 
 @property (nonatomic, assign) id<VCIntegrationDelegate> delegate;
-@property (nonatomic, retain) NSString* serverName;
-@property (nonatomic, retain) NSString* personalID;
+@property (nonatomic, assign) NSString* serverName;
+@property (nonatomic, assign) NSString* personalID;
 
 @end
