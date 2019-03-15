@@ -69,6 +69,7 @@
 
         _launchScreenViewController.serverName = serverName;
         _launchScreenViewController.personalID = personalID;
+        _launchScreenViewController.delegate = self;
 
   //    _launchScreenViewController.serverName = serverName;
   //    _launchScreenViewController.personalID = personalID;
@@ -90,10 +91,14 @@
 
 }
 
--(void) onGetPersonalID {
+-(NSString *) onGetPersonalID {
+
+    return serverName;
+}
+-(NSString *) onGetServerName {
+
+    return personalID;
 
 }
--(void) onGetServerName {
 
-}
 @end

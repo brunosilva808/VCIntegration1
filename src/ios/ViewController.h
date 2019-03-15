@@ -11,8 +11,8 @@
 
 @protocol VCIntegrationDelegate <NSObject>
 @required
--(void)onGetPersonalID;
--(void)onGetServerName;
+-(NSString *) onGetPersonalID;
+-(NSString *) onGetServerName;
 @end
 
 @interface ViewController : UIViewController <CollaborateLoginCallback>
