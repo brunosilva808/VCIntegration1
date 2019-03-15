@@ -37,10 +37,10 @@
     NSString *server = @"collaboratespace.net";
     NSString *token = @"76385055";
 
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+  //  NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 
     //server = [defaults objectForKey:@“serverName”];
-    //token = [defaults objectForKey:@“personalID”]; 
+    //token = [defaults objectForKey:@“personalID”];
 
     // NSString* msg = [NSString stringWithFormat: @"serverName: %@ personalID: %@", self.serverName, self.personalID];
 

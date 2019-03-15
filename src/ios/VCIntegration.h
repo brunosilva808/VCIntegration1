@@ -19,7 +19,7 @@
 - (void) show:(CDVInvokedUrlCommand*) command;
 - (NSString *) onGetPersonalID;
 - (NSString *) onGetServerName;
-
++ (id)sharedInstance;
 
 
 @end

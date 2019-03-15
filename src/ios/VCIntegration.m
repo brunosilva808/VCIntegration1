@@ -26,13 +26,13 @@
 
      NSString* msg1 = [NSString stringWithFormat: @"serverName: %@ personalID: %@", self.serverName, self.personalID];
 
-     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+  //   NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 
      //[defaults setObject:self.serverName forKey:@“serverName”];
 
 
      //[defaults setObject:self.personalID forKey:@“personalID”];
-     [defaults synchronize];
+    // [defaults synchronize];
 
     //  NSString* serverName = [[command arguments] objectAtIndex:0];
     //  NSString* userMail = [[command arguments] objectAtIndex:1];
@@ -127,6 +127,15 @@
 
     return self.personalID;
 
+}
+
++ (id)sharedInstance {
+   static VCIntegration *sharedInstance = nil;
+   static dispatch_once_t onceToken;
+       dispatch_once(&onceToken, ^{
+       sharedInstance = [[self alloc] init];
+   });
+   return sharedInstance;
 }
 
 @end
