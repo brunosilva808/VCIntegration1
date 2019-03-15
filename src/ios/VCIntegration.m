@@ -40,7 +40,7 @@
      NSString* serverName;
      NSString* personalID;
 
-     NSString* name = [[command arguments] objectAtIndex:0];
+  //   NSString* name = [[command arguments] objectAtIndex:0];
   //   NSDictionary* options = (NSDictionary *)[[command arguments] objectAtIndex:0];
      NSArray *temp;
 
