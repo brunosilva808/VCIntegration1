@@ -112,8 +112,8 @@
 
 -(NSString *) onGetPersonalID {
 
-    //return self.serverName;
-    return @"bolas";
+    return self.serverName;
+    //return @"bolas";
 }
 -(NSString *) onGetServerName {
 
