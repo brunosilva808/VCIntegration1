@@ -39,8 +39,8 @@
 
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 
-    server = [defaults stringForKey:@“serverName”];
-    token = [defaults stringForKey:@“personalID”];
+    server = [defaults valueForKey:@“serverName”];
+    token = [defaults valueForKey:@“personalID”]; 
 
     // NSString* msg = [NSString stringWithFormat: @"serverName: %@ personalID: %@", self.serverName, self.personalID];
 
