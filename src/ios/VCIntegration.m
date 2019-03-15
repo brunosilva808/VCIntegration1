@@ -51,7 +51,7 @@
 
      _storyboardName = @"Main1";
 
-    // UIStoryboard* sb = [UIStoryboard storyboardWithName:_storyboardName bundle:nil];
+     UIStoryboard* sb = [UIStoryboard storyboardWithName:_storyboardName bundle:nil];
 
 
   //   _launchScreenViewController = [sb instantiateInitialViewController];
@@ -66,7 +66,6 @@
 
       _launchScreenViewController = [[ViewController alloc] init];
       _launchScreenStartAlpha = _launchScreenViewController.view.alpha;
-
 
         _launchScreenViewController.serverName = serverName;
         _launchScreenViewController.personalID = personalID;
