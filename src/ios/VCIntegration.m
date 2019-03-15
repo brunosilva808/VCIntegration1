@@ -37,8 +37,26 @@
     //  }
 
      NSString* name = [[command arguments] objectAtIndex:0];
-     NSDictionary* options = (NSDictionary *)[[command arguments] objectAtIndex:0];
+     NSString* serverName;
+     NSString* personalID;
 
+     NSString* name = [[command arguments] objectAtIndex:0];
+  //   NSDictionary* options = (NSDictionary *)[[command arguments] objectAtIndex:0];
+     NSArray *temp;
+
+     NSArray *elements = [name componentsSeparatedByString:@","];
+     for (int i=0; i<[elements count];i++) {
+
+          if (i==0) {
+            temp = [elements[0] componentsSeparatedByString:@":"];
+            serverName = temp[1];
+          }
+          if (i==1) {
+            temp = [elements[1] componentsSeparatedByString:@":"];
+            personalID = temp[1];
+          }
+
+     }
     //NSData *data = [name dataUsingEncoding:NSUTF8StringEncoding];
 
     //NSError *error;
@@ -52,7 +70,7 @@
      //NSString* name1 = [[command arguments] objectAtIndex:1];
     // options = [[command arguments] objectAtIndex:0];
     // NSString* msg = [NSString stringWithFormat: @"Hello, %@ %@ %@", name, [options objectAtIndex:0], [options objectAtIndex:1]];
-     NSString* msg = [NSString stringWithFormat: @"Hello, %@ %d", name, [options count]];
+     NSString* msg = [NSString stringWithFormat: @"Hello, %@ %@ %@", name, serverName, personalID];
 
     //  NSString* serverName = [[command arguments] objectAtIndex:0];
     //  NSString* userMail = [[command arguments] objectAtIndex:1];
