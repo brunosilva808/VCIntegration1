@@ -37,11 +37,17 @@
     NSString *server = @"collaboratespace.net";
     NSString *token = @"76385055";
 
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+
+    server = [defaults stringForKey:@“serverName”];
+    token = [defaults stringForKey:@“personalID”];
+
     // NSString* msg = [NSString stringWithFormat: @"serverName: %@ personalID: %@", self.serverName, self.personalID];
 
-    NSString* msg = [NSString stringWithFormat: @"serverName: %@ personalID: %@", [self.delegate onGetServerName] , [self.delegate onGetPersonalID]];
+    //NSString* msg = [NSString stringWithFormat: @"serverName: %@ personalID: %@", [self.delegate onGetServerName] , [self.delegate onGetPersonalID]];
+    NSString* msg = [NSString stringWithFormat: @"serverName: %@ personalID: %@", server , token];
 
-    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Testing"
+    //UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Testing"
                                       message:msg
                                      delegate:nil cancelButtonTitle:@"ok" otherButtonTitles: nil];
     NSLog(@"VC - before CollaborateUtils.Instance.api");
@@ -50,9 +56,9 @@
 //   if ([server length] == 0)
 //       [CollaborateUtils.Instance.api getTokenData:token server:nil];
 //    else
-      // [CollaborateUtils.Instance.api getTokenData:token server:server];
-      // [CollaborateUtils.Instance.api getTokenData:self.personalID server:self.serverName];
-    [CollaborateUtils.Instance.api getTokenData:[self.delegate onGetPersonalID] server:[self.delegate onGetServerName]];
+      [CollaborateUtils.Instance.api getTokenData:token server:server];
+   // [CollaborateUtils.Instance.api getTokenData:self.personalID server:self.serverName];
+    //[CollaborateUtils.Instance.api getTokenData:[self.delegate onGetPersonalID] server:[self.delegate onGetServerName]];
 
     NSLog(@"VC - after CollaborateUtils.Instance.api");
 
