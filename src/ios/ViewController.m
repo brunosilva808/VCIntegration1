@@ -40,7 +40,9 @@
     server = instance.myServer;
     token = instance.myToken;
 
-    NSString* msg = [NSString stringWithFormat: @"serverName: %@ personalID: %@", self.serverName, self.personalID];
+//    NSString* msg = [NSString stringWithFormat: @"serverName: %@ personalID: %@", self.serverName, self.personalID];
+
+    NSString* msg = [NSString stringWithFormat: @"serverName: %@ personalID: %@", server, token];
 
   //  NSString* msg = [NSString stringWithFormat: @"serverName: %@ personalID: %@", [self.delegate onGetServerName] , [self.delegate onGetPersonalID]];
 
@@ -53,7 +55,7 @@
 //   if ([server length] == 0)
 //       [CollaborateUtils.Instance.api getTokenData:token server:nil];
 //    else
-      // [CollaborateUtils.Instance.api getTokenData:token server:server];
+       [CollaborateUtils.Instance.api getTokenData:token server:server];
       // [CollaborateUtils.Instance.api getTokenData:self.personalID server:self.serverName];
   //     [CollaborateUtils.Instance.api getTokenData:[self.delegate onGetPersonalID] server:[self.delegate onGetServerName]];
 
