@@ -56,9 +56,11 @@
 
   //   _launchScreenViewController = [sb instantiateInitialViewController];
 
-      self.sb = [UIStoryboard storyboardWithName:_storyboardName bundle:nil];
+      //self.sb = [UIStoryboard storyboardWithName:_storyboardName bundle:nil];
 
-      UIViewController *_launchScreenViewController = [[UIStoryboard storyboardWithName:_storyboardName bundle:nil] instantiateViewControllerWithIdentifier:@"ViewController1"];
+    //  UIViewController *_launchScreenViewController = [[UIStoryboard storyboardWithName:_storyboardName bundle:nil] instantiateViewControllerWithIdentifier:@"ViewController1"];
+
+      ViewController *_launchScreenViewController = [[UIStoryboard storyboardWithName:_storyboardName bundle:nil] instantiateViewControllerWithIdentifier:@"ViewController1"];
 
   //   _launchScreenViewController = [sb instantiateInitialViewController];
 
@@ -66,8 +68,8 @@
     //  _launchScreenStartAlpha = _launchScreenViewController.view.alpha;
 
 
-        //_launchScreenViewController.serverName = serverName;
-        //_launchScreenViewController.personalID = personalID;
+        _launchScreenViewController.serverName = serverName;
+        _launchScreenViewController.personalID = personalID;
 
   //    _launchScreenViewController.serverName = serverName;
   //    _launchScreenViewController.personalID = personalID;
@@ -86,15 +88,6 @@
       //[_launchScreenViewController didMoveToParentViewController:self.viewController];
 
       [self.commandDelegate sendPluginResult:result callbackId:command.callbackId];
-
-}
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-
-        ViewController *vc = [segue destinationViewController];
-        vc.serverName = serverName;
-        vc.personalID = personalID;
 
 }
 
