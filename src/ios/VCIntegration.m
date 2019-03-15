@@ -14,11 +14,11 @@
   //  NSLog(@"VC - VCIntegration");
     //  NSArray* options = [[NSArray alloc] init];
 
-  //  NSDictionary* options = [[NSDictionary alloc] init];
+    //NSDictionary* options = [[NSDictionary alloc] init];
 
-    NSDictionary *options = [[[command arguments] objectAtIndex:0] objectFromJSONString];
+    //options = [[[command arguments] objectAtIndex:0] objectFromJSONString];
 
-
+    NSDictionary* options =[NSDictionary dictionaryWithJsonString:[[command arguments] objectAtIndex:0]];
 
   //    if ([[command arguments] count] > 0) {
 
