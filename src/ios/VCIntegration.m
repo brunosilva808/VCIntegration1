@@ -20,8 +20,9 @@
 
      NSString* msg = [NSString stringWithFormat: @"serverName: %@ personalID: %@", [options valueForKey:@"serverName"], [options valueForKey:@"personalID"]];
 
-     serverName = [options valueForKey:@"serverName"];
-     personalID = [options valueForKey:@"personalID"];
+     serverName = [NSString stringWithFormat: @"%@",[options valueForKey:@"serverName"]];
+
+     personalID = [NSString stringWithFormat: @"%@",[options valueForKey:@"personalID"]];
 
     //  NSString* serverName = [[command arguments] objectAtIndex:0];
     //  NSString* userMail = [[command arguments] objectAtIndex:1];
