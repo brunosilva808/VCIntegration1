@@ -37,9 +37,9 @@
     NSString *server = @"collaboratespace.net";
     NSString *token = @"76385055";
 
-    NSString* msg = [NSString stringWithFormat: @"serverName: %@ personalID: %@", self.serverName, self.personalID];
+    // NSString* msg = [NSString stringWithFormat: @"serverName: %@ personalID: %@", self.serverName, self.personalID];
 
-  //  NSString* msg = [NSString stringWithFormat: @"serverName: %@ personalID: %@", [self.delegate onGetServerName] , [self.delegate onGetPersonalID]];
+    NSString* msg = [NSString stringWithFormat: @"serverName: %@ personalID: %@", [self.delegate onGetServerName] , [self.delegate onGetPersonalID]];
 
     UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Testing"
                                       message:msg
@@ -52,7 +52,7 @@
 //    else
       // [CollaborateUtils.Instance.api getTokenData:token server:server];
       // [CollaborateUtils.Instance.api getTokenData:self.personalID server:self.serverName];
-  //     [CollaborateUtils.Instance.api getTokenData:[self.delegate onGetPersonalID] server:[self.delegate onGetServerName]];
+    [CollaborateUtils.Instance.api getTokenData:[self.delegate onGetPersonalID] server:[self.delegate onGetServerName]];
 
     NSLog(@"VC - after CollaborateUtils.Instance.api");
 
