@@ -37,11 +37,11 @@
       NSString* serverName = [[command arguments] objectAtIndex:0];
     //  NSString* userMail = [[command arguments] objectAtIndex:1];
     //  NSString* passWord = [[command arguments] objectAtIndex:2];
-      NSString* personalID = [[command arguments] objectAtIndex:1];
+  //    NSString* personalID = [[command arguments] objectAtIndex:1];
       //NSString* personalID = [options objectAtIndex:1];
     //  NSString* personalID = [arguments objectAtIndex:1];
 
-      NSLog(@"VC - VCIntegration1 %@", serverName);
+//      NSLog(@"VC - VCIntegration1 %@", serverName);
     //  NSLog(@"VC - VCIntegration2 %@", userMail);
       //NSLog(@"VC - VCIntegration3 %@", passWord);
     //  NSLog(@"VC - VCIntegration4 %@", personalID);
@@ -52,7 +52,7 @@
                                  messageAsString:msg];
 
      UIAlertView *alert = [[UIAlertView alloc]initWithTitle:serverName
-                                       message:personalID
+                                       message:@"none"
                                       delegate:nil cancelButtonTitle:@"ok" otherButtonTitles: nil];
 
      [alert show];
