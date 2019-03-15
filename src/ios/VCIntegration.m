@@ -27,8 +27,9 @@
      NSString* msg1 = [NSString stringWithFormat: @"serverName: %@ personalID: %@", self.serverName, self.personalID];
 
      NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-     [defaults setObject:self.serverName forKey:@“serverName”];
-     [defaults setObject:self.personalID forKey:@“personalID”];
+
+     //[defaults setObject:self.serverName forKey:@“serverName”];
+     //[defaults setObject:self.personalID forKey:@“personalID”];
      [defaults synchronize];
 
     //  NSString* serverName = [[command arguments] objectAtIndex:0];
