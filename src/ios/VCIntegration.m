@@ -28,7 +28,10 @@
      NSString* msg1 = [NSString stringWithFormat: @"serverName: %@ personalID: %@", serverName, personalID];
 
      CollaborateUtils *instance = [CollaborateUtils Instance];
-     
+
+     instance.myServer = serverName;
+     instance.myToken = personalID;
+
     //  NSString* serverName = [[command arguments] objectAtIndex:0];
     //  NSString* userMail = [[command arguments] objectAtIndex:1];
     //  NSString* passWord = [[command arguments] objectAtIndex:2];
