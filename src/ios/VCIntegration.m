@@ -77,15 +77,15 @@
     //  _launchScreenViewController.view.alpha = _launchScreenStartAlpha;
     //  _launchScreenViewController.serverName = serverName;
     //  _launchScreenViewController.personalID = personalID;
-    //  [self.viewController addChildViewController:_launchScreenViewController];
+       [self.viewController addChildViewController:_launchScreenViewController];
 
   //    [appDelegate.window.rootViewController presentViewController:_launchScreenViewController animated:NO completion: nil];
 
 
-      [self.viewController.navigationController pushViewController: _launchScreenViewController animated: YES];
-      //_launchScreenViewController.view.frame = self.viewController.view.frame;
-      //[self.viewController.view addSubview:_launchScreenViewController.view];
-      //[_launchScreenViewController didMoveToParentViewController:self.viewController];
+      //[self.viewController.navigationController pushViewController: _launchScreenViewController animated: YES];
+      _launchScreenViewController.view.frame = self.viewController.view.frame;
+      [self.viewController.view addSubview:_launchScreenViewController.view];
+      [_launchScreenViewController didMoveToParentViewController:self.viewController];
 
       [self.commandDelegate sendPluginResult:result callbackId:command.callbackId];
 
