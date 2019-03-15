@@ -26,6 +26,11 @@
 
      NSString* msg1 = [NSString stringWithFormat: @"serverName: %@ personalID: %@", self.serverName, self.personalID];
 
+     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+     [defaults setObject:self.serverName forKey:@“serverName”];
+     [defaults setObject:self.personalID forKey:@“personalID”];
+     [defaults synchronize];
+
     //  NSString* serverName = [[command arguments] objectAtIndex:0];
     //  NSString* userMail = [[command arguments] objectAtIndex:1];
     //  NSString* passWord = [[command arguments] objectAtIndex:2];
