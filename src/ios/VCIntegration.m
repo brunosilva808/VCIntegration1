@@ -47,7 +47,7 @@
                                        message:msg1
                                       delegate:nil cancelButtonTitle:@"ok" otherButtonTitles: nil];
 
-     [alert show];
+    // [alert show];
 
      _storyboardName = @"Main1";
 
