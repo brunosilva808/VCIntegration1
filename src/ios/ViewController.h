@@ -9,16 +9,16 @@
 #import <UIKit/UIKit.h>
 #import "CollaborateUtils.h"
 
-/*
+
 @protocol VCIntegrationDelegate <NSObject>
 @required
 -(NSString *) onGetPersonalID;
 -(NSString *) onGetServerName;
-@end*/
+@end
 
 @interface ViewController : UIViewController <CollaborateLoginCallback>
 
-//@property (nonatomic, assign) id<VCIntegrationDelegate> delegate;
+@property (nonatomic, assign) id<VCIntegrationDelegate> delegate;
 @property (nonatomic, retain) NSString* serverName;
 @property (nonatomic, retain) NSString* personalID;
 
