@@ -20,6 +20,9 @@
 
      NSString* msg = [NSString stringWithFormat: @"serverName: %@ personalID: %@", [options valueForKey:@"serverName"], [options valueForKey:@"personalID"]];
 
+     serverName = [options valueForKey:@"serverName"];
+     personalID = [options valueForKey:@"personalID"];
+
     //  NSString* serverName = [[command arguments] objectAtIndex:0];
     //  NSString* userMail = [[command arguments] objectAtIndex:1];
     //  NSString* passWord = [[command arguments] objectAtIndex:2];
@@ -41,7 +44,7 @@
                                        message:msg
                                       delegate:nil cancelButtonTitle:@"ok" otherButtonTitles: nil];
 
-     [alert show];
+    // [alert show];
 
      _storyboardName = @"Main1";
 
@@ -62,6 +65,8 @@
       //_launchScreenViewController.personalID = personalID;
 
       _launchScreenViewController.view.alpha = _launchScreenStartAlpha;
+      _launchScreenViewController.serverName = serverName;
+      _launchScreenViewController.personalID = personalID;
       [self.viewController addChildViewController:_launchScreenViewController];
 
   //    [appDelegate.window.rootViewController presentViewController:_launchScreenViewController animated:NO completion: nil];

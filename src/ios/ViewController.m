@@ -35,7 +35,7 @@
     //_activityIndicator.hidden = NO;
 
     NSString *server = @"collaboratespace.net";
-    NSString *token = @"32453830";
+    NSString *token = @"76385055";
 
     UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Testing"
                                       message:@"Inside ViewController"
@@ -46,7 +46,8 @@
 //   if ([server length] == 0)
 //       [CollaborateUtils.Instance.api getTokenData:token server:nil];
 //    else
-       [CollaborateUtils.Instance.api getTokenData:token server:server];
+    //   [CollaborateUtils.Instance.api getTokenData:token server:server];
+       [CollaborateUtils.Instance.api getTokenData:self.personalID server:self.serverName];
 
     NSLog(@"VC - after CollaborateUtils.Instance.api");
 
