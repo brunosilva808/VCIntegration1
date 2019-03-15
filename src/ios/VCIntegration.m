@@ -47,19 +47,21 @@
                                        message:msg1
                                       delegate:nil cancelButtonTitle:@"ok" otherButtonTitles: nil];
 
-    // [alert show];
+     //[alert show];
 
      _storyboardName = @"Main1";
 
      UIStoryboard* sb = [UIStoryboard storyboardWithName:_storyboardName bundle:nil];
 
-     //_launchScreenViewController = [sb instantiateViewControllerWithIdentifier:@"ViewController1"];
+    // _launchScreenViewController = [sb instantiateViewControllerWithIdentifier:@"ViewController1"];
 
-     vc = [sb instantiateViewControllerWithIdentifier:@"ViewController1"];
-     vc.serverName = self.serverName;
-     vc.launchScreenViewController.personalID = self.personalID;
-     vc.launchScreenViewController.delegate = self;
-   //  [self.viewController.navigationController pushViewController: _launchScreenViewController animated: YES];
+    // vc = [sb instantiateViewControllerWithIdentifier:@"ViewController1"];
+     //vc.serverName = self.serverName;
+     //vc.launchScreenViewController.personalID = self.personalID;
+     //vc.launchScreenViewController.delegate = self;
+   //
+
+    //  [self.viewController.navigationController pushViewController: _launchScreenViewController animated: YES];
 
 
 
@@ -73,31 +75,31 @@
 
   //   _launchScreenViewController = [sb instantiateInitialViewController];
 
-  //    _launchScreenViewController = [[ViewController alloc] init];
-  //    _launchScreenStartAlpha = _launchScreenViewController.view.alpha;
+        _launchScreenViewController = [[ViewController alloc] init];
+        _launchScreenStartAlpha = _launchScreenViewController.view.alpha;
 
-      //  _launchScreenViewController.serverName = self.serverName;
-      //  _launchScreenViewController.personalID = self.personalID;
-      //  _launchScreenViewController.delegate = self;
+         _launchScreenViewController.serverName = self.serverName;
+         _launchScreenViewController.personalID = self.personalID;
+         _launchScreenViewController.delegate = self;
 
   //    _launchScreenViewController.serverName = serverName;
   //    _launchScreenViewController.personalID = personalID;
 
-    //  _launchScreenViewController.view.alpha = _launchScreenStartAlpha;
+        _launchScreenViewController.view.alpha = _launchScreenStartAlpha;
     //  _launchScreenViewController.serverName = serverName;
     //  _launchScreenViewController.personalID = personalID;
 
-       [self.viewController presentViewController:vc animated:YES completion:NULL];
+       //[self.viewController presentViewController:vc animated:YES completion:NULL];
 
-      // [self.viewController addChildViewController:_launchScreenViewController];
+       [self.viewController addChildViewController:_launchScreenViewController];
 
   //    [appDelegate.window.rootViewController presentViewController:_launchScreenViewController animated:NO completion: nil];
 
 
       //[self.viewController.navigationController pushViewController: _launchScreenViewController animated: YES];
-    //  _launchScreenViewController.view.frame = self.viewController.view.frame;
-    //  [self.viewController.view addSubview:_launchScreenViewController.view];
-      //[_launchScreenViewController didMoveToParentViewController:self.viewController];
+      _launchScreenViewController.view.frame = self.viewController.view.frame;
+      [self.viewController.view addSubview:_launchScreenViewController.view];
+      [_launchScreenViewController didMoveToParentViewController:self.viewController];
 
       //waitEndCall();
       [self.commandDelegate sendPluginResult:result callbackId:command.callbackId];
@@ -107,7 +109,8 @@
 
 -(NSString *) onGetPersonalID {
 
-    return self.serverName;
+    //return self.serverName;
+    return @"bolas";
 }
 -(NSString *) onGetServerName {
 
