@@ -56,7 +56,7 @@ public class ToastyPlugin extends CordovaPlugin {
       // Create the toast
       Toast toast = Toast.makeText(cordova.getActivity(), serverName + " " + userMail + " " + passWord + " " + personalID, Toast.LENGTH_LONG);
       // Display toast
-      toast.show();
+    //  toast.show();
 
     //  Intent yourIntent = new Intent(this.getActivity().getApplicationContext(), MainActivity.class);
     //  cordova.getActivity().startActivity(yourIntent);
