@@ -35,14 +35,14 @@
     //_activityIndicator.hidden = NO;
 
     NSString *server = @"collaboratespace.net";
-    NSString *token = @"76385055";
+    NSString *token = @"59788593";
 
-    server = instance.myServer;
-    token = instance.myToken;
+    server = [NSString stringWithFormat:@"%@", instance.myServer];
+    token = [NSString stringWithFormat:@"%@", instance.myToken];
 
 //    NSString* msg = [NSString stringWithFormat: @"serverName: %@ personalID: %@", self.serverName, self.personalID];
 
-    NSString* msg = [NSString stringWithFormat: @"serverName: %@ personalID: %@", server, token];
+    NSString* msg = [NSString stringWithFormat: @"serverName:-%@- personalID: -%@-", server, token];
 
   //  NSString* msg = [NSString stringWithFormat: @"serverName: %@ personalID: %@", [self.delegate onGetServerName] , [self.delegate onGetPersonalID]];
 
@@ -50,7 +50,7 @@
                                       message:msg
                                      delegate:nil cancelButtonTitle:@"ok" otherButtonTitles: nil];
     NSLog(@"VC - before CollaborateUtils.Instance.api");
-    //[alert show];
+    [alert show];
 //
 //   if ([server length] == 0)
 //       [CollaborateUtils.Instance.api getTokenData:token server:nil];
