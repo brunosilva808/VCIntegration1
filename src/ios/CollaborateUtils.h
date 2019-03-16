@@ -188,9 +188,4 @@ ISpontaniaIMApiDelegate has too many functions, so we simplify to different prot
  */
 @property (nonatomic, retain) ISptCall *currentCall;
 
-// Askblue code
-
-@property (nonatomic, retain) NSString *myServer;
-@property (nonatomic, retain) NSString *myToken;
-
 @end

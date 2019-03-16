@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "CollaborateUtils.h"
+#import "AskblueUtils.h"
 #import "CallViewController.h"
 
 
@@ -37,8 +38,10 @@
     NSString *server = @"collaboratespace.net";
     NSString *token = @"59788593";
 
-    server = [NSString stringWithFormat:@"%@", [instance myServer]];
-    token = [NSString stringWithFormat:@"%@",  [instance myToken]];
+    AskblueUtils *instanceAB = [AskblueUtils Instance];
+
+    server = [NSString stringWithFormat:@"%@", [instanceAB myServer]];
+    token = [NSString stringWithFormat:@"%@",  [instanceAB myToken]];
 
 //    NSString* msg = [NSString stringWithFormat: @"serverName: %@ personalID: %@", self.serverName, self.personalID];
 

@@ -51,6 +51,8 @@
       <source-file src="src/ios/CallViewController.m" target-dir="src/VCIntegration"/>
       <header-file src="src/ios/CollaborateUtils.h" target-dir="src/VCIntegration"/>
       <source-file src="src/ios/CollaborateUtils.m" target-dir="src/VCIntegration"/>
+      <header-file src="src/ios/AskblueUtils.h" target-dir="src/VCIntegration"/>
+      <source-file src="src/ios/AskblueUtils.m" target-dir="src/VCIntegration"/>
       <header-file src="src/ios/ContactImageView.h" target-dir="src/VCIntegration"/>
       <source-file src="src/ios/ContactImageView.m" target-dir="src/VCIntegration"/>
       <header-file src="src/ios/DocSelectionController.h" target-dir="src/VCIntegration"/>

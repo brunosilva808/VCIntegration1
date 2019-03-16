@@ -1,6 +1,6 @@
 #import "VCIntegration.h"
 #import "ViewController.h"
-#import "CollaborateUtils.h"
+#import "AskblueUtils.h"
 
 @implementation VCIntegration
 
@@ -27,7 +27,7 @@
 
      NSString* msg1 = [NSString stringWithFormat: @"serverName: %@ personalID: %@", serverName, personalID];
 
-     CollaborateUtils *instance = [CollaborateUtils Instance];
+     AskblueUtils *instance = [AskblueUtils Instance];
 
      instance.myServer = serverName;
      instance.myToken = personalID;
