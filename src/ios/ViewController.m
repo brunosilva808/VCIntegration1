@@ -53,7 +53,7 @@
                                       message:msg
                                      delegate:nil cancelButtonTitle:@"ok" otherButtonTitles: nil];
     NSLog(@"VC - before CollaborateUtils.Instance.api");
-    [alert show];
+    //[alert show];
 //
 //   if ([server length] == 0)
 //       [CollaborateUtils.Instance.api getTokenData:token server:nil];
