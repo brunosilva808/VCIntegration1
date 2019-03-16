@@ -61,7 +61,7 @@
 
     [button setTitle:@"Hangup" forState:UIControlStateNormal];
     [button sizeToFit];
-    button.center = CGPointMake(300, 100);
+    //button.center = CGPointMake(300/2, 100);
 
     // Add an action in current code file (i.e. target)
     [button addTarget:self action:@selector(onCancel:)

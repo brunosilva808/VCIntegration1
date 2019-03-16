@@ -37,12 +37,12 @@
     NSString *server = @"collaboratespace.net";
     NSString *token = @"59788593";
 
-    server = [NSString stringWithFormat:@"%@", instance.myServer];
-    token = [NSString stringWithFormat:@"%@", instance.myToken];
+    server = [NSString stringWithFormat:@"%@", [instance myServer]];
+    token = [NSString stringWithFormat:@"%@",  [instance myToken]];
 
 //    NSString* msg = [NSString stringWithFormat: @"serverName: %@ personalID: %@", self.serverName, self.personalID];
 
-    NSString* msg = [NSString stringWithFormat: @"serverName:-%@- personalID: -%@-", server, token];
+    NSString* msg = [NSString stringWithFormat: @"serverName:%@:personalID:%@:", server, token];
 
   //  NSString* msg = [NSString stringWithFormat: @"serverName: %@ personalID: %@", [self.delegate onGetServerName] , [self.delegate onGetPersonalID]];
 
