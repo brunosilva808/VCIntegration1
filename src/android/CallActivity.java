@@ -13,6 +13,8 @@ import android.support.v7.app.AppCompatActivity; // alterado para v4
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;  // alterado para v4
 import android.view.View;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.WindowManager;
 import android.content.res.Resources;
 
@@ -31,7 +33,7 @@ import com.askblue.cordova.plugin.TestConnectMeetingApplication;
 import static com.clearone.sptimpublicsdk.ParticipantServices.eSptServiceActive;
 import static com.clearone.sptimpublicsdk.SptCallParticipantID.SPT_LOCAL_CALLPARTICIPANT_ID;
 
-public class CallActivity extends AppCompatActivity implements SptCallFragment.OnSptCallFragmentListener, SharingOptionsDialog.SharingOptionsDialogListener {
+public class CallActivity extends AppCompatActivity implements SptCallFragment.OnSptCallFragmentListener {
 
     public static final String EXTRA_CALL_ID = "EXTRA_CALL_ID";
     private static final int REQUEST_CODE_SHARE_GALLERY = 100;
