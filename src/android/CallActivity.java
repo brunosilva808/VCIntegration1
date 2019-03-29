@@ -31,7 +31,7 @@ import com.askblue.cordova.plugin.TestConnectMeetingApplication;
 import static com.clearone.sptimpublicsdk.ParticipantServices.eSptServiceActive;
 import static com.clearone.sptimpublicsdk.SptCallParticipantID.SPT_LOCAL_CALLPARTICIPANT_ID;
 
-public class CallActivity extends AppCompatActivity implements SptCallFragment.OnSptCallFragmentListener{
+public class CallActivity extends AppCompatActivity implements SptCallFragment.OnSptCallFragmentListener, SharingOptionsDialog.SharingOptionsDialogListener {
 
     public static final String EXTRA_CALL_ID = "EXTRA_CALL_ID";
     private static final int REQUEST_CODE_SHARE_GALLERY = 100;
