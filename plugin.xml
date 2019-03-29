@@ -119,8 +119,11 @@
         <source-file src="src/android/CallActivity.java" target-dir="src/com/askblue/cordova/plugin" />
         <source-file src="src/android/SptCallObserver.java" target-dir="src/com/askblue/cordova/plugin" />
         <source-file src="src/android/SptIMObserver.java" target-dir="src/com/askblue/cordova/plugin" />
+        <source-file src="src/android/SequenceItemView.java" target-dir="src/com/askblue/cordova/plugin/sequences" />
+        <source-file src="src/android/SequencesAdapter.java" target-dir="src/com/askblue/cordova/plugin/sequences" />
+        <source-file src="src/android/SequencesFragment.java" target-dir="src/com/askblue/cordova/plugin/sequences" />
         <source-file src="src/android/SharingOptionsDialog.java" target-dir="src/com/askblue/cordova/plugin" />
-        <source-file src="src/android/TestConnectMeetingApplication.java" target-dir="src/com/askblue/cordova/plugin" />
+        <source-file src="src/android/TestCoContactItemViewnnectMeetingApplication.java" target-dir="src/com/askblue/cordova/plugin" />
         <source-file src="src/android/colors.xml" target-dir="res/values"/>
         <source-file src="src/android/styles.xml" target-dir="res/values"/>
         <source-file src="src/android/dimens.xml" target-dir="res/values"/>
