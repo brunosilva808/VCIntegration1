@@ -114,6 +114,52 @@ public class CallActivity extends AppCompatActivity implements SptCallFragment.O
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+      String package_name = getApplication().getPackageName();
+      Resources resources = getApplication().getResources();
+    //  setContentView(resources.getIdentifier("content_main", "layout", package_name));
+    //  setTitle(" ");
+
+        getMenuInflater().inflate(resources.getIdentifier("call_menu", "layout", package_name), menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+
+        ISptCallData callData = _sdk.getActiveCallbyID(_callID);
+        boolean bSharingActive = false;
+        if(callData != null)
+        {
+         ISptCallParticipant localParticipant = callData.getParticipantByID(_localParticipantID);
+         if(localParticipant != null)
+             bSharingActive = (localParticipant.getServices().iSharingService & eSptServiceActive)!=0;
+        }
+
+
+        MenuItem item = menu.findItem(R.id.call_menu_start_sharing_item);
+        item.setVisible(!bSharingActive);
+        item = menu.findItem(R.id.call_menu_stop_sharing_item);
+        item.setVisible(bSharingActive);
+        return super.onPrepareOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId())
+        {
+            case R.id.call_menu_start_sharing_item:
+                requestSharingService(true);
+                break;
+            case R.id.call_menu_stop_sharing_item:
+                requestSharingService(false);
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
     public boolean isActionBarShowing() {
         return false;
     }
