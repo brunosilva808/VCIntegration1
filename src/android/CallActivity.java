@@ -352,23 +352,6 @@ public class CallActivity extends AppCompatActivity implements SptCallFragment.O
       }
   }
 
-  @Override
-  void onActivityResult(int requestCode, int resultCode, Intent data) {
-      super.onActivityResult(requestCode, resultCode, data);
-      switch (requestCode)
-      {
-          case REQUEST_CODE_SHARE_GALLERY:
-              if(resultCode == Activity.RESULT_OK)
-                  onShareGalleryResult(data);
-              break;
-      }
-
-      if(requestCode == _screenSharingRequestCode)
-      {
-          onShareScreenResult(resultCode, data);
-          _screenSharingRequestCode = -1;
-      }
-  }
 
   @Override
   public void onBackPressed()
