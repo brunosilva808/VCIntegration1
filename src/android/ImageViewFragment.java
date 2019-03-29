@@ -1,4 +1,4 @@
-package com.clearone.testconnectmeeting;
+package com.askblue.cordova.plugin;
 
 import android.content.Context;
 import android.graphics.Bitmap;
