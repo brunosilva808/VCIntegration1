@@ -19,7 +19,7 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.support.media.ExifInterface;
+//import android.support.media.ExifInterface;
 
 
 import com.clearone.sptcore.sptim.SptSize;
