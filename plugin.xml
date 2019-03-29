@@ -125,7 +125,6 @@
         <source-file src="src/android/styles.xml" target-dir="res/values"/>
         <source-file src="src/android/dimens.xml" target-dir="res/values"/>
         <config-file target="res/values/strings.xml" parent="/*">
-            <string name="app_name">Dubai Courts</string>
             <string name="sharing_option_gallery_label">Share Media from Gallery</string>
         </config-file>
         <source-file src="src/android/activity_main.xml" target-dir="res/layout"/>
