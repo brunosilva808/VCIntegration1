@@ -119,22 +119,11 @@
         <source-file src="src/android/CallActivity.java" target-dir="src/com/askblue/cordova/plugin" />
         <source-file src="src/android/SptCallObserver.java" target-dir="src/com/askblue/cordova/plugin" />
         <source-file src="src/android/SptIMObserver.java" target-dir="src/com/askblue/cordova/plugin" />
-        <source-file src="src/android/ContactItemView.java" target-dir="src/com/askblue/cordova/plugin/contacts" />
-        <source-file src="src/android/ContactsAdapter.java" target-dir="src/com/askblue/cordova/plugin/contacts" />
-        <source-file src="src/android/ContactsFragment.java" target-dir="src/com/askblue/cordova/plugin/contacts" />
-        <source-file src="src/android/SequenceItemView.java" target-dir="src/com/askblue/cordova/plugin/sequences" />
-        <source-file src="src/android/SequencesAdapter.java" target-dir="src/com/askblue/cordova/plugin/sequences" />
-        <source-file src="src/android/SequencesFragment.java" target-dir="src/com/askblue/cordova/plugin/sequences" />
-        <source-file src="src/android/SharingOptionsDialog.java" target-dir="src/com/askblue/cordova/plugin" />
-        <source-file src="src/android/TestCoContactItemViewnnectMeetingApplication.java" target-dir="src/com/askblue/cordova/plugin" />
+        <source-file src="src/android/TestConnectMeetingApplication.java" target-dir="src/com/askblue/cordova/plugin" />
         <source-file src="src/android/colors.xml" target-dir="res/values"/>
         <source-file src="src/android/styles.xml" target-dir="res/values"/>
         <source-file src="src/android/dimens.xml" target-dir="res/values"/>
-        <config-file target="res/values/strings.xml" parent="/*">
-            <string name="sharing_option_gallery_label">Share Media from Gallery</string>
-        </config-file>
         <source-file src="src/android/activity_main.xml" target-dir="res/layout"/>
-        <source-file src="src/android/fragment_sharing_options_dialog.xml" target-dir="res/layout"/>
         <source-file src="src/android/content_main.xml" target-dir="res/layout"/>
 
     </platform>

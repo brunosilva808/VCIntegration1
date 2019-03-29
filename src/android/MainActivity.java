@@ -1,75 +1,259 @@
-package com.clearone.testconnectmeeting;
+package com.askblue.cordova.plugin;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
+import android.os.Bundle;
+import org.apache.cordova.*;
+import android.util.Log;
+
+import android.Manifest;
 import android.content.Intent;
 import android.support.annotation.Nullable;
-import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
+import android.content.pm.PackageManager;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AppCompatActivity;  // alterado
 import android.os.Bundle;
-import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.content.res.Resources;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 
 import com.clearone.sptimpublicsdk.ISptCallData;
 import com.clearone.sptimpublicsdk.ISptIMSDK;
+import com.clearone.sptimpublicsdk.ISptSDKCallObserver;
+import com.clearone.sptimpublicsdk.ISptIMSDKObserver;
+import com.clearone.sptimpublicsdk.SptCallID;
+import com.clearone.sptimpublicsdk.SptJoinCall;
+import com.clearone.sptimpublicsdk.SptIMSDKApp;
+
+import com.clearone.sptimpublicsdk.ISptIMContact;
 import com.clearone.sptimpublicsdk.ISptSchMeeting;
 import com.clearone.sptimpublicsdk.ISptSchMeetingSequence;
-import com.clearone.sptimpublicsdk.SptCallID;
-import com.clearone.sptimpublicsdk.SptIMSDKApp;
+import com.clearone.sptimpublicsdk.SptIMContactID;
 import com.clearone.sptimpublicsdk.SptSchJoinMeeting;
 import com.clearone.sptimpublicsdk.SptSchMeetingSequenceID;
-import com.clearone.testconnectmeeting.contacts.ContactsFragment;
-import com.clearone.testconnectmeeting.sequences.SequencesFragment;
+import com.clearone.sptcore.sptim.SptTokenDataResult;
 
-public class MainActivity extends AppCompatActivity
-{
-    public static final String EXTRA_JOIN_TO_MEETING = "EXTRA_JOIN_TO_MEETING";
-    MainActivitySptIMObserver _sptIMObserver;
+import com.askblue.cordova.plugin.TestConnectMeetingApplication;
+
+import static com.clearone.sptimpublicsdk.ISptIMSDK.eSptResult.eSptIMResultError;
+
+import java.util.ArrayList;
+
+public class MainActivity extends AppCompatActivity {
+
+    private static int REQUEST_CODE_ASK_PERMISSIONS = 1;
+    public static String EXTRA_JOIN_TO_MEETING = "EXTRA_JOIN_TO_MEETING";
+
+    TextConnectSptIMObserver _sptObserver;
+    //MainActivitySptIMObserver _sptIMObserver;
     TestConnectSptCallObserver _callObserver;
-    ViewPager _viewPager;
-    MainPagerAdapter _pageAdapter;
-    TabLayout _tabLayout;
+  //  ViewPager _viewPager;
+  //  MainPagerAdapter _pageAdapter;
+  //  TabLayout _tabLayout;
     SptSchMeetingSequenceID _tokenSequenceID;
     ISptIMSDK _sdk;
     SptCallID _callID;
+
+    EditText _serverView;
+    EditText _sessionIdView;
+    EditText _userView;
+    Button _connectButton;
+  //  SptCallID _callID;
+    SptIMSDKApp _app;
     AlertDialog _callDialog;
+
+    //TestConnectMeetingApplication _app;
+
+    //ISptIMSDK _sdk;
+    //TestConnectSptCallObserver _callObserver;
+
+    class TextConnectSptIMObserver extends SptIMObserver
+    {
+        @Override
+        public void onConnected()
+        {
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run()
+                {
+                    Log.v("main: ", "onSchMeetingsSynchronized1");
+                    if(_tokenSequenceID == null)
+                    {
+                      //  Intent i = new Intent(MainActivity.this, CallActivity.class);
+                      //  startActivity(i);
+
+                      Log.v("main: ", "onSchMeetingsSynchronized1 - null");
+                      //  finish();
+                    }
+                    else if(_sdk.areMeetingsSynchronized())
+                    {
+
+                      Log.v("main: ", "onSchMeetingsSynchronized3");
+
+                      //processLaunchFromToken(_tokenSequenceID);
+                      //  Intent i = new Intent(MainActivity.this, CallActivity.class);
+
+                      //  i.putExtra(EXTRA_JOIN_TO_MEETING, _tokenSequenceID.intValue());
+                      //  startActivity(i);
+                      //  finish();
+                    }
+                }
+            });
+        }
+
+        @Override
+        public void onSchMeetingsSynchronized()
+        {
+          Log.v("main: ", "onSchMeetingsSynchronized");
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run()
+                {
+                    if(_tokenSequenceID != null)
+                    {
+                        // Intent i = new Intent(MainActivity.this, CallActivity.class);
+
+                      //  i.putExtra(EXTRA_JOIN_TO_MEETING, _tokenSequenceID.intValue());
+                      //  startActivity(i);
+
+                        Log.v("main: ", "onSchMeetingsSynchronized not null");
+                        processLaunchFromToken(_tokenSequenceID);
+                      //  Intent i = new Intent(MainActivity.this, CallActivity.class);
+
+                      //  if(_callID != null)
+                      //        i.putExtra(CallActivity.EXTRA_CALL_ID, _callID.intValue());
+                      //  startActivity(i);
+                      //  finish();
+                    }
+                }
+            });
+        }
+
+        @Override
+        public void onDisconnected()
+        {
+            super.onDisconnected();
+        }
+
+        @Override
+        public void onConnectionError(final ISptIMSDK.eSptConnectionResult eResult)
+        {
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run()
+                {
+                  //  _progressView.setVisibility(View.GONE);
+                    switch (eResult)
+                    {
+                        case eSptIMConnect_AuthError:
+                  //          showToast("eSptIMConnect_AuthError");
+                            break;
+                        case eSptIMConnect_GDPRPending:
+                    //        showGdprDialog();
+                            break;
+                        case eSptIMConnect_CredentialsError:
+                      //      _emailView.setError("Credentials Error");
+                      //      _passwordView.setError("Credentials Error");
+                            break;
+                        case eSptIMConnect_NetworkError:
+                      //      _serverView.setError("Server Not Reachable");
+                            break;
+                    }
+                }
+            });
+        }
+
+        @Override
+        public void onGetTokenDataRes(final SptTokenDataResult tokenDataRes)
+        {
+
+           Log.v("main: ", "onGetTokenDataRes");
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run()
+                {
+                    switch(tokenDataRes.getResult())
+                    {
+                        case SptTokenDataResultJoinMeeting:
+                             Log.v("main: ", "SptTokenDataResultJoinMeeting");
+                            _tokenSequenceID = tokenDataRes.getMeetingSequenceID();
+                            if(!tokenDataRes.contactAlreadyLogged())
+                                _sdk.loginWithTokenDataResult(tokenDataRes);
+                            else
+                                processLaunchFromToken(_tokenSequenceID);
+                            break;
+                        case SptTokenDataResultLogin:
+                            _tokenSequenceID = tokenDataRes.getMeetingSequenceID();
+                            if(!tokenDataRes.contactAlreadyLogged())
+                                _sdk.loginWithTokenDataResult(tokenDataRes);
+                        case SptTokenDataResultInvalidToken:
+                          //  _tokenView.setError("Invalid Token");
+                          //  _progressView.setVisibility(View.GONE);
+                            break;
+                        case SptTokenDataResultServerNotReachable:
+                          //  _passwordView.setError("Server Not Reachable");
+                        //    _progressView.setVisibility(View.GONE);
+                            break;
+                        case SptTokenDataResultError:
+                          //  showToast("SptTokenDataResultError");
+                            break;
+                    }
+
+                }
+            });
+        }
+    }
 
     class TestConnectSptCallObserver extends SptCallObserver
     {
         @Override
-        public void onCallEventConnected(SptCallID sptCallID, ISptCallData iSptCallData) {
+        public void onCallEventConnected(final SptCallID sptCallID, ISptCallData iSptCallData) {
+
+          Log.v("main: ", "SptCallObserver");
             runOnUiThread(new Runnable() {
+
                 @Override
                 public void run() {
                     Intent i = new Intent(MainActivity.this, CallActivity.class);
-                    if(_callID != null)
-                        i.putExtra(CallActivity.EXTRA_CALL_ID, _callID.intValue());
+                    if(_callID == null)
+                        _callID = sptCallID;
+                    //_tokenSequenceID = new SptSchMeetingSequenceID();
+                    if(_callID  != null)
+                        i.putExtra(CallActivity.EXTRA_CALL_ID, sptCallID.intValue());
                     startActivity(i);
+                    finish();
                 }
             });
         }
 
         @Override
         public void onCallEventDisconnected(SptCallID sptCallID, ISptCallData iSptCallData) {
+          //  super.onCallEventDisconnected(sptCallID, iSptCallData);
+          Log.v("main: ", "SptCallObserver4");
             runOnUiThread(new Runnable() {
-                @Override
-                public void run()
-                {
-                    Log.d("call state", "onCallEventDisconnected");
-                    if(_callDialog != null)
-                    {
-                        _callDialog.cancel();
-                        _callDialog = null;
-                        _callID = null;
-                    }
-                }
+                  @Override
+                  public void run()
+                  {
+                      Log.d("call state", "onCallEventDisconnected");
+                      if(_callDialog != null)
+                      {
+                          _callDialog.cancel();
+                          _callDialog = null;
+                          _callID = null;
+                      }
+                  }
             });
-        }
+
+          }
+
+//        @Override
+//        public void onCallEventStateUpdated(SptCallID sptCallID, ISptCallData iSptCallData) {
+//            super.onCallEventStateUpdated(sptCallID, iSptCallData);
+//        }
 
         @Override
         public void onCallEventStateUpdated(final SptCallID sptCallID, final ISptCallData iSptCallData) {
@@ -77,6 +261,7 @@ public class MainActivity extends AppCompatActivity
                 @Override
                 public void run()
                 {
+                  Log.v("main: ", "SptCallObserver1");
                     if(_callID == null)
                         _callID = sptCallID;
                     Log.d("call state", iSptCallData.getCallState().name());
@@ -117,8 +302,17 @@ public class MainActivity extends AppCompatActivity
         }
 
         @Override
+        public void onCallEventCallConnectivityUpdated(SptCallID sptCallID, ISptCallData iSptCallData)
+        {
+            Log.v("main: ", "SptCallObserver5");
+            super.onCallEventCallConnectivityUpdated(sptCallID, iSptCallData);
+        }
+
+        @Override
         public void onCallEventIncomingCall(SptCallID sptCallID, ISptCallData iSptCallData)
         {
+
+          Log.v("main: ", "SptCallObserver2");
             if(_callID == null)
             {
                 _callID = sptCallID;
@@ -127,45 +321,16 @@ public class MainActivity extends AppCompatActivity
                     @Override
                     public void run()
                     {
-                        showIncomingCallDialog();
+                      //  showIncomingCallDialog();
                     }
                 });
             }
         }
-
-        @Override
-        public void onCallEventCallConnectivityUpdated(SptCallID sptCallID, ISptCallData iSptCallData)
-        {
-            super.onCallEventCallConnectivityUpdated(sptCallID, iSptCallData);
-        }
-    }
-
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        _sptIMObserver = new MainActivitySptIMObserver();
-        _callObserver = new TestConnectSptCallObserver();
-        _sdk = ((SptIMSDKApp)getApplication()).getSptIMSDK();
-        _sdk.addObserver(_sptIMObserver);
-        _sdk.addCallObserver(_callObserver);
-        _pageAdapter = new MainPagerAdapter(getSupportFragmentManager());
-        _viewPager = findViewById(R.id.main_view_pager);
-        _viewPager.setAdapter(_pageAdapter);
-        _tabLayout = (TabLayout)findViewById(R.id.tablayout);
-        _tabLayout.setupWithViewPager(_viewPager);
-        Bundle args = getIntent().getExtras();
-        if(args != null)
-        {
-            _tokenSequenceID = new SptSchMeetingSequenceID(args.getInt(EXTRA_JOIN_TO_MEETING, SptSchMeetingSequenceID.SPT_INVALID_MEETING_SEQUENCE_ID));
-        }
-        processLaunchFromToken(_tokenSequenceID);
     }
 
     private void processLaunchFromToken(SptSchMeetingSequenceID sequenceID)
     {
+      Log.v("main: ","processLaunchFromToken");
         if(sequenceID != null && sequenceID.intValue() != SptSchMeetingSequenceID.SPT_INVALID_MEETING_SEQUENCE_ID)
         {
             ISptSchMeetingSequence seq = _sdk.getSchMeetingSequenceByID(sequenceID);
@@ -174,6 +339,7 @@ public class MainActivity extends AppCompatActivity
                 ISptSchMeeting m = seq.getCurrentMeeting();
                 if(m!= null)
                 {
+                  Log.v("main: ","SptSchJoinMeeting");
                     SptSchJoinMeeting joinMeeting = new SptSchJoinMeeting(sequenceID, m.getSchMeetingID(), true);
                     _sdk.joinSchMeeting(joinMeeting);
                 }
@@ -182,34 +348,202 @@ public class MainActivity extends AppCompatActivity
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu)
-    {
-        super.onCreateOptionsMenu(menu);
-        getMenuInflater().inflate(R.menu.contacts_menu, menu);
-        return true;
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+      Log.v("main: ","onCreate");
+      String package_name = getApplication().getPackageName();
+       //String package_name = "com.stanleyidesis.cordova.plugin";
+       Resources resources = getApplication().getResources();
+       setContentView(resources.getIdentifier("activity_main", "layout", package_name));
+       setTitle(" ");
+
+       Log.v("package name: ", package_name);
+      // Log.v("Resources name: ", resources.String);
+       Log.v("view ID: ", String.valueOf(resources.getIdentifier("activity_main", "layout", package_name)));
+    //   _sdk = ((SptIMSDKApp)getApplication()).getSptIMSDK();
+
+      _sdk = SptIMSDKApp.getInstance().getSptIMSDK(getApplicationContext());
+      //_app = SptIMSDKApp.getInstance();
+      //_sdk = _app.getSptIMSDK(getApplicationContext());
+
+      Intent intent1 = getIntent();
+
+      String serverName = intent1.getStringExtra("serverName");
+    //  String userMail = intent1.getStringExtra("userMail");
+    //  String passWord = intent1.getStringExtra("passWord");
+      String personalID = intent1.getStringExtra("personalID");
+
+      Log.v("MainActivity - serverName: ", serverName);
+    //  Log.v("MainActivity - userMail: ", userMail);
+    //  Log.v("MainActivity - passWord: ", passWord);
+      Log.v("MainActivity - personalID: ", personalID);
+
+      _sptObserver = new TextConnectSptIMObserver();
+        _sdk.addObserver(_sptObserver);
+    //   _sdk = ((TestConnectMeetingApplication)getApplication()).getSptIMSDK();
+      // _sdk = ((SptIMSDKApp)getApplication()).getSptIMSDK(getApplicationContext());
+       _callObserver = new TestConnectSptCallObserver();
+      _sdk.addCallObserver(_callObserver);
+
+
+
+
+
+
+
+  //     _pageAdapter = new MainPagerAdapter(getSupportFragmentManager());
+    //   _viewPager = findViewById(R.id.main_view_pager);
+  //     _viewPager = setContentView(resources.getIdentifier("main_view_pager", "id", package_name));
+  //     _viewPager.setAdapter(_pageAdapter);
+  //     _tabLayout = (TabLayout)findViewById(R.id.tablayout);
+  //     _tabLayout.setupWithViewPager(_viewPager);
+       //undle args = getIntent().getExtras();
+
+       //_sdk.getTokenData("43030687", "collaboratespace.net");
+
+      // Log.v("main - oncreate ", String.valueOf(args.getInt(EXTRA_JOIN_TO_MEETING, SptSchMeetingSequenceID.SPT_INVALID_MEETING_SEQUENCE_ID)));
+
+      _sdk.getTokenData(personalID, serverName);
+
+    //    _sdk.getTokenData("88817741", "collaboratespace.net");
+
+    //  Log.v("main - oncreate _tokenSequenceID", String.valueOf(_tokenSequenceID));
+
+//       if(args != null)
+//       {
+//           Log.v("main: ","onCreate _tokenSequenceID");
+//
+//           _tokenSequenceID = new SptSchMeetingSequenceID(args.getInt(EXTRA_JOIN_TO_MEETING, SptSchMeetingSequenceID.SPT_INVALID_MEETING_SEQUENCE_ID));
+//       }
+
+Log.v("main: ","onCreate2");
+
+
+
+Log.v("main: ","onCreat3");
+//package_name = "com.stanleyidesis.cordova.plugin";
+
+       //Intent intent = getIntent();
+
+       //String serverName = intent.getStringExtra("serverName");
+       //String sessionID = intent.getStringExtra("sessionID");
+       //String userName = intent.getStringExtra("userName");
+
+      // _sdk = ((TestConnectMeetingApplicatiogetApplication()).getSptIMSDK();
+      // _sdk = ((SptIMSDKApp)getApplication()).getSptIMSDK(getApplicationContext());
+      // _callObserver = new TestConnectSptCallObserver();
+      //_sdk.addCallObserver(_callObserver);
+
+    //   _app = SptIMSDKApp.getInstance();
+//       _sdk = _app.getSptIMSDK(getApplicationContext());
+//       _callObserver = new TestConnectSptCallObserver();
+    // _sdk.addCallObserver(_callObserver);
+
+    //   Bundle args = getIntent().getExtras();
+    //   if(args != null)
+    //   {
+    //       _tokenSequenceID = new SptSchMeetingSequenceID(args.getInt(EXTRA_JOIN_TO_MEETING, SptSchMeetingSequenceID.SPT_INVALID_MEETING_SEQUENCE_ID));
+
+//       }
+  //     processLaunchFromToken(_tokenSequenceID);
+
+
+      //  String activity_main_connect_buttonData = intent.getStringExtra("activity_main_connect_button");
+      //  setContentView(R.layout.activity_main);
+   //Log.v("activity_main_connect_buttonData: ", activity_main_connect_buttonData);
+      //  _app = new TestConnectMeetingApplication();
+      //  _app.attachBaseContext(this.getApplicationContext());
+      //  _sdk = _app.getSptIMSDK(); // new
+      //  _sdk = ((TestConnectMeetingApplication)getApplication()).getSptIMSDK();
+
+      //  _serverView = (EditText)findViewById(R.id.activity_main_server);
+      //  _sessionIdView = (EditText)findViewById(R.id.activity_main_id);
+      //  _userView = (EditText)findViewById(R.id.activity_main_user);
+      //  _connectButton = (Button)findViewById(R.id.activity_main_connect_button);
+
+    //  String package_name1 = getApplication().getPackageName();
+    //  Resources resources1 = getApplication().getResources();
+
+      //  _serverView = (EditText)findViewById(resources1.getIdentifier("activity_main_server", "id", package_name1));
+      //  _sessionIdView = (EditText)findViewById(resources1.getIdentifier("activity_main_id", "id", package_name1));
+      //  _userView = (EditText)findViewById(resources1.getIdentifier("activity_main_user", "id", package_name1));
+      //  _connectButton = (Button)findViewById(resources1.getIdentifier("activity_main_connect_button", "id", package_name1));
+
+    //    _serverView.setText(serverName);
+    //    _sessionIdView.setText(sessionID);
+    //    _userView.setText(userName);
+// Log.v("activity_main_server: ", String.valueOf(resources1.getIdentifier("activity_main_server", "layout", package_name1)));
+
+      //  _connectButton.setOnClickListener(new View.OnClickListener() {
+      //      @Override
+      //      public void onClick(View v) {
+      //          String server = _serverView.getText().toString();
+      //          String sessionId = _sessionIdView.getText().toString();
+      //          String user = _userView.getText().toString();
+
+        //        Log.v("server: ", server);
+        //        Log.v("sessionId: ", sessionId);
+        //        Log.v("user: ", user);
+
+        //        processLaunchFromToken(_tokenSequenceID);
+
+          //      if(server.length() > 0 && sessionId.length() > 0 && user.length()>0)
+            //    {
+
+                  //  launchIntent();
+
+              //      SptJoinCall joinCall = new SptJoinCall(user, "", sessionId, server);
+              //      _callID = _sdk.joinCall(joinCall);
+              //      if(_callID != null) {
+              //        Log.v("one: ","call Id valid");
+              //        Log.v("_callID: ",String.valueOf(_callID));
+              //      }
+
+                  //  launchIntent();
+              //  }
+            //}
+        //});
+        manageMainPermissions();
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item)
+
+
+
+
+    void launchIntent()
     {
-        switch (item.getItemId())
-        {
-            case R.id.menu_contacts_logout:
-                ((SptIMSDKApp)getApplication()).getSptIMSDK().forgetCredentials();
-                ((SptIMSDKApp)getApplication()).getSptIMSDK().disconnect();
-                break;
-        }
-        return super.onOptionsItemSelected(item);
+
+    //Intent intentScan = new Intent(this, CallActivity.class);
+
+    Intent i = new Intent(MainActivity.this, CallActivity.class);
+    if(_callID != null)
+        i.putExtra(CallActivity.EXTRA_CALL_ID, _callID.intValue());
+    // Intent intentScan = new Intent("com.stanleyidesis.cordova.plugin.TestConnectMeetingApplication");
+
+    //  Intent intentScan = getPackageManager().getLaunchIntentForPackage("com.clearone.testconnectmeeting");
+
+      this.startActivity(i);
+
     }
+
+  //  @Override
+  //  protected void onDestroy() {
+  //      super.onDestroy();
+  //      _sdk.removeCallObserver(_callObserver);
+  //  }
 
     @Override
     protected void onDestroy()
     {
         super.onDestroy();
-        _sptIMObserver = new MainActivitySptIMObserver();
-        ISptIMSDK sdk = ((SptIMSDKApp)getApplication()).getSptIMSDK();
-        sdk.removeObserver(_sptIMObserver);
-        sdk.removeCallObserver(_callObserver);
+        //_sptIMObserver = new MainActivitySptIMObserver();
+        //ISptIMSDK sdk = SptIMSDKApp.getInstance().getSptIMSDK(getApplicationContext());
+        //sdk.removeObserver(_sptIMObserver);
+        _sdk = SptIMSDKApp.getInstance().getSptIMSDK(getApplicationContext());
+        _sdk.removeCallObserver(_callObserver);
+        _sdk.removeObserver(_sptObserver);
+
     }
 
     private void showCallDialog()
@@ -255,74 +589,20 @@ public class MainActivity extends AppCompatActivity
         _callDialog = builder.show();
     }
 
-    public class MainPagerAdapter extends FragmentPagerAdapter
+    void manageMainPermissions()
     {
-        public static final int POS_CONTACTS = 0;
-        public static final int POS_SEQUENCES = 1;
-        public static final int POS_COUNT = 2;
 
-        public MainPagerAdapter(FragmentManager fm)
-        {
-            super(fm);
-        }
 
-        @Override
-        public Fragment getItem(int i)
-        {
-            Fragment f = null;
-            switch (i)
-            {
-                case POS_CONTACTS:
-                    f = new ContactsFragment();
-                    break;
-                case POS_SEQUENCES:
-                    f = new SequencesFragment();
-                    break;
-            }
-            return f;
-        }
+        ArrayList<String> permissionsArray = new ArrayList();
+        if(ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) == PackageManager.PERMISSION_DENIED)
+            permissionsArray.add(Manifest.permission.CAMERA);
+        if(ContextCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO) == PackageManager.PERMISSION_DENIED)
+            permissionsArray.add(Manifest.permission.RECORD_AUDIO);
+        if(permissionsArray.size()>0)
+            ActivityCompat.requestPermissions(this, permissionsArray.toArray(new String[permissionsArray.size()]),
+                    REQUEST_CODE_ASK_PERMISSIONS);
 
-        @Override
-        public int getCount()
-        {
-            return POS_COUNT;
-        }
 
-        @Nullable
-        @Override
-        public CharSequence getPageTitle(int position)
-        {
-            String title;
-            switch (position)
-            {
-                case POS_CONTACTS:
-                    title = "Contacts";
-                    break;
-                case POS_SEQUENCES:
-                    title = "Meetings";
-                    break;
-                    default:
-                        title = "";
-            }
-            return title;
-        }
     }
 
-
-    class MainActivitySptIMObserver extends SptIMObserver
-    {
-        @Override
-        public void onDisconnected()
-        {
-            runOnUiThread(new Runnable() {
-                @Override
-                public void run()
-                {
-                    Intent restartIntent = new Intent(MainActivity.this, LoginActivity.class);
-                    startActivity(restartIntent);
-                    finish();
-                }
-            });
-        }
-    }
 }
