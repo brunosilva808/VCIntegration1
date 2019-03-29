@@ -76,8 +76,8 @@ public class SharingOptionsDialog extends DialogFragment implements View.OnClick
 
 //        _shareScreenButton = (Button)view.findViewById(R.id.fragment_sharing_sreen);
 
-        String package_name = getApplication().getPackageName();
-        Resources resources = getApplication().getResources();
+        String package_name = getActivity().getPackageName();
+        Resources resources = getResources();
 
         _shareGalleryButton = (Button)view.findViewById(resources.getIdentifier("fragment_sharing_gallery", "id", package_name));
       //    _shareGalleryButton = (Button)view.findViewById(R.id.fragment_sharing_gallery);
