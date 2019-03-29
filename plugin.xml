@@ -122,6 +122,7 @@
         <source-file src="src/android/CallActivity.java" target-dir="src/com/askblue/cordova/plugin" />
         <source-file src="src/android/SptCallObserver.java" target-dir="src/com/askblue/cordova/plugin" />
         <source-file src="src/android/SptIMObserver.java" target-dir="src/com/askblue/cordova/plugin" />
+        <source-file src="src/android/ImageViewFragment.java" target-dir="src/com/askblue/cordova/plugin" />
         <source-file src="src/android/SharingOptionsDialog.java" target-dir="src/com/askblue/cordova/plugin" />
         <source-file src="src/android/TestConnectMeetingApplication.java" target-dir="src/com/askblue/cordova/plugin" />
         <source-file src="src/android/colors.xml" target-dir="res/values"/>
@@ -129,6 +130,7 @@
         <source-file src="src/android/dimens.xml" target-dir="res/values"/>
         <source-file src="src/android/activity_main.xml" target-dir="res/layout"/>
         <source-file src="src/android/call_menu.xml" target-dir="res/layout"/>
+        <source-file src="src/android/fragment_image_view.xml" target-dir="res/layout"/>
         <source-file src="src/android/fragment_sharing_options_dialog.xml" target-dir="res/layout"/>
         <source-file src="src/android/content_main.xml" target-dir="res/layout"/>
 
