@@ -158,8 +158,8 @@ public class CallActivity extends AppCompatActivity implements SptCallFragment.O
         String package_name = getApplication().getPackageName();
         Resources resources = getApplication().getResources();
 
-        const int id1 = resources.getIdentifier("call_menu_start_sharing_item", "id", package_name);
-        const int id2 = resources.getIdentifier("call_menu_stop_sharing_item", "id", package_name);
+        final int id1 = resources.getIdentifier("call_menu_start_sharing_item", "id", package_name);
+        final int id2 = resources.getIdentifier("call_menu_stop_sharing_item", "id", package_name);
 
         switch (item.getItemId())
         {
