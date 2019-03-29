@@ -1,4 +1,4 @@
-package com.clearone.testconnectmeeting;
+package com.askblue.cordova.plugin;
 
 import android.content.Context;
 import android.content.DialogInterface;
@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
 import android.view.LayoutInflater;
+import android.content.res.Resources;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -59,7 +60,14 @@ public class SharingOptionsDialog extends DialogFragment implements View.OnClick
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_sharing_options_dialog, container);
+
+         String package_name = getApplication().getPackageName();
+         Resources resources = getApplication().getResources();
+
+        // setContentView(resources.getIdentifier("fragment_sharing_options_dialog", "layout", package_name));
+        // setTitle(" ");
+          return inflater.inflate(resources.getIdentifier("fragment_sharing_options_dialog", "layout", package_name), container);
+        //return inflater.inflate(R.layout.fragment_sharing_options_dialog, container);
     }
 
     @Override
@@ -67,7 +75,12 @@ public class SharingOptionsDialog extends DialogFragment implements View.OnClick
         super.onViewCreated(view, savedInstanceState);
 
 //        _shareScreenButton = (Button)view.findViewById(R.id.fragment_sharing_sreen);
-        _shareGalleryButton = (Button)view.findViewById(R.id.fragment_sharing_gallery);
+
+        String package_name = getApplication().getPackageName();
+        Resources resources = getApplication().getResources();
+
+        _shareGalleryButton = (Button)view.findViewById(resources.getIdentifier("fragment_sharing_gallery", "id", package_name));
+      //    _shareGalleryButton = (Button)view.findViewById(R.id.fragment_sharing_gallery);
 
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
 //            _shareScreenButton.setOnClickListener(this);
