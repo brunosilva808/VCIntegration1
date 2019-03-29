@@ -351,9 +351,9 @@ public class CallActivity extends AppCompatActivity implements SptCallFragment.O
           }
       }
   }
-  
+
   @Override
-  private void onActivityResult(int requestCode, int resultCode, Intent data) {
+  void onActivityResult(int requestCode, int resultCode, Intent data) {
       super.onActivityResult(requestCode, resultCode, data);
       switch (requestCode)
       {
