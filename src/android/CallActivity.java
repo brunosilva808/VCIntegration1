@@ -158,8 +158,16 @@ public class CallActivity extends AppCompatActivity implements SptCallFragment.O
         String package_name = getApplication().getPackageName();
         Resources resources = getApplication().getResources();
 
-        public static final int id1 = resources.getIdentifier("call_menu_start_sharing_item", "id", package_name);
-        public static final int id2 = resources.getIdentifier("call_menu_stop_sharing_item", "id", package_name);
+        int id1 = resources.getIdentifier("call_menu_start_sharing_item", "id", package_name);
+        int id2 = resources.getIdentifier("call_menu_stop_sharing_item", "id", package_name);
+
+        if (item.getItemId() == id1) {
+            requestSharingService(true);
+        }
+
+        if (item.getItemId() == id2) {
+            requestSharingService(false);
+        }
 
         switch (item.getItemId())
         {
@@ -169,12 +177,6 @@ public class CallActivity extends AppCompatActivity implements SptCallFragment.O
           case R.id.call_menu_stop_sharing_item:
               requestSharingService(false);
               break;*/
-            case id1:
-                requestSharingService(true);
-                break;
-            case id2:
-                requestSharingService(false);
-                break;
         }
         return super.onOptionsItemSelected(item);
     }
