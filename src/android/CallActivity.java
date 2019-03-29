@@ -33,7 +33,9 @@ import com.askblue.cordova.plugin.TestConnectMeetingApplication;
 import static com.clearone.sptimpublicsdk.ParticipantServices.eSptServiceActive;
 import static com.clearone.sptimpublicsdk.SptCallParticipantID.SPT_LOCAL_CALLPARTICIPANT_ID;
 
-public class CallActivity extends AppCompatActivity implements SptCallFragment.OnSptCallFragmentListener {
+public class CallActivity extends AppCompatActivity implements SptCallFragment.OnSptCallFragmentListener,
+                                                              SharingOptionsDialog.SharingOptionsDialogListener,
+                                                              ImageViewFragment.OnFragmentInteractionListener {
 
     public static final String EXTRA_CALL_ID = "EXTRA_CALL_ID";
     private static final int REQUEST_CODE_SHARE_GALLERY = 100;
@@ -206,6 +208,9 @@ public class CallActivity extends AppCompatActivity implements SptCallFragment.O
       //  finish();
   //  }
 
+
+
+
     @Override
     public void OnRotateCamera() {
 
@@ -260,7 +265,13 @@ public class CallActivity extends AppCompatActivity implements SptCallFragment.O
 
     @Override
     public Fragment getLocalSharingFragment(SptCallFragment.eSharingType eSharingType) {
-        return null;
+      Fragment res = null;
+      switch (eSharingType) {
+          case eSharingTypeGallery:
+              res = ImageViewFragment.newInstance(_callID, true);
+              break;
+      }
+      return res;
     }
 
     @Override
@@ -284,6 +295,175 @@ public class CallActivity extends AppCompatActivity implements SptCallFragment.O
       //  app.getSptIMSDK().setServiceState(_callID, _localParticipantID, ISptCallServices.eSptCallServiceWhiteboard, b);
 
   //  }
+  @Override
+  public void onFinisSharingOptionsDialog(SptCallFragment.eSharingType sharingSelected) {
+      switch (sharingSelected)
+      {
+          case eSharingTypeScreen:
+              requestScreenSharing();
+              break;
+          case eSharingTypeGallery:
+              shareGallery();
+              break;
+          default:
+              requestSharingService(false);
+      }
+  }
+
+  private void requestScreenSharing()
+  {
+     _sdk.startSharingScreen(_callID);
+  }
+
+  private void shareGallery()
+  {
+      Boolean result = checkPermission
+              (this, MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE);
+      if (result)
+          showGallerySelector();
+  }
+
+  private void showGallerySelector()
+  {
+      Intent intent = new Intent();
+      intent.setType("*/*");
+      String[] mimetypes = {"image/*"};
+      intent.putExtra(Intent.EXTRA_MIME_TYPES, mimetypes);
+      intent.setAction(Intent.ACTION_GET_CONTENT);
+      startActivityForResult(intent, REQUEST_CODE_SHARE_GALLERY);
+  }
+
+  public static final int MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE = 123;
+
+  @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
+  public static boolean checkPermission(final Context context, int code) {
+      int currentAPIVersion = Build.VERSION.SDK_INT;
+      if (currentAPIVersion >= android.os.Build.VERSION_CODES.M) {
+          if (code == MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE) {
+              if (ContextCompat.checkSelfPermission(context, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                  if (ActivityCompat.shouldShowRequestPermissionRationale((Activity) context, Manifest.permission.READ_EXTERNAL_STORAGE)) {
+                      AlertDialog.Builder alertBuilder = new AlertDialog.Builder(context);
+                      alertBuilder.setCancelable(true);
+                      alertBuilder.setTitle("Permission necessary");
+                      alertBuilder.setMessage("External storage permission is necessary");
+                      alertBuilder.setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                          @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
+                          public void onClick(DialogInterface dialog, int which) {
+                              ActivityCompat.requestPermissions((Activity) context, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE);
+                          }
+                      });
+                      AlertDialog alert = alertBuilder.create();
+                      alert.show();
+                  } else {
+                      ActivityCompat.requestPermissions((Activity) context, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE);
+                  }
+                  return false;
+              } else {
+                  return true;
+              }
+          }
+      } else {
+          return true;
+      }
+
+      return true;
+  }
+
+  @Override
+  public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults)
+  {
+      super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+      if(requestCode == MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE)
+      {
+          for (int i = 0; i < permissions.length; i++)
+          {
+              if (permissions[i].equals(Manifest.permission.READ_EXTERNAL_STORAGE)
+                      && grantResults[i] != PackageManager.PERMISSION_GRANTED)
+              {
+                  showGallerySelector();
+              }
+          }
+      }
+  }
+  @Override
+  protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+      super.onActivityResult(requestCode, resultCode, data);
+      switch (requestCode)
+      {
+          case REQUEST_CODE_SHARE_GALLERY:
+              if(resultCode == Activity.RESULT_OK)
+                  onShareGalleryResult(data);
+              break;
+      }
+
+      if(requestCode == _screenSharingRequestCode)
+      {
+          onShareScreenResult(resultCode, data);
+          _screenSharingRequestCode = -1;
+      }
+  }
+
+  @Override
+  public void onBackPressed()
+  {
+      super.onBackPressed();
+      _sdk.hangUpCall(_callID);
+      _callID = null;
+  }
+
+  private void goToBackground()
+  {
+      Intent homeIntent = new Intent(Intent.ACTION_MAIN);
+      homeIntent.addCategory(Intent.CATEGORY_HOME);
+      homeIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+      startActivity(homeIntent);
+  }
+
+  private void onShareScreenResult(int resultCode, Intent data)
+  {
+      if(resultCode == Activity.RESULT_OK)
+          goToBackground();
+      else
+          requestSharingService(false);
+      _sdk.onRequestUserAutorizationResult(_callID, _screenSharingRequestCode, resultCode, data);
+  }
+
+  private void onShareGalleryResult(Intent data)
+  {
+      Fragment f = getSupportFragmentManager().findFragmentByTag(SptCallFragment.TAG);
+      if(f != null && f instanceof  SptCallFragment) {
+          Bundle args = new Bundle();
+          args.putString(ImageViewFragment.ARG_CONTENT_URI, data.getData().toString());
+          args.putInt(ImageViewFragment.ARG_CALLID, _callID.intValue());
+          args.putBoolean(ImageViewFragment.ARG_ANNOTATION_ENABLED, true);
+          ((SptCallFragment) f).onAddLocalSharing(SptCallFragment.eSharingType.eSharingTypeGallery, args);
+      }
+  }
+
+  @Override
+  public void onUriSet(Uri uri) {
+
+  }
+
+  @Override
+  public void onFragmentClick() {
+      Fragment f = getSupportFragmentManager().findFragmentByTag(SptCallFragment.TAG);
+      if(f != null && f instanceof  SptCallFragment) {
+          ((SptCallFragment) f).onTapDetected();
+      }
+  }
+
+  @Override
+  public void onStopLocalSharing()
+  {
+      Fragment f = getSupportFragmentManager().findFragmentByTag(SptCallFragment.TAG);
+      if(f != null && f instanceof  SptCallFragment) {
+          ((SptCallFragment) f).onRemoveLocalSharing();
+      }
+  }
+
+
+
 
   public class CallActivitySptObserver extends SptCallObserver
       {
