@@ -23,7 +23,7 @@ import com.clearone.sptimpublicsdk.SptCallID;
 import com.clearone.sptimpublicsdk.SptIMSDKApp;
 import com.clearone.sptimpublicsdk.SptSchJoinMeeting;
 import com.clearone.sptimpublicsdk.SptSchMeetingSequenceID;
-//import com.clearone.testconnectmeeting.contacts.ContactsFragment;
+import com.clearone.testconnectmeeting.contacts.ContactsFragment;
 import com.clearone.testconnectmeeting.sequences.SequencesFragment;
 
 public class MainActivity extends AppCompatActivity

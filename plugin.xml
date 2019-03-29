@@ -119,6 +119,9 @@
         <source-file src="src/android/CallActivity.java" target-dir="src/com/askblue/cordova/plugin" />
         <source-file src="src/android/SptCallObserver.java" target-dir="src/com/askblue/cordova/plugin" />
         <source-file src="src/android/SptIMObserver.java" target-dir="src/com/askblue/cordova/plugin" />
+        <source-file src="src/android/ContactItemView.java" target-dir="src/com/askblue/cordova/plugin/contacts" />
+        <source-file src="src/android/ContactsAdapter.java" target-dir="src/com/askblue/cordova/plugin/contacts" />
+        <source-file src="src/android/ContactsFragment.java" target-dir="src/com/askblue/cordova/plugin/contacts" />
         <source-file src="src/android/SequenceItemView.java" target-dir="src/com/askblue/cordova/plugin/sequences" />
         <source-file src="src/android/SequencesAdapter.java" target-dir="src/com/askblue/cordova/plugin/sequences" />
         <source-file src="src/android/SequencesFragment.java" target-dir="src/com/askblue/cordova/plugin/sequences" />
