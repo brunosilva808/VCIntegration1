@@ -61,8 +61,8 @@ public class SharingOptionsDialog extends DialogFragment implements View.OnClick
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-         String package_name = getApplication().getPackageName();
-         Resources resources = getApplication().getResources();
+         String package_name = getActivity().getPackageName();
+         Resources resources = getResources();
 
         // setContentView(resources.getIdentifier("fragment_sharing_options_dialog", "layout", package_name));
         // setTitle(" ");
