@@ -139,22 +139,37 @@ public class CallActivity extends AppCompatActivity implements SptCallFragment.O
              bSharingActive = (localParticipant.getServices().iSharingService & eSptServiceActive)!=0;
         }
 
+        String package_name = getApplication().getPackageName();
+        Resources resources = getApplication().getResources();
 
-        MenuItem item = menu.findItem(R.id.call_menu_start_sharing_item);
+        //MenuItem item = menu.findItem(R.id.call_menu_start_sharing_item);
+
+        MenuItem item = menu.findItem(resources.getIdentifier("call_menu_start_sharing_item", "id", package_name));
         item.setVisible(!bSharingActive);
-        item = menu.findItem(R.id.call_menu_stop_sharing_item);
+        //item = menu.findItem(R.id.call_menu_stop_sharing_item);
+        item = menu.findItem(resources.getIdentifier("call_menu_stop_sharing_item", "id", package_name));
         item.setVisible(bSharingActive);
         return super.onPrepareOptionsMenu(menu);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+
+        String package_name = getApplication().getPackageName();
+        Resources resources = getApplication().getResources();
+
         switch (item.getItemId())
         {
-            case R.id.call_menu_start_sharing_item:
+         /*  case R.id.call_menu_start_sharing_item:
+              requestSharingService(true);
+              break;
+          case R.id.call_menu_stop_sharing_item:
+              requestSharingService(false);
+              break;*/
+            case resources.getIdentifier("call_menu_start_sharing_item", "id", package_name):
                 requestSharingService(true);
                 break;
-            case R.id.call_menu_stop_sharing_item:
+            case resources.getIdentifier("call_menu_stop_sharing_item", "id", package_name):
                 requestSharingService(false);
                 break;
         }
