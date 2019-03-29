@@ -124,7 +124,7 @@
         <source-file src="src/android/colors.xml" target-dir="res/values"/>
         <source-file src="src/android/styles.xml" target-dir="res/values"/>
         <source-file src="src/android/dimens.xml" target-dir="res/values"/>
-        <source-file src="src/android/strings.xml" tafragment_sharing_options_dialogrget-dir="res/values"/>
+        <source-file src="src/android/strings.xml" target-dir="res/values"/>
         <source-file src="src/android/activity_main.xml" target-dir="res/layout"/>
         <source-file src="src/android/fragment_sharing_options_dialog.xml" target-dir="res/layout"/>
         <source-file src="src/android/content_main.xml" target-dir="res/layout"/>
