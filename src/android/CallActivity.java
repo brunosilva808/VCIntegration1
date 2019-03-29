@@ -181,6 +181,11 @@ public class CallActivity extends AppCompatActivity implements SptCallFragment.O
         return super.onOptionsItemSelected(item);
     }
 
+    private void requestSharingService(boolean bActive)
+    {
+        _sdk.setServiceState(_callID, _localParticipantID,ISptCallServices.eSptCallServiceSharing, bActive);
+    }
+
     @Override
     public boolean isActionBarShowing() {
         return false;
