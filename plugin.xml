@@ -115,6 +115,9 @@
         <config-file target="AndroidManifest.xml" parent="/manifest/application">
             <activity android:label="TestConnectMeetingApplication" android:name="com.askblue.cordova.plugin.TestConnectMeetingApplication"></activity>
         </config-file>
+        <config-file target="res/values/strings.xml" parent="/*">
+            <string name="sharing_option_gallery_label">Share Media from Gallery</string>
+        </config-file>
         <source-file src="src/android/MainActivity.java" target-dir="src/com/askblue/cordova/plugin" />
         <source-file src="src/android/CallActivity.java" target-dir="src/com/askblue/cordova/plugin" />
         <source-file src="src/android/SptCallObserver.java" target-dir="src/com/askblue/cordova/plugin" />
