@@ -193,7 +193,7 @@ public class CallActivity extends AppCompatActivity implements SptCallFragment.O
     private void requestSharingService(boolean bActive)
     {
         _sdk.setServiceState(_callID, _localParticipantID,ISptCallServices.eSptCallServiceSharing, bActive);
-        _sdk.startSharingScreen(_callID); // rever
+        //_sdk.startSharingScreen(_callID); // rever
         Log.v("share: ","request");
     }
 
@@ -452,8 +452,8 @@ public class CallActivity extends AppCompatActivity implements SptCallFragment.O
                               @Override
                               public void run() {
                                   FragmentManager fm = getSupportFragmentManager();
-                                  //SharingOptionsDialog sharingDialogFragment = SharingOptionsDialog.newInstance("Some Title");
-                                  //sharingDialogFragment.show(fm, "fragment_edit_name");
+                                  SharingOptionsDialog sharingDialogFragment = SharingOptionsDialog.newInstance("Sharing Options");
+                                  sharingDialogFragment.show(fm, "fragment_edit_name");
                               }
                           });
                       }
