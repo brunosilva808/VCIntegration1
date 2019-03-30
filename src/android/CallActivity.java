@@ -354,12 +354,13 @@ public class CallActivity extends AppCompatActivity implements SptCallFragment.O
       }
   }
 
+/*
   @Override
   protected void onActivityResult(int requestCode, int resultCode, Intent data) {
       super.onActivityResult(requestCode, resultCode, data);
       switch (requestCode)
       {
-          case 100:
+          case REQUEST_CODE_SHARE_GALLERY:
               if(resultCode == Activity.RESULT_OK)
                   onShareGalleryResult(data);
               break;
@@ -371,7 +372,7 @@ public class CallActivity extends AppCompatActivity implements SptCallFragment.O
           _screenSharingRequestCode = -1;
       }
   }
-
+*/
   private void goToBackground()
   {
       Intent homeIntent = new Intent(Intent.ACTION_MAIN);
