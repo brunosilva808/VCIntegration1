@@ -108,8 +108,9 @@ public class CallActivity extends AppCompatActivity implements SptCallFragment.O
             FragmentManager fm = getSupportFragmentManager();
             FragmentTransaction ft = fm.beginTransaction();
             Fragment f = SptCallFragment.newInstance(_callID, true, null);
-            ft.replace(resources.getIdentifier("activity_call_content", "id", package_name), f);
+            ft.replace(resources.getIdentifier("activity_call_content", "id", package_name), f, SptCallFragment.TAG);
             //ft.replace(R.id.activity_call_content, f);
+            //ft.replace(R.id.activity_call_content, f, SptCallFragment.TAG);
             ft.commit();
         }
 
