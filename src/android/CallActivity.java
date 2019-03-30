@@ -193,7 +193,7 @@ public class CallActivity extends AppCompatActivity implements SptCallFragment.O
     private void requestSharingService(boolean bActive)
     {
         _sdk.setServiceState(_callID, _localParticipantID,ISptCallServices.eSptCallServiceSharing, bActive);
-        showGallerySelector();
+        _sdk.startSharingScreen(_callID); // rever
         Log.v("share: ","request");
     }
 
