@@ -45,6 +45,7 @@ public class CallActivity extends AppCompatActivity implements SptCallFragment.O
     ISptIMSDK _sdk;
     CallActivitySptObserver _sptCallObserver;
     int _screenSharingRequestCode = -1;
+    public static final int MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE = 123;
 
     SptIMSDKApp _app1;
 
@@ -333,7 +334,7 @@ public class CallActivity extends AppCompatActivity implements SptCallFragment.O
       startActivityForResult(intent, REQUEST_CODE_SHARE_GALLERY);
   }
 
-  public static final int MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE = 123;
+
 
   @Override
   public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults)
@@ -402,9 +403,6 @@ public class CallActivity extends AppCompatActivity implements SptCallFragment.O
           ((SptCallFragment) f).onRemoveLocalSharing();
       }
   }
-
-
-
 
   public class CallActivitySptObserver extends SptCallObserver
       {
