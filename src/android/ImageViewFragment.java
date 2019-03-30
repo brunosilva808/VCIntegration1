@@ -29,6 +29,7 @@ import com.clearone.sptimpublicsdk.ISptCallStreamData;
 import com.clearone.sptimpublicsdk.ISptIMSDK;
 import com.clearone.sptimpublicsdk.SptCallID;
 import com.clearone.sptimpublicsdk.SptCallWhiteboardFragment;
+import com.clearone.sptimpublicsdk.SptIMSDKApp;
 
 
 import java.io.FileNotFoundException;
@@ -197,7 +198,10 @@ public class ImageViewFragment extends SptCallWhiteboardFragment
                     _listener.onFragmentClick();
             }
         });
-        _sdk = ((TestConnectMeetingApplication)getActivity().getApplication()).getSptIMSDK();
+
+        _sdk = SptIMSDKApp.getInstance().getSptIMSDK(getApplicationContext());
+
+      //  _sdk = ((TestConnectMeetingApplication)getActivity().getApplication()).getSptIMSDK();
         SptSize screenSize = getScreenResolution();
         if(savedInstanceState != null)
             _bSharingStarted = savedInstanceState.getBoolean("SAVE_SHARING_STARTED", false);
