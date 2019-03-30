@@ -208,6 +208,9 @@ public class CallActivity extends AppCompatActivity implements SptCallFragment.O
         _sdk.setServiceState(_callID, _localParticipantID,ISptCallServices.eSptCallServiceSharing, bActive);
         //_sdk.startSharingScreen(_callID); // rever
         Log.v("share: ","request");
+
+        if (!bactive)
+          onStopLocalSharing();
     }
 
     @Override
