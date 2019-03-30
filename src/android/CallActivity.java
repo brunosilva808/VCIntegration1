@@ -6,6 +6,7 @@ import android.util.Log;
 
 import android.media.AudioManager;
 import android.app.Activity;
+import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -354,7 +355,7 @@ public class CallActivity extends AppCompatActivity implements SptCallFragment.O
       }
   }
 
-/*
+
   @Override
   protected void onActivityResult(int requestCode, int resultCode, Intent data) {
       super.onActivityResult(requestCode, resultCode, data);
@@ -372,7 +373,7 @@ public class CallActivity extends AppCompatActivity implements SptCallFragment.O
           _screenSharingRequestCode = -1;
       }
   }
-*/
+
   private void goToBackground()
   {
       Intent homeIntent = new Intent(Intent.ACTION_MAIN);
