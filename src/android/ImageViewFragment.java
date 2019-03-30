@@ -199,7 +199,7 @@ public class ImageViewFragment extends SptCallWhiteboardFragment
             }
         });
 
-        _sdk = SptIMSDKApp.getInstance().getSptIMSDK();
+        _sdk = SptIMSDKApp.getInstance().getSptIMSDK(v.getContext());
 
       //  _sdk = ((TestConnectMeetingApplication)getActivity().getApplication()).getSptIMSDK();
         SptSize screenSize = getScreenResolution();
