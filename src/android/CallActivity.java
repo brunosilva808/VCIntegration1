@@ -5,6 +5,7 @@ import org.apache.cordova.*;
 import android.util.Log;
 
 import android.media.AudioManager;
+import android.app.Activity;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -350,6 +351,24 @@ public class CallActivity extends AppCompatActivity implements SptCallFragment.O
                   showGallerySelector();
               }
           }
+      }
+  }
+
+  @Override
+  protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+      super.onActivityResult(requestCode, resultCode, data);
+      switch (requestCode)
+      {
+          case REQUEST_CODE_SHARE_GALLERY:
+              if(resultCode == Activity.RESULT_OK)
+                  onShareGalleryResult(data);
+              break;
+      }
+
+      if(requestCode == _screenSharingRequestCode)
+      {
+          onShareScreenResult(resultCode, data);
+          _screenSharingRequestCode = -1;
       }
   }
 
