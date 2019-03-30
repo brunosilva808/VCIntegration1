@@ -209,7 +209,7 @@ public class CallActivity extends AppCompatActivity implements SptCallFragment.O
         //_sdk.startSharingScreen(_callID); // rever
         Log.v("share: ","request");
 
-        if (!bactive)
+        if (!bActive)
           onStopLocalSharing();
     }
 
