@@ -3,6 +3,7 @@ package com.askblue.cordova.plugin;
 import android.Manifest;
 import android.annotation.TargetApi;
 import android.support.annotation.NonNull;
+import android.content.pm.PackageManager;
 
 import android.os.Bundle;
 import org.apache.cordova.*;
