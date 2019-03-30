@@ -274,6 +274,7 @@ public class CallActivity extends AppCompatActivity implements SptCallFragment.O
     @Override
     public Fragment getLocalSharingFragment(SptCallFragment.eSharingType eSharingType) {
       Fragment res = null;
+      Log.v("share: ","getLocalSharingFragment");
       switch (eSharingType) {
           case eSharingTypeGallery:
               res = ImageViewFragment.newInstance(_callID, true);
@@ -305,6 +306,8 @@ public class CallActivity extends AppCompatActivity implements SptCallFragment.O
   //  }
   @Override
   public void onFinisSharingOptionsDialog(SptCallFragment.eSharingType sharingSelected) {
+
+    Log.v("share: ","onFinisSharingOptionsDialog");
       switch (sharingSelected)
       {
           case eSharingTypeScreen:
@@ -320,11 +323,13 @@ public class CallActivity extends AppCompatActivity implements SptCallFragment.O
 
   private void requestScreenSharing()
   {
+    Log.v("share: ","requestScreenSharing");
      _sdk.startSharingScreen(_callID);
   }
 
   private void shareGallery()
   {
+      Log.v("share: ","shareGallery");
       Boolean result = checkPermission
               (this, MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE);
       if (result)
@@ -343,6 +348,8 @@ public class CallActivity extends AppCompatActivity implements SptCallFragment.O
 
   public static boolean checkPermission(final Context context, int code) {
 
+      Log.v("share: ","checkPermission");
+      showGallerySelector();  // rever
       return true;
   }
 
@@ -468,6 +475,7 @@ public class CallActivity extends AppCompatActivity implements SptCallFragment.O
 
           @Override
           public void requestUserAutorization(Intent intent, int i) {
+                Log.v("share: ","requestUserAutorization");
               _screenSharingRequestCode = i;
               startActivityForResult(intent, i);
           }
