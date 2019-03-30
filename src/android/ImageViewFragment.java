@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.content.res.Resources;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -157,9 +158,14 @@ public class ImageViewFragment extends SptCallWhiteboardFragment
     public FrameLayout getContainerView()
     {
         FrameLayout res = null;
+
+        String package_name = getActivity().getPackageName();
+        Resources resources = getResources();
+
         View v = getView();
         if(v != null)
-            res = (FrameLayout) v.findViewById(R.id.fragment_content);
+          //  res = (FrameLayout) v.findViewById(R.id.fragment_content);
+            res = (FrameLayout) v.findViewById(resources.getIdentifier("fragment_content", "id", package_name));
         return res;
     }
 
@@ -174,9 +180,16 @@ public class ImageViewFragment extends SptCallWhiteboardFragment
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState)
     {
-        View v =  inflater.inflate(R.layout.fragment_image_view, container, false);
 
-        mContentView = v.findViewById(R.id.fullscreen_content);
+
+      String package_name = getActivity().getPackageName();
+      Resources resources = getResources();
+
+        View v =  inflater.inflate(resources.getIdentifier("fragment_image_view", "layout", package_name), container, false);
+      //  View v =  inflater.inflate(R.layout.fragment_image_view, container, false);
+
+        mContentView = v.findViewById(resources.getIdentifier("fullscreen_content", "id", package_name));
+        //mContentView = v.findViewById(R.id.fullscreen_content);
         mContentView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
