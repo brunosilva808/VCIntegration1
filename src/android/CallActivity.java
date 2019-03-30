@@ -10,9 +10,6 @@ import android.content.Intent;
 import android.net.Uri;
 import android.content.Context;
 
-import android.annotation.TargetApi;
-import android.support.annotation.NonNull;
-
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -358,7 +355,7 @@ public class CallActivity extends AppCompatActivity implements SptCallFragment.O
   }
 
   @Override
-  public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults)
+  public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults)
   {
       super.onRequestPermissionsResult(requestCode, permissions, grantResults);
       if(requestCode == MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE)
