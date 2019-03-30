@@ -193,6 +193,7 @@ public class CallActivity extends AppCompatActivity implements SptCallFragment.O
     private void requestSharingService(boolean bActive)
     {
         _sdk.setServiceState(_callID, _localParticipantID,ISptCallServices.eSptCallServiceSharing, bActive);
+        showGallerySelector();
         Log.v("share: ","request");
     }
 
@@ -349,7 +350,6 @@ public class CallActivity extends AppCompatActivity implements SptCallFragment.O
   public static boolean checkPermission(final Context context, int code) {
 
       Log.v("share: ","checkPermission");
-      showGallerySelector();  // rever
       return true;
   }
 
