@@ -359,7 +359,7 @@ public class CallActivity extends AppCompatActivity implements SptCallFragment.O
       super.onActivityResult(requestCode, resultCode, data);
       switch (requestCode)
       {
-          case REQUEST_CODE_SHARE_GALLERY:
+          case 100:
               if(resultCode == Activity.RESULT_OK)
                   onShareGalleryResult(data);
               break;
