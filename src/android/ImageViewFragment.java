@@ -20,7 +20,7 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.support.ExifInterface;
+//import android.support.ExifInterface;
 
 
 import com.clearone.sptcore.sptim.SptSize;
@@ -375,7 +375,9 @@ public class ImageViewFragment extends SptCallWhiteboardFragment
     {
         int res = 0;
 
-        ExifInterface ei = null;
+        return 0;
+
+    /*    ExifInterface ei = null;
         if(is == null)
             return 0;
         try
@@ -411,5 +413,5 @@ public class ImageViewFragment extends SptCallWhiteboardFragment
 
         return res;
     }
-
+*/
 }
