@@ -422,7 +422,7 @@ public class CallActivity extends AppCompatActivity implements SptCallFragment.O
       }
   }
 
-  @Override
+  //@Override
   public void onStopLocalSharing()
   {
       Fragment f = getSupportFragmentManager().findFragmentByTag(SptCallFragment.TAG);
