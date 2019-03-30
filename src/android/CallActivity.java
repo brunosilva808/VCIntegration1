@@ -360,7 +360,7 @@ public class CallActivity extends AppCompatActivity implements SptCallFragment.O
   }
 
   @Override
-  public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults)
+  public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults)
   {
       super.onRequestPermissionsResult(requestCode, permissions, grantResults);
       if(requestCode == MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE)
