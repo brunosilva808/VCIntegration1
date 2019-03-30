@@ -9,6 +9,10 @@ import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.content.Context;
+
+import android.annotation.TargetApi;
+import android.support.annotation.NonNull;
+
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -353,7 +357,6 @@ public class CallActivity extends AppCompatActivity implements SptCallFragment.O
       return true;
   }
 
-/*
   @Override
   public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults)
   {
@@ -370,7 +373,6 @@ public class CallActivity extends AppCompatActivity implements SptCallFragment.O
           }
       }
   }
-*/
 
   @Override
   protected void onActivityResult(int requestCode, int resultCode, Intent data) {
