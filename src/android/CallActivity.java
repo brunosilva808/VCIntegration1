@@ -414,17 +414,22 @@ public class CallActivity extends AppCompatActivity implements SptCallFragment.O
   @Override
   protected void onActivityResult(int requestCode, int resultCode, Intent data) {
       super.onActivityResult(requestCode, resultCode, data);
+
+      Log.v("share: ","onActivityResult");
+
       switch (requestCode)
       {
           case REQUEST_CODE_SHARE_GALLERY:
               if(resultCode == Activity.RESULT_OK)
                   onShareGalleryResult(data);
+                  Log.v("share: ","onActivityResultOK");
               break;
       }
 
       if(requestCode == _screenSharingRequestCode)
       {
           onShareScreenResult(resultCode, data);
+          Log.v("share: ","_screenSharingRequestCode");
           _screenSharingRequestCode = -1;
       }
   }
@@ -471,7 +476,7 @@ public class CallActivity extends AppCompatActivity implements SptCallFragment.O
       }
   }
 
-  //@Override
+  @Override
   public void onStopLocalSharing()
   {
       Fragment f = getSupportFragmentManager().findFragmentByTag(SptCallFragment.TAG);
