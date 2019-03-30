@@ -412,6 +412,7 @@ public class ImageViewFragment extends SptCallWhiteboardFragment
         }
 
         return res;
+        */
     }
-*/
+
 }
