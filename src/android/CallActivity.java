@@ -338,7 +338,7 @@ public class CallActivity extends AppCompatActivity implements SptCallFragment.O
   }
 
 
-
+/*
   @Override
   public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults)
   {
@@ -355,7 +355,7 @@ public class CallActivity extends AppCompatActivity implements SptCallFragment.O
           }
       }
   }
-
+*/
 
   @Override
   protected void onActivityResult(int requestCode, int resultCode, Intent data) {
