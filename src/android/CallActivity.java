@@ -352,15 +352,6 @@ public class CallActivity extends AppCompatActivity implements SptCallFragment.O
       }
   }
 
-
-  @Override
-  public void onBackPressed()
-  {
-      super.onBackPressed();
-      _sdk.hangUpCall(_callID);
-      _callID = null;
-  }
-
   private void goToBackground()
   {
       Intent homeIntent = new Intent(Intent.ACTION_MAIN);
