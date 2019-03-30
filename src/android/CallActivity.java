@@ -337,6 +337,10 @@ public class CallActivity extends AppCompatActivity implements SptCallFragment.O
       startActivityForResult(intent, REQUEST_CODE_SHARE_GALLERY);
   }
 
+  public static boolean checkPermission(final Context context, int code) {
+
+      return true;
+  }
 
 /*
   @Override
