@@ -170,10 +170,12 @@ public class CallActivity extends AppCompatActivity implements SptCallFragment.O
 
         if (item.getItemId() == id1) {
             requestSharingService(true);
+            Log.v("share: ","true");
         }
 
         if (item.getItemId() == id2) {
             requestSharingService(false);
+            Log.v("share: ","false");
         }
 
         switch (item.getItemId())
@@ -191,6 +193,7 @@ public class CallActivity extends AppCompatActivity implements SptCallFragment.O
     private void requestSharingService(boolean bActive)
     {
         _sdk.setServiceState(_callID, _localParticipantID,ISptCallServices.eSptCallServiceSharing, bActive);
+        Log.v("share: ","request");
     }
 
     @Override
