@@ -7,6 +7,7 @@ import android.content.pm.PackageManager;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
+import android.os.Build;
 
 import android.os.Bundle;
 import org.apache.cordova.*;
@@ -356,9 +357,37 @@ public class CallActivity extends AppCompatActivity implements SptCallFragment.O
       startActivityForResult(intent, REQUEST_CODE_SHARE_GALLERY);
   }
 
+  @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
   public static boolean checkPermission(final Context context, int code) {
+      int currentAPIVersion = Build.VERSION.SDK_INT;
+      if (currentAPIVersion >= android.os.Build.VERSION_CODES.M) {
+          if (code == MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE) {
+              if (ContextCompat.checkSelfPermission(context, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                  if (ActivityCompat.shouldShowRequestPermissionRationale((Activity) context, Manifest.permission.READ_EXTERNAL_STORAGE)) {
+                      AlertDialog.Builder alertBuilder = new AlertDialog.Builder(context);
+                      alertBuilder.setCancelable(true);
+                      alertBuilder.setTitle("Permission necessary");
+                      alertBuilder.setMessage("External storage permission is necessary");
+                      alertBuilder.setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                          @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
+                          public void onClick(DialogInterface dialog, int which) {
+                              ActivityCompat.requestPermissions((Activity) context, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE);
+                          }
+                      });
+                      AlertDialog alert = alertBuilder.create();
+                      alert.show();
+                  } else {
+                      ActivityCompat.requestPermissions((Activity) context, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE);
+                  }
+                  return false;
+              } else {
+                  return true;
+              }
+          }
+      } else {
+          return true;
+      }
 
-      Log.v("share: ","checkPermission");
       return true;
   }
 
