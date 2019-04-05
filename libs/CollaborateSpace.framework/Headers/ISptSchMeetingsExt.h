@@ -243,23 +243,29 @@ typedef NS_ENUM(NSUInteger, SptSchMeetingState)
  - kFileDownloaded: File downloaded
  - kFileProgress: Upload/download file progress updated
  - kToDosUpdated: ToDos updated
+ - kParticpantsUpdated: Participants updated, one or more participants have been added/removed to the meeting
+ - kParticpantsStateUpdated: Participant state updated, one or more participants have changed their state
+ - kRecordings: Meeting recordings updated
+ - kLastUpdate: Last update contact or date updated
  */
 typedef NS_OPTIONS(NSUInteger, MeetingUpdatedFields)
 {
-    kNoUpdated              = 0,
-    kDurationUpdated        = (1 << 0),
-    kDateUpdated            = (1 << 1),
-    kStateUpdated           = (1 << 2),
-    kAgendaUpdated          = (1 << 3),
-    kNotesUpdated           = (1 << 4),
-    kFilesUpdated           = (1 << 5),
-    kFilesUpdatedThumbnails = (1 << 6),
-    kLastChatMessages       = (1 << 7),
-    kFileDownloaded         = (1 << 8),
-    kFileProgress           = (1 << 9),
-    kToDosUpdated           = (1 << 10),
-    kParticpantsUpdated     = (1 << 11),
-    kParticpantsStateUpdated =(1 << 12)
+    kNoUpdated               = 0,
+    kDurationUpdated         = (1 << 0),
+    kDateUpdated             = (1 << 1),
+    kStateUpdated            = (1 << 2),
+    kAgendaUpdated           = (1 << 3),
+    kNotesUpdated            = (1 << 4),
+    kFilesUpdated            = (1 << 5),
+    kFilesUpdatedThumbnails  = (1 << 6),
+    kLastChatMessages        = (1 << 7),
+    kFileDownloaded          = (1 << 8),
+    kFileProgress            = (1 << 9),
+    kToDosUpdated            = (1 << 10),
+    kParticpantsUpdated      = (1 << 11),
+    kParticpantsStateUpdated = (1 << 12),
+    kRecordings              = (1 << 13),
+    kLastUpdate              = (1 << 14)
 };
 
 /**
@@ -410,6 +416,7 @@ typedef NS_OPTIONS(NSUInteger, MeetingRepeatMonthlyWeek)
  - kSptSchPropertiesWhiteboardServiceAllow: Participants can manage whiteboard/annotation service
  - kSptSchPropertiesFileServiceAllow: Participants can manage file transfer service
  - kSptSchPropertiesAllActive: Particicipants can manage all services
+ - kSptSchPropertiesRecordAtServer: Record meeting at server from the beginning
  */
 typedef NS_OPTIONS(NSUInteger, MeetingSequenceProperties)
 {
@@ -421,7 +428,8 @@ typedef NS_OPTIONS(NSUInteger, MeetingSequenceProperties)
     kSptSchPropertiesControlServiceAllow    = (1 << 5),
     kSptSchPropertiesWhiteboardServiceAllow = (1 << 6),
     kSptSchPropertiesFileServiceAllow       = (1 << 7),
-    kSptSchPropertiesAllActive              = 0xFF
+    kSptSchPropertiesRecordAtServer         = (1 << 8),
+    kSptSchPropertiesAllActive              = 0x1FF
 };
 
 /**
@@ -666,10 +674,12 @@ typedef NS_OPTIONS(NSUInteger, MeetingSeqChanges)
 
  @param seqID Meeting sequence ID
  @param meetingID Meeting ID
+ @param manageRecordings Manage recordings in case of true, manage files in case of false
  @return created instance
  */
 +(instancetype) withSchMeeting:(SptMeetingSeqID)seqID
-                       meeting:(SptMeetingID)meetingID;
+                       meeting:(SptMeetingID)meetingID
+                    recordings:(BOOL)manageRecordings;
 /**
  Add file
 

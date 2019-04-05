@@ -318,6 +318,7 @@ typedef NS_ENUM(NSUInteger, eContactType)
  Contact presence state
 
  @constant kSptPresenceOffLine: Offline
+ @constant kSptPresenceOffLineOnMobile: Contact is Offline but he will receive notifications on mobile
  @constant kSptPresenceDND: Do not disturb
  @constant kSptPresenceAway: Away
  @constant kSptPresenceInvisible: Invisible
@@ -328,6 +329,7 @@ typedef NS_ENUM(NSUInteger, eContactType)
 typedef NS_ENUM(NSUInteger, eContactPresence)
 {
     kSptPresenceOffLine,
+    kSptPresenceOffLineOnMobile,
     kSptPresenceDND,
     kSptPresenceAway,
     kSptPresenceInvisible,

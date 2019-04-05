@@ -187,6 +187,19 @@ typedef NS_OPTIONS(NSUInteger, SptFileUpdate)
  */
 -(SptFileUpdate)getUpdatedFields:(bool)reset;
 
+/**
+ Is this file a meeting recorded
+ 
+ @return It returns true in case file is a meeting recorded, false otherwise
+ */
+-(BOOL)isRecording;
+
+
+/**
+ * In case of recording get the duration of the recording. Duration is nil in case not available
+ */
+@property (readonly) NSDateComponents* duration;
+
 @end
 
 

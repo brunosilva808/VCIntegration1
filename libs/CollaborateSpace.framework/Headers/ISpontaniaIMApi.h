@@ -15,6 +15,7 @@
 #import "ISptSchMeetingsExt.h"
 #import "ISptCallExt.h"
 #import "ISptIMRoomExt.h"
+#import "ISptMediaViews.h"
 
 
 @class SptRoomManageEntryCollection;
@@ -35,24 +36,25 @@
 @property (readonly) NSUInteger maxSimultaneosHost;
 
 /*!
- Get the maximun numbet of simultaneos outgoing calls to an endpoint
+ Outgoing phone calls are allowed in the system. Note that you also need credit in order
+ to make outgoing phone calls
  */
-@property (readonly) NSUInteger maxEndPointOutboundCalls;
+@property (readonly) BOOL outboundPhoneCalls;
 
 /*!
- Get the maximun numbet of simultaneos incomming calls from endpoint or PSTN
+ Incomming phone calls are allowed in the system.
  */
-@property (readonly) NSUInteger maxEndPointInboundCalls;
+@property (readonly) BOOL inboundPhoneCalls;
 
 /*!
- Can I record meetings and calls
+ Outgoing endpoint calls are allowed in the system.
  */
-@property (readonly) BOOL canRecord;
+@property (readonly) BOOL outboundEndpointCalls;
 
 /*!
- Can I create webinars
+ Incomming endpoint calls are allowed in the system.
  */
-@property (readonly) BOOL canCreateWebinar;
+@property (readonly) BOOL inboundEndpointCalls;
 
 /*!
  Can I create classrooms
@@ -214,7 +216,6 @@ User name
  */
 -(bool)addIMParticipant:(TSptIMContactID)contactID;
 
-
 /*!
  Add an endpoint to the call
 
@@ -267,6 +268,8 @@ User name
 -(bool)addEndpointParticipant:(eEndPointType)eType
                        number:(NSString *)endpointNumber
                       contact:(TSptIMContactID)contactID;
+
+-(bool)addEmailParticipant:(NSString*)emailAddress;
 
 @end
 
@@ -489,7 +492,7 @@ typedef NS_ENUM(NSUInteger, SptSchResult)
  */
 @interface ISpontaniaIMApi : NSObject
 
-
+-(MediaView*)createMediaView:(SptCallID)callID type:(MediaViewType)type;
 /*!
  Connection state
 
@@ -1635,6 +1638,15 @@ typedef NS_ENUM(NSUInteger, eSptFavoriteFilter)
 -(eSptResult)manageSchMeetingFiles:(SptSchManageFiles*)manageFiles;
 
 /*!
+ Manage meeting recordings.
+ Check your rigths in order to know what operations can you make.
+ 
+ @param manageFiles Object with the recordings changes, Added recordings and/or remove recordings
+ @return An enumerate with the result
+ */
+-(eSptResult)manageSchMeetingRecordings:(SptSchManageFiles*)manageFiles;
+
+/*!
  Finish a meeting that is in active state.
  You need rights to call this method
 
@@ -1713,9 +1725,11 @@ typedef NS_ENUM(NSUInteger, eSptFavoriteFilter)
  Download a file
 
  @param fileID File ID of the file to download
+ @param isRecording File is a meeting recording
  @return An enumerate with the result
  */
--(eSptResult)downloadFile:(SptFileID)fileID;
+-(eSptResult)downloadFile:(SptFileID)fileID
+                recording:(BOOL)isRecording;
 
 
 /*!
@@ -1836,6 +1850,11 @@ typedef NS_ENUM(NSUInteger, eSptFavoriteFilter)
  * It returns the specific connetion error.
  */
 @property (readonly) eSptConnectionResult lastConnectionError;
+
+/*!
+ * File in wav format used as outgoing call file
+ */
+@property (readwrite) NSURL *outgoingCallSound;
 
 @end
 

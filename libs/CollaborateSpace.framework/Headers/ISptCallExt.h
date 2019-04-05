@@ -851,6 +851,32 @@ typedef NS_OPTIONS(NSUInteger, RecordingState)
 @property (readonly) eCallState callState;
 
 /**
+ Call invitable types
+ 
+ - kNoInvite: No invitables
+ - kInviteContacts: You can invite contacts from your contact directory
+ - kInviteEmails: You can invite by email
+ - kInvitePhones: You can invite phone numbers
+ - kInviteEndPoints: You can invite endpoints(sip and h323)
+ */
+typedef NS_OPTIONS(NSUInteger, CallInvitable)
+{
+    kNoInvite           = 0,
+    kInviteContacts     = (1 << 0),
+    kInviteEmails       = (1 << 1),
+    kInvitePhones       = (1 << 2),
+    kInviteEndPoints    = (1 << 3),
+};
+
+/**
+ * Get type of participants can be invited to this call.
+ * It depends on your rights and the type of call or meeting
+ * @result It returns a bit combination of CallInvitable
+ */
+-(CallInvitable)getInvitableType;
+
+
+/**
  Can I invite new participants
  */
 @property (readonly) BOOL canInvite;
