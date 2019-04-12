@@ -65,6 +65,10 @@
       <source-file src="src/ios/LocalSharedDocument.m" target-dir="src/VCIntegration"/>
       <header-file src="src/ios/StartingCallViewController.h" target-dir="src/VCIntegration"/>
       <source-file src="src/ios/StartingCallViewController.m" target-dir="src/VCIntegration"/>
+      <header-file src="src/ios/LoginViewController.h" target-dir="src/VCIntegration"/>
+      <source-file src="src/ios/LoginViewController.m" target-dir="src/VCIntegration"/>
+      <header-file src="src/ios/MainViewController.h" target-dir="src/VCIntegration"/>
+      <source-file src="src/ios/MainViewController.m" target-dir="src/VCIntegration"/>
       <header-file src="src/ios/ViewController.h" target-dir="src/VCIntegration"/>
       <source-file src="src/ios/ViewController.m" target-dir="src/VCIntegration"/>
       <source-file src="src/ios/Main1.storyboard" target="src/VCIntegration" />
