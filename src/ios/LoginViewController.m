@@ -32,9 +32,9 @@
     CollaborateUtils.Instance.loginCallback = self;
 
 
-//#ifdef DEBUG
+
     _editToken.text = @"70556633";
-//#endif
+
 
     _editServerToken.text = @"collaboratespace.net";
 //    _tokenView.hidden = YES;
@@ -137,7 +137,7 @@
 - (IBAction)onMeetingTokenGo:(id)sender {
     _activityIndicator.hidden = NO;
 
-//#ifdef DEBUG
+//#ifdef
     [CollaborateUtils.Instance.api getTokenData:_editToken.text server:_editServerToken.text];
 //#else
     AskblueUtils *instanceAB = [AskblueUtils Instance];
