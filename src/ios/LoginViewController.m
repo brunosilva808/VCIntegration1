@@ -30,30 +30,30 @@
     [super viewDidLoad];
 
     CollaborateUtils.Instance.loginCallback = self;
-  
-    
-#ifdef DEBUG
+
+
+//#ifdef DEBUG
     _editToken.text = @"70556633";
-#endif
-    
+//#endif
+
     _editServerToken.text = @"collaboratespace.net";
 //    _tokenView.hidden = YES;
 //    _loginView.hidden = YES;
 
 //    [self enableLoginButton];
-  
+
 //    if ( _usingStoredCredentials ){
 //        [self onLoginPressed:nil];
 //    }
-    
+
     [self onTokenFieldsModified:nil];
-    
+
     [self onMeetingTokenGo:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    
+
 //    [self onSwitchToMeetingID:nil];
     [_switchToLoginButton setHidden:true];
 }
@@ -91,7 +91,7 @@
 
 -(void)onLoginResult:(BOOL)loginOK error:(eSptConnectionResult)error{
     _activityIndicator.hidden = YES;
-    
+
     if ( loginOK ){
         [self performSegueWithIdentifier:@"showMain" sender:self];
     }else{
@@ -118,7 +118,7 @@
             view.alpha = 1.0F;
         }];
     }
-    
+
     for ( UIView *view in viewsToShow ){
         view.alpha = 0.0F;
         view.hidden = NO;
@@ -129,26 +129,26 @@
 }
 - (IBAction)onTokenFieldsModified:(id)sender {
     _buttonTokenGo.enabled = (_editToken.text.length > 0 && _editServerToken.text.length>0);
-    
+
     if ( sender == _editServerToken )
         _editServer.text = _editServerToken.text;
 }
 
 - (IBAction)onMeetingTokenGo:(id)sender {
     _activityIndicator.hidden = NO;
-    
-#ifdef DEBUG
+
+//#ifdef DEBUG
     [CollaborateUtils.Instance.api getTokenData:_editToken.text server:_editServerToken.text];
-#else
+//#else
     AskblueUtils *instanceAB = [AskblueUtils Instance];
     [CollaborateUtils.Instance.api getTokenData:[NSString stringWithFormat:@"%@", [instanceAB myToken]]
                                          server:[NSString stringWithFormat:@"%@", [instanceAB myServer]]];
-#endif
+//#endif
 }
 
 -(void)onGetTokenDataResult:(SptTokenDataResult *)tokenDataResult{
     NSString *error = nil;
-    
+
     switch ( tokenDataResult.result ){
         case kSptTokenDataResultJoinMeeting:
         {
@@ -169,11 +169,11 @@
             break;
         case kSptTokenDataResultInvalidToken:
             error = @"Invalid token";
-            
+
             //Token is invalid, nothing else
             break;
     }
-    
+
     if ( error != nil ){
         _activityIndicator.hidden = YES;
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error connecting"
@@ -185,18 +185,18 @@
 }
 
 /*
-     
-     
+
+
      -(void)OnTokenMgrError:(NSString *)error{
          [self.navigationController popToViewController:self animated:YES];
          UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"text_error_connecting".localized message:error delegate:nil cancelButtonTitle:@"text_ok".localized otherButtonTitles: nil];
          [alert show];
-         
+
          [JoinWithTokenMgr.instance reset];
      }
      - (void)onGetTokenDataResult:(SptTokenDataResult *)tokenDataResult{
          NSString *error = nil;
-         
+
          switch ( tokenDataResult.result ){
              case kSptTokenDataResultJoinMeeting:
                  _meetingSeq = tokenDataResult.meetingSequenceID;
@@ -217,11 +217,11 @@
                  break;
              case kSptTokenDataResultInvalidToken:
                  error = @"Invalid token";
-                 
+
                  //Token is invalid, nothing else
                  break;
          }
-         
+
          if ( error != nil ){
              UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"text_error_connecting".localized message:error delegate:nil cancelButtonTitle:@"text_ok".localized otherButtonTitles: nil];
              [alert show];
@@ -234,7 +234,7 @@
          if ( _connecting ){
              if ( eResult != kSptIMConnect_GDPR ){
                  [self hideActivity];
-                 
+
                  NSDictionary *textErrors = @{ @(kSptIMConnect_Error):@"Error connecting to service",
                                                @(kSptIMConnect_NetworkError):@"Network Error",
                                                @(kSptIMConnect_AuthError):@"Authentication Error",
@@ -243,7 +243,7 @@
                  NSString *error = [textErrors objectForKey:@(eResult)] ;
                  if ( error == nil )
                      error = [textErrors objectForKey:@(kSptIMConnect_Error)];
-                 
+
                  dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                      UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"text_error_connecting".localized message:error delegate:nil cancelButtonTitle:@"text_ok".localized otherButtonTitles: nil];
                      [alert show];
